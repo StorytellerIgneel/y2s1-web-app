@@ -1,0 +1,8 @@
+.label{
+    display: block;
+    margin: 8px;
+    font-size: bold;
+    font-size: 14px;
+    cursor: pointer;
+    color: black !important;
+}
