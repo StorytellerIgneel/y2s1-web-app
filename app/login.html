@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>GameNonStop | Login & Register</title>
+        <link rel="stylesheet" href="login-style.css">
+        <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    </head>
+    <body>
+        <div class="form-container">
+            <div class="col col-1">
+                <div class="image-layer">
+                    <img src="images/guy-playing-pc.png" class="form-image-main pcguy">
+                    <img src="images/login-controller.png" class="form-image controller">
+                    <img src="images/PSsymbol.png" class="form-image symbol">
+                </div>
+                <p class="featured-words">You Are Few Minutes A Way To Get Your Favourite Games on <span>GameNonStop</span></p>
+            </div>
+            <div class="col col-2">
+                <div class="btn-box">
+                    <button class="btn btn-1" id="login">Sign In</button>
+                    <button class="btn btn-2" id="register">Sign Up</button>
+                </div>
+            <!--Login Form-->
+             <div class="login-form">
+                <div class="form-title">
+                    <span class="title">Sign In</span>
+                    </div>
+                        <div class="form-inputs">
+                            <div class="input-box">
+                                <input type="text" class="input-field" placeholder="Username" required>
+                                <i class="fa-solid fa-user icon"></i>
+                            </div>
+                            <div class="input-box">
+                                <input type="password" class="input-field" placeholder="Password" required>
+                                <i class="fa-solid fa-unlock icon"></i>
+                            </div>
+                            <div class="input-box submit">
+                                <button class="input-submit">
+                                    <span>Sign In</span>
+                                    <i class="fa-solid fa-right-to-bracket"></i>
+                                </button>
+                            </div>
+                        </div>
+                    <div class="social-login">
+                        <i class="fa-brands fa-google"></i>
+                    </div>
+             </div>   
+             <!--Register Form-->
+             <div class="register-form">
+                <div class="form-title">
+                    <span class="title">Sign Up</span>
+                    </div>
+                        <div class="form-inputs">
+                            <div class="input-box">
+                                <input type="email" class="input-field" placeholder="Email" required>
+                                <i class="fa-solid fa-envelope icon"></i>
+                            </div>
+                            <div class="input-box">
+                                <input type="text" class="input-field" placeholder="Username" required>
+                                <i class="fa-solid fa-user icon"></i>
+                            </div>
+                            <div class="input-box">
+                                <input type="password" class="input-field" placeholder="Password" required>
+                                <i class="fa-solid fa-unlock icon"></i>
+                            </div>
+                            <div class="input-box submit">
+                                <button class="input-submit">
+                                    <span>Sign Up</span>
+                                    <i class="fa-solid fa-right-to-bracket"></i>
+                                </button>
+                            </div>
+                        </div>
+                    <div class="social-login">
+                        <i class="fa-brands fa-google"></i>
+                    </div>
+             </div>  
+               
+            </div>
+        </div>
+
+        <script src="login.js"></script>
+    </body>
+</html>
