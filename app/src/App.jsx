@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { model } from "../src/geminiModule.js"
+import { model } from "./frontend/AI/geminiModule.js"
 import './App.css'
 import '../node_modules/@chatscope/chat-ui-kit-styles/dist/default/styles.min.css'; //give styling for comps
 import {MainContainer, ChatContainer, MessageList, Message, MessageInput, TypingIndicator} from "@chatscope/chat-ui-kit-react"
