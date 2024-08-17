@@ -1,19 +1,22 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import CartPage from './frontend/pages/CartPage';
+import CartPage from "./frontend/pages/CartPage";
 import NavBar from "./frontend/include/NavBar";
 import "./index.css";
 
 function App() {
-    return (
+  return (
+    <div>
+      <NavBar></NavBar>
       <div className="App">
-          <BrowserRouter>
+        <BrowserRouter>
           <Routes>
-            <Route path="/cart" element={CartPage} />
+            <Route path="/" element="" />
+            <Route path="/cart" element={<CartPage />} />
           </Routes>
-          </BrowserRouter>
-          <NavBar></NavBar>
+        </BrowserRouter>
       </div>
-    );
-  }
+    </div>
+  );
+}
 
-export default App
+export default App;

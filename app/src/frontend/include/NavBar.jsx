@@ -1,6 +1,10 @@
+import SearchBar from "./SearchBar";
+import UserProfile from "./UserProfile";
+import { IoCartSharp, IoStar } from "react-icons/io5";
+
 function NavBar() {
   return (
-    <div>
+    <div className="min-w-[26rem]">
       <NavBarTop />
       <NavBarBottom />
     </div>
@@ -9,12 +13,12 @@ function NavBar() {
 
 function NavBarTop() {
   return (
-    <div className="flex justify-between items-center h-14 px-1 sm:px-16">
-      <div className="p-3 flex items-center space-x-2 sm:space-x-5">
+    <div className="flex justify-between items-center h-14 px-0.5 sm:px-16">
+      <div className="p-3 flex items-center space-x-2.5 sm:space-x-5">
         <img
           src="../../../images/logo/light/GNS_Horizontal_Black.svg"
           alt="GameNonStop Logo"
-          className="h-[30px]"
+          className="h-6 sm:h-[30px]"
         />
         <div className="h-7 w-[1px] bg-slate-300 rounded"></div>
         <a className="font-bold text-xs" href="">
@@ -27,47 +31,25 @@ function NavBarTop() {
           About Us
         </a>
       </div>
-      <a href="">
-        <div className="p-3 flex items-center space-x-5">
-          <p
-            className="font-bold text-xs text-gray-600 hidden md:block"
-            href=""
-          >
-            {/* TODO: Make this dynamic */}
-            Username
-          </p>
-          <div className="flex space-x-2">
-            {/* TODO: Make this dynamic */}
-            <img
-              className="rounded-full border border-gray-100 shadow-sm w-10 h-10"
-              src="https://preview.redd.it/dr-ratio-alhaitham-chibi-swap-edit-feel-free-to-use-credits-v0-ppqauow026cc1.png?width=496&format=png&auto=webp&s=f60177f2d5cc0dcc5cb568709f32050ddb1abea2"
-              alt="user image"
-            />
-          </div>
-        </div>
-      </a>
+      <UserProfile />
     </div>
   );
 }
 
 function NavBarBottom() {
   return (
-    <div className="flex bg-gray-200 h-14 items-center sm:px-44">
-      <div className="flex items-center justify-center ">
-        <input
-          className="border-2 border-gray-300 bg-white h-9 px-5 pr-16 rounded-lg text-sm focus:outline-none"
-          type="search"
-          placeholder="Search..."
-        />
-        <button className="m-[-30px]">
-          <img
-            className="size-4"
-            src="../../../icon/search.svg"
-            alt="search icon"
-          />
-        </button>
+    <div className="flex justify-between bg-gray-100 h-14 items-center px-3 md:px-44 sm:px-20">
+      <SearchBar />
+      <div className="p-3 flex items-center space-x-6 sm:space-x-10">
+        <a className="flex items-center space-x-1" href="">
+          <IoCartSharp className="size-5" fill="gray"/>
+          <span className="font-bold text-sm text-gray-600">Cart</span>
+        </a>
+        <a className="flex items-center space-x-1" href="">
+          <IoStar className="size-5" fill="gray"/>
+          <span className="font-bold text-sm text-gray-600">Wishlist</span>
+        </a>
       </div>
-      <div></div>
     </div>
   );
 }
