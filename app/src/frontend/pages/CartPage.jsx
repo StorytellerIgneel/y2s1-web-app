@@ -9,7 +9,7 @@ function CartPage() {
         <div className="w-[60%]">
           <CartItem />
         </div>
-        <div className="w-[35%]">
+        <div className="w-[32%]">
           <OrderSummary />
         </div>
       </div>

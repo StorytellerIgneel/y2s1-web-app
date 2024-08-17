@@ -23,15 +23,21 @@
   }
 
   h1 {
-    font-size: 1.875rem /* 30px */;
-    line-height: 2.25rem /* 36px */;
+    font-size: 1.875rem;
+    line-height: 2.25rem;
     font-weight: 700;
+    padding-bottom: 1.5rem;
   }
 
-  @media only screen and (max-width: 767px) {
+  .button {
+     @apply text-white text-sm font-semibold rounded-md w-full h-12
+  }
+
+  /* I suck at rwa will adjust later*/
+  /* @media only screen and (max-width: 767px) {
     .App {
       padding-left: 5rem;
       padding-right: 5rem;
     }
-  }
+  } */
 }
