@@ -9,8 +9,10 @@ function CartPage() {
         <div className="w-[60%]">
           <CartItem />
         </div>
-        <div className="w-[32%]">
-          <OrderSummary />
+        <div className="h-screen w-[32%] pb-5">
+          <div className="sticky top-5">
+            <OrderSummary />
+          </div>
         </div>
       </div>
     </div>

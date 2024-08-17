@@ -29,9 +29,6 @@
     padding-bottom: 1.5rem;
   }
 
-  .button {
-     @apply text-white text-sm font-semibold rounded-md w-full h-12
-  }
 
   /* I suck at rwa will adjust later*/
   /* @media only screen and (max-width: 767px) {
@@ -40,4 +37,8 @@
       padding-right: 5rem;
     }
   } */
+}
+
+.button {
+  @apply text-white text-base font-semibold rounded-md w-full h-12
 }
