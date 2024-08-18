@@ -8,6 +8,9 @@ CREATE TABLE users(
 CREATE TABLE emails(
     username varchar(30),
     email varchar(30),
+    salutation varchar(5),
+    purpose varchar(20),
+    subject varchar(30),
     message varchar(255),
     CONSTRAINT PK_WAD_EMAILS PRIMARY KEY (username, email),
     CONSTRAINT FK_WAD_EMAILS FOREIGN KEY (username) REFERENCES users(username)
