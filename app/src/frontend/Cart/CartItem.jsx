@@ -26,10 +26,10 @@ function CartItem() {
           <div className="flex justify-between">
             <div>Some Icons here</div>
             <div className="flex justify-between">
-              <span className="px-2 text-sm text-gray-600">Remove</span>
-              <span className="px-2 text-sm text-gray-600">
+              <button className="px-2 text-sm text-gray-600">Remove</button>
+              <button className="px-2 text-sm text-gray-600">
                 Move to Wishlist
-              </span>
+              </button>
             </div>
           </div>
         </div>

@@ -51,10 +51,10 @@ function OAuth() {
                     <p>Email Address: {profile.email}</p>
                     <br />
                     <br />
-                    <button onClick={logOut}>Log out</button>
+                    <button onClick={logOut} className='button bg-black px-3'>Log out</button>
                 </div>
             ) : (
-                <button onClick={() => login()}>Sign in with Google 🚀 </button>
+                <button onClick={() => login()} className='button bg-black px-3'>Sign in with Google 🚀 </button>
             )}
         </div>
     );
