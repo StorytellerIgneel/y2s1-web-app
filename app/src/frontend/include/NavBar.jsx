@@ -1,5 +1,6 @@
 import SearchBar from "./SearchBar";
 import UserProfile from "./UserProfile";
+import OAuth from "../../OAuth";
 import { IoCartSharp, IoStar } from "react-icons/io5";
 
 function NavBar() {
@@ -12,6 +13,7 @@ function NavBar() {
 }
 
 function NavBarTop() {
+  const profile = OAuth();
   return (
     <div className="flex h-14 items-center justify-between px-0.5 sm:px-16">
       <div className="flex items-center space-x-2.5 p-3 sm:space-x-5">
@@ -31,7 +33,7 @@ function NavBarTop() {
           About Us
         </a>
       </div>
-      <UserProfile />
+      <UserProfile profile={profile} />
     </div>
   );
 }
