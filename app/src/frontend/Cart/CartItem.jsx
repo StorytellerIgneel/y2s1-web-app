@@ -1,3 +1,5 @@
+import React from 'react'
+
 function CartItem() {
   return (
     <div className="py-4">
