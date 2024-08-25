@@ -9,7 +9,6 @@ function LoginPage() {
     <div>
       <Helmet>
         <title>GameNonStop | Login & Register</title>
-        <link rel="stylesheet" href="../LoginPage/login-style.css" />
         <link
           href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap"
           rel="stylesheet"
