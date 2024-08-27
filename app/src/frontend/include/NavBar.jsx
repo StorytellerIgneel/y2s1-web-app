@@ -1,6 +1,5 @@
 import SearchBar from "./SearchBar";
 import UserProfile from "./UserProfile";
-import OAuth from "../../OAuth";
 import { IoCartSharp, IoStar } from "react-icons/io5";
 
 function NavBar() {
@@ -13,7 +12,7 @@ function NavBar() {
 }
 
 function NavBarTop() {
-  const profile = OAuth();
+  // const profile = OAuth();
   return (
     <div className="flex h-14 items-center justify-between px-0.5 sm:px-16">
       <div className="flex items-center space-x-2.5 p-3 sm:space-x-5">
@@ -26,14 +25,14 @@ function NavBarTop() {
         <a className="text-xs font-bold" href="">
           STORE
         </a>
-        <a className="text-xs font-bold text-gray-600" href="">
+        <a className="text-xs font-bold text-gray-600">
           Support
         </a>
-        <a className="text-xs font-bold text-gray-600" href="">
+        <a className="text-xs font-bold text-gray-600">
           About Us
         </a>
       </div>
-      <UserProfile profile={profile} />
+      <UserProfile />
     </div>
   );
 }
@@ -43,13 +42,13 @@ function NavBarBottom() {
     <div className="flex h-14 items-center justify-between bg-gray-100 px-3 sm:px-20 md:px-44">
       <SearchBar />
       <div className="flex items-center space-x-6 p-3 sm:space-x-10">
-        <a className="flex items-center space-x-1" href="">
+        <a className="flex items-center space-x-1" href="../pages/CartPage.jsx">
           <IoCartSharp className="size-5" fill="gray" />
-          <span className="text-sm font-bold text-gray-600">Cart</span>
+          <button className="text-sm font-bold text-gray-600">Cart</button>
         </a>
-        <a className="flex items-center space-x-1" href="">
+        <a className="flex items-center space-x-1">
           <IoStar className="size-5" fill="gray" />
-          <span className="text-sm font-bold text-gray-600">Wishlist</span>
+          <button className="text-sm font-bold text-gray-600">Wishlist</button>
         </a>
       </div>
     </div>
