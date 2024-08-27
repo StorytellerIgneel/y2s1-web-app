@@ -2,14 +2,20 @@ import React, { useState, useEffect } from 'react';
 import { googleLogout, useGoogleLogin } from '@react-oauth/google';
 import axios from 'axios';
 
-function OAuth() {
-    const [ user, setUser ] = useState([]);
-    const [ profile, setProfile ] = useState([]);
+function OAuth({ triggerLogin }) {
+    const [ user, setUser ] = useState(null);
+    const [ profile, setProfile ] = useState(null);
 
     const login = useGoogleLogin({
         onSuccess: (codeResponse) => setUser(codeResponse),
         onError: (error) => console.log('Login Failed:', error)
     });
+
+    useEffect(() => {
+        if (triggerLogin) {
+            login();
+        }
+    }, [triggerLogin, login]);
 
     useEffect(
         () => {

@@ -3,7 +3,7 @@ import CartPage from "./frontend/pages/CartPage";
 import NavBar from "./frontend/include/NavBar";
 // import LoginPage from "./frontend/pages/LoginPage";
 import WishlistPage from "./frontend/pages/WishlistPage";
-import OAuth from "./OAuth";
+import OAuth from "./backend/OAuth";
 // import "./index.css";
 
 function App() {

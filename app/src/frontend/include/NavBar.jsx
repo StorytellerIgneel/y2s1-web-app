@@ -1,6 +1,6 @@
 import SearchBar from "./SearchBar";
 import UserProfile from "./UserProfile";
-import OAuth from "../../OAuth";
+import OAuth from "../../backend/OAuth";
 import { IoCartSharp, IoStar } from "react-icons/io5";
 
 function NavBar() {
