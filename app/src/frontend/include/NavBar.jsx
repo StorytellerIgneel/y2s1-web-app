@@ -42,7 +42,7 @@ function NavBarBottom() {
     <div className="flex h-14 items-center justify-between bg-gray-100 px-3 sm:px-20 md:px-44">
       <SearchBar />
       <div className="flex items-center space-x-6 p-3 sm:space-x-10">
-        <a className="flex items-center space-x-1" href="../pages/CartPage.jsx">
+        <a className="flex items-center space-x-1" href="">
           <IoCartSharp className="size-5" fill="gray" />
           <button className="text-sm font-bold text-gray-600">Cart</button>
         </a>

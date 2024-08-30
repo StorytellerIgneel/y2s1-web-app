@@ -40,5 +40,5 @@
 }
 
 .button {
-  @apply text-white text-base font-semibold rounded-md h-12
+  @apply text-white text-base font-semibold rounded-md h-12 text-center
 }
