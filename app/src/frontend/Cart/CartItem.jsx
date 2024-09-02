@@ -3,9 +3,9 @@ import { useState } from "react";
 function CartItem() {
   // const [ button, setButton ] = useState();
   
-  // function handleOnClick(e) {
+  function handleOnClick() {
     
-  // }
+  }
 
   return (
     <div className="py-4">
@@ -33,9 +33,9 @@ function CartItem() {
           <div className="font-bold">The Last of Us Part I</div>
           <div className="flex justify-between">
             <div>Some Icons here</div>
-            <div className="flex justify-between">
-              <button className="px-2 text-sm text-gray-600">Remove</button>
-              <button className="px-2 text-sm text-gray-600">
+            <div className="flex justify-between gap-3">
+              <button className="px-2 text-sm text-gray-600 hover:font-semibold" onClick={handleOnClick}>Remove</button>
+              <button className="px-2 text-sm text-gray-600 hover:font-semibold" onClick={handleOnClick}>
                 Move to Wishlist
               </button>
             </div>

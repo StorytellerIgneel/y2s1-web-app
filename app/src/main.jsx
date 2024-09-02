@@ -6,12 +6,14 @@ import { GoogleOAuthProvider } from "@react-oauth/google"
 import './index.css'
 import LoginPage from './frontend/pages/LoginPage.jsx'
 import test from './frontend/pages/testpage.jsx' 
+import Store from './frontend/Store/Store.tsx'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <GoogleOAuthProvider clientId='721278939294-754epiosjucfqahjktvlnt89f7j8o42b.apps.googleusercontent.com'>
   <React.StrictMode>
-    <LoginPage />
+    {/* <LoginPage /> */}
     {/* <OAuth></OAuth> */}
+    <Store />
   </React.StrictMode>
   </GoogleOAuthProvider>
 )

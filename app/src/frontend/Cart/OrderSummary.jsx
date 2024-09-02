@@ -21,7 +21,7 @@ function OrderSummary() {
           <span className="text-md font-bold">RM xx.xx</span>
         </div>
       </div>
-      <button className="button w-full bg-red-600">Checkout</button>
+      <button className="button w-full bg-red-600 hover:bg-red-800">Checkout</button>
     </div>
   );
 }

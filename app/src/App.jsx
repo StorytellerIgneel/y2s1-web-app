@@ -14,7 +14,7 @@ function App() {
         <BrowserRouter>
           <Routes>
             {/* <Route path="/" element={<LoginPage/>} /> */}
-            <Route path="/" element={<OAuth />}/>
+            {/* <Route path="/" element={<OAuth />}/> */}
             <Route path="/cart" element={<CartPage />} />
             <Route path="/wishlist" element={<WishlistPage />} />
           </Routes>
