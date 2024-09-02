@@ -18,8 +18,9 @@ CREATE TABLE emails(
 
 CREATE TABLE users (
     id INT(11) NOT NULL AUTO_INCREMENT,
-    email VARCHAR(191) NOT NULL,
-    password VARCHAR (255) NOT NULl,
+    username VARCHAR(50) NOT NULL,
+    email VARCHAR(50) NOT NULL,
+    password VARCHAR (20) NOT NULl,
     PRIMARY KEY (id),
     UNIQUE KEY email (email)
 );

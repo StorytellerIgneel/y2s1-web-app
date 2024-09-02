@@ -7,7 +7,10 @@ import { Helmet } from "react-helmet";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 
 function LoginPage() {
-  const form = useRef();
+  const loginForm = useRef();
+  const registerForm = useRef();
+  const [currentForm, setCurrentForm] = useState("login");
+  const [sent, setSent] = useState(false);
   const [login, setLogin] = useState(false);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -25,13 +28,47 @@ function LoginPage() {
     setLogin(false);
   };
 
+  const changeToLoginForm = () => {
+    const loginBtn = document.querySelector("#login");
+    const registerBtn = document.querySelector("#register");
+    const loginForm = document.querySelector(".login-form");
+    const registerForm = document.querySelector(".register-form");
+    loginBtn.style.backgroundColor = "#ff3131";
+    registerBtn.style.backgroundColor = "rgba(255,255,255,0.2)";
+
+    loginForm.style.left = "10%";
+    registerForm.style.left = "-50%";
+
+    loginForm.style.opacity = 1;
+    registerForm.style.opacity = 0;
+
+    document.querySelector(".col-1").style.borderRadius = "0 10% 30% 0";
+  }
+
+  const changeToRegisterForm = () => {
+    const loginBtn = document.querySelector("#login");
+    const registerBtn = document.querySelector("#register");
+    const loginForm = document.querySelector(".login-form");
+    const registerForm = document.querySelector(".register-form");
+    registerBtn.style.backgroundColor = "#ff3131";
+    loginBtn.style.backgroundColor = "rgba(255,255,255,0.2)";
+
+    loginForm.style.left = "150%";
+    registerForm.style.left = "60%";
+
+    loginForm.style.opacity = 0;
+    registerForm.style.opacity = 1;
+
+    document.querySelector(".col-1").style.borderRadius = "0 30% 10% 0";
+  }
+
   const googleLogin = () => {
     // call OAuth login function
     setTriggerLogin(true);
   }
 
   const Login = (e) => {
-    if (name === "" && email === "" && message === ""){
+    if (name === "" && email === "" && password === ""){
       Swal.fire({
         icon: 'error',
         title: 'Oops...',
@@ -103,16 +140,15 @@ function LoginPage() {
                 </p>
               </div>
               <div className="col col-2">
-                <form ref={form} onSubmit={Login}>
                 <div className="btn-box">
-                  <button className="btn btn-1" id="login">
+                  <button className="btn btn-1" id="login" onClick={changeToLoginForm}>
                     Sign In
                   </button>
-                  <button className="btn btn-2" id="register">
+                  <button className="btn btn-2" id="register" onClick={changeToRegisterForm}>
                     Sign Up
                   </button>
                 </div>
-                {/* --Login Form-- */}
+                <form ref={loginForm} onSubmit={Login} className="login-form">
                 <div className="login-form">
                   <div className="form-title">
                     <span className="title">Sign In</span>
@@ -152,7 +188,14 @@ function LoginPage() {
                     <i className="fa-brands fa-google"></i>
                   </div>
                 </div>
-                {/* --Register Form-- */}
+                <button
+                    className={sent?"btn btn-secondary":"btn btn-success"} 
+                    type="submit" 
+                    value="Send">
+                  Send
+                  </button>
+                </form>
+                <form ref={registerForm} onSubmit={Login} className="register-form">
                 <div className="register-form">
                   <div className="form-title">
                     <span className="title">Sign Up</span>
@@ -192,8 +235,7 @@ function LoginPage() {
                       <i className="fa-solid fa-unlock icon"></i>
                     </div>
                     <div className="input-box submit">
-                      <button className={register? "registerBtn-clicked": "registerbtn-notClicked"}
-                        onClick={handleRegisterClick}>
+                      <button onClick={handleRegisterClick}>
                         <span>Sign Up</span>
                         <i className="fa-solid fa-right-to-bracket"></i>
                       </button>
