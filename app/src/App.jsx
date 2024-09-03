@@ -9,7 +9,6 @@ import OAuth from "./backend/OAuth";
 function App() {
   return (
     <div>
-      <NavBar></NavBar>
       <div className="App">
         <BrowserRouter>
           <Routes>
