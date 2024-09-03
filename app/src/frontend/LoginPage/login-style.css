@@ -1,9 +1,4 @@
-*{
-    font-family: "Poppins", sans-serif;
-}
-
-body{ 
-    /* fallback path for testing purposes */
+.login-page-body{ 
     background: url("../../../images/login-images/login-background.jpg"), url("images/login-background.jpg") ;
     background-position: center;
     background-size: cover;
