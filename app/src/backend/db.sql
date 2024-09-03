@@ -18,8 +18,22 @@ CREATE TABLE emails(
 
 CREATE TABLE users (
     id INT(11) NOT NULL AUTO_INCREMENT,
-    email VARCHAR(191) NOT NULL,
-    password VARCHAR (255) NOT NULl,
+    username VARCHAR(50) NOT NULL,
+    email VARCHAR(50) NOT NULL,
+    password VARCHAR (20) NOT NULl,
     PRIMARY KEY (id),
     UNIQUE KEY email (email)
+);
+
+CREATE TABLE games (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(255) NOT NULL,
+    img_src VARCHAR(255),
+    `desc` TEXT,
+    rating VARCHAR(50),
+    rating_num INT,
+    release_date DATE,
+    developer VARCHAR(255),
+    publisher VARCHAR(255),
+    price DECIMAL(10, 2)
 );

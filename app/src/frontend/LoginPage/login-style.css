@@ -1,5 +1,5 @@
-.login-page-body{ 
-    background: url("../../../images/login-images/login-background.jpg"), url("images/login-background.jpg") ;
+.login-page-body{
+    background: url("../../../images/login-images/login-background.jpg");
     background-position: center;
     background-size: cover;
     background-attachment: fixed;
@@ -18,7 +18,7 @@
     height: 72vh;
     border: 3px solid rgba(255, 255, 255, 0.3);
     border-radius: 30px;
-    webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
     overflow: hidden;
 }
 
@@ -97,30 +97,6 @@
     transform: scale(0.9);
 }
 
-.loginBtn-clicked{
-    background-color: "#ff3131";
-    left: 10%;
-    opacity: 1;
-
-}
-
-.loginBtn-notClicked{
-    background-color: rgba(255, 255, 255, 0.2);
-    left: 150%;
-    opacity: 0;
-}
-
-.registerBtn-notClicked{
-    background-color: rgba(255, 255, 255, 0.2);
-    left: -50%;
-    opacity: 0;
-}
-
-.registerBtn-clicked{
-    background-color: #ff3131;
-    left: 60%;
-    opacity: 1;
-}
 
 .login-form{
     position: absolute;

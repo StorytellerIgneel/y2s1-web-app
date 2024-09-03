@@ -1,6 +1,4 @@
 <?php
-echo "Hello, PHP is working!";
-
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
@@ -22,14 +20,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
   }
     
 if ($_SERVER["REQUEST_METHOD"] == "POST"){
-    echo "gay";
-    $name = $_POST["username"];
-    $email = $_POST["email"];
+    $username = $_POST["username"];
     $password = $_POST["password"];
-    echo $name;
+    $email  = $_POST["email"];
     
-    if (!empty($name) && !empty($email) && !empty($password)){
-        
+    if (!empty($name) && !empty($password) && !empty($email)){
         $dbHost = 'localhost';
         $dbUsername = 'root';
         $dbPassword = 'teoH0628$$$$';
@@ -42,19 +37,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
         } else {
             echo 'Connection successful!';
         }
-        $sql = "INSERT INTO users(username, email, password) VALUES('$name', '$email', '$password')";
+        $sql = "INSERT INTO users (username, email, password) VALUES ('$username', '$email', '$password')";
         $res = mysqli_query($conn, $sql);
-        if ($res){
-            echo "Success";
-        }else{
-            echo "Error: ". $sql. "<br>". mysqli_error($conn);
-        }
-        mysqli_close($conn);
-
-        if (mail($to, $subject, $body, $headers))
-            echo json_encode(["success" => true, "message" => "message sent successfully"]);
+        if ($res)
+            echo json_encode(["success" => true, "message" => "User registered successfully"]);
         else
-            echo json_encode(['success' => false, 'error' => 'Failed to send email.']);
+            echo json_encode(['success' => false, 'error' => mysqli_error($conn)]);
+        mysqli_close($conn);
     }
     else
         echo json_encode(['success' => false, 'error' => 'All fields are required.']);

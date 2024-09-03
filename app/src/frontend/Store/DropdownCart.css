@@ -1,0 +1,21 @@
+/* show the dropdown menu */
+.dropdown-menu.active{
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    transition: var(--speed) ease;
+}
+
+/* hide the dropdown menu */
+.dropdown-menu.inactive{
+    opacity:0;
+    visibility: hidden;
+    transform: translateY(-20px);
+    transition: var(--speed) ease;
+}
+
+/* need to do margin, border, etc for dropdown menu */
+
+/* need to do color change and enlargement effect when hovered on */
+
+/* adjust the position of cart and dropdown menu */
