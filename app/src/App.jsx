@@ -4,6 +4,7 @@ import LoginPage from "./frontend/pages/LoginPage";
 import WishlistPage from "./frontend/pages/WishlistPage";
 import Store from "./frontend/Store/Store";
 import OAuth from "./backend/OAuth";
+import PaymentPage from "./frontend/pages/PaymentPage";
 // import "./index.css";
 
 function App() {
@@ -17,6 +18,8 @@ function App() {
             <Route path="/store" element ={<Store />} />
             <Route path="/cart" element={<CartPage />} />
             <Route path="/wishlist" element={<WishlistPage />} />
+            <Route path="/payment" element={<PaymentPage />} />
+            
           </Routes>
         </BrowserRouter>
       </div>
