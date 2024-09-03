@@ -3,6 +3,9 @@ import "../LoginPage/login-style.css";
 
 import React, { useEffect, useState, useRef} from "react";
 import OAuth from "../../backend/OAuth";
+import axios from 'axios';
+import Swal from 'sweetalert2';
+// import 'bootstrap/dist/css/bootstrap.min.css';
 import { Helmet } from "react-helmet";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 
@@ -19,13 +22,16 @@ function LoginPage() {
   const [triggerLogin, setTriggerLogin] = useState(false);
 
   const handleLoginClick = () => {
+    console.log(name, password)
     setLogin(true);
     setRegister(false);
   };
 
   const handleRegisterClick = () => {
+    console.log("Register");
     setRegister(true);
     setLogin(false);
+
   };
 
   const changeToLoginForm = () => {
@@ -68,6 +74,8 @@ function LoginPage() {
   }
 
   const Login = (e) => {
+    e.preventDefault();
+
     if (name === "" && email === "" && password === ""){
       Swal.fire({
         icon: 'error',
@@ -86,10 +94,8 @@ function LoginPage() {
         Swal.fire("Submitted!", "Your message has been sent to the customer service team.", "success")
     })
     }
-      
-    e.preventDefault();
 
-    const url = "http://localhost:8000/login.php";
+    const url = "http://localhost:8000/backend/php/login.php";
 
     let formData = new FormData();
     formData.append('user_name', name);
@@ -97,7 +103,7 @@ function LoginPage() {
     formData.append('user_message', password);
 
     axios.post(url, formData)
-    .then((response) => alert(response.data))
+    .then((response) => alert(response.data)) 
     .catch(error => alert(error.message))
   };
 
@@ -188,12 +194,6 @@ function LoginPage() {
                     <i className="fa-brands fa-google"></i>
                   </div>
                 </div>
-                <button
-                    className={sent?"btn btn-secondary":"btn btn-success"} 
-                    type="submit" 
-                    value="Send">
-                  Send
-                  </button>
                 </form>
                 <form ref={registerForm} onSubmit={Login} className="register-form">
                 <div className="register-form">
@@ -235,8 +235,8 @@ function LoginPage() {
                       <i className="fa-solid fa-unlock icon"></i>
                     </div>
                     <div className="input-box submit">
-                      <button onClick={handleRegisterClick}>
-                        <span>Sign Up</span>
+                      <button onClick={handleLoginClick}>
+                        {/* <span>Sign Up</span> */}
                         <i className="fa-solid fa-right-to-bracket"></i>
                       </button>
                     </div>

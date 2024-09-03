@@ -4,6 +4,7 @@ import NavBar from "./frontend/include/NavBar";
 // import LoginPage from "./frontend/pages/LoginPage";
 import WishlistPage from "./frontend/pages/WishlistPage";
 import OAuth from "./backend/OAuth";
+import LoginPage from "./frontend/pages/LoginPage";
 // import "./index.css";
 
 function App() {
@@ -13,8 +14,8 @@ function App() {
       <div className="App">
         <BrowserRouter>
           <Routes>
-            {/* <Route path="/" element={<LoginPage/>} /> */}
-            {/* <Route path="/" element={<OAuth />}/> */}
+            <Route path="/" element={<LoginPage/>} />
+            <Route path="/OAuth" element={<OAuth />}/>
             <Route path="/cart" element={<CartPage />} />
             <Route path="/wishlist" element={<WishlistPage />} />
           </Routes>
