@@ -2,15 +2,22 @@ from selenium import webdriver
 from selenium.webdriver.common.by  import By
 from selenium.webdriver.common.keys import Keys
 import time
+import re
+from datetime import datetime
+from pythondb import insert_game
 
 class Game:
-    def __init__(self, title, price, img_src, release_date, platform):
+    def __init__(self, title, img_src, desc, rating, rating_num, release_date, developer, publisher, price):
         self.title = title
-        self.price = price
         self.img_src = img_src
+        self.desc = desc
+        self.rating = rating
+        self.rating_num = rating_num
         self.release_date = release_date
-        self.platform = platform
-    
+        self.developer = developer
+        self.publisher = publisher
+        self.price = price
+
     def __str__(self):
         return (f"Title: {self.title}\n"
                 f"Image Source: {self.img_src}\n"
@@ -22,6 +29,27 @@ class Game:
                 f"Publisher: {self.publisher}\n"
                 f"Price: {self.price}\n")
 
+def convert_rating_num(rating_num):
+    try:
+        # Remove non-numeric characters and convert to int
+        return int(re.sub(r'[^\d]', '', rating_num))
+    except ValueError:
+        return None
+
+def convert_release_date(release_date):
+    try:
+        # Convert date format to YYYY-MM-DD
+        return datetime.strptime(release_date, '%b %d, %Y').strftime('%Y-%m-%d')
+    except ValueError:
+        return None
+
+def convert_price(price):
+    try:
+        # Remove currency symbols and convert to decimal
+        return float(re.sub(r'[^\d.]', '', price))
+    except ValueError:
+        return None
+    
 game_list = []
 driver = webdriver.Chrome()
 
@@ -36,7 +64,7 @@ time.sleep(2)
 search_result = driver.find_elements(By.CLASS_NAME, "search_result_row") #search result list
 print(len(search_result))
 
-for i in range(len(search_result)):
+for i in range(1):
     time.sleep(2)
     search_result[i].click()
     time.sleep(2)
@@ -52,10 +80,19 @@ for i in range(len(search_result)):
         developer = devs[0].find_element(By.CSS_SELECTOR, "div.summary.column").text
         publisher = devs[1].find_element(By.CSS_SELECTOR, "div.summary.column").text
         price = driver.find_element(By.CSS_SELECTOR, "div.game_purchase_price.price").text
+
+        rating_num = convert_rating_num(ratingNum)
+        release_date = convert_release_date(releaseDate)
+        price = convert_price(price)
+
         game = (Game(title, img_src, desc, rating, ratingNum, releaseDate, developer, publisher, price))
+        game_list.append(game)
         print(game)
+
     except:pass
     driver.back()
     driver.refresh()
     time.sleep(2)
     search_result = driver.find_elements(By.CLASS_NAME, "search_result_row") #search result list
+
+insert_game(game_list)

@@ -2,6 +2,7 @@ from selenium import webdriver
 from selenium.webdriver.common.by  import By
 from selenium.webdriver.common.keys import Keys
 import time
+import 
 
 class Game:
     def __init__(self, title, price, img_src, release_date, platform):
@@ -43,12 +44,12 @@ for i in range(5):
     game_list.append(new_game)
 
 for game in game_list:
-    print("Title: %s" % game.title)
-    print("Price: %s" % game.price)
-    print("Image Source: %s" % game.img_src)
-    print("Release Date: %s" % game.release_date)
-    print("Platforms: %s" % ", ".join(game.platform))
-    print("---")
+    print(f"Title: {game.title}")
+    print(f"Price: {game.price}")
+    print(f"Image URL: {game.img_src}")
+    print(f"Release Date: {game.release_date}")
+    print(f"Platforms: {', '.join(game.platform)}")
+    print("-------------------")
 
 #driver.close()
 print(driver.title)

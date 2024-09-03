@@ -24,3 +24,16 @@ CREATE TABLE users (
     PRIMARY KEY (id),
     UNIQUE KEY email (email)
 );
+
+CREATE TABLE games (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(255) NOT NULL,
+    img_src VARCHAR(255),
+    `desc` TEXT,
+    rating VARCHAR(50),
+    rating_num INT,
+    release_date DATE,
+    developer VARCHAR(255),
+    publisher VARCHAR(255),
+    price DECIMAL(10, 2)
+);
