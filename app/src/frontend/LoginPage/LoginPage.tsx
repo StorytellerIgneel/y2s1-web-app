@@ -18,9 +18,9 @@ const LoginRegister = () => {
         borderRadius: isLoginActive ? '0 10% 30% 0' : '0 30% 10% 0',
       }}>
         <div className="image-layer">
-          <img src="./src/assets/images/guy-playing-pc.png" className="form-image-main pcguy" alt="Guy playing PC" />
-          <img src="./src/assets/images/login-controller.png" className="form-image controller" alt="Controller" />
-          <img src="./src/assets/images/PSsymbol.png" className="form-image symbol" alt="PS Symbol" />
+          <img src="../../../public/images/login-images/guy-playing-pc.png" className="form-image-main pcguy" alt="Guy playing PC" />
+          <img src="../../../public/images/login-images/login-controller.png" className="form-image controller" alt="Controller" />
+          <img src="../../../public/images/login-images/PSsymbol.png" className="form-image symbol" alt="PS Symbol" />
         </div>
         <p className="featured-words">
           You Are Few Minutes Away To Get Your Favourite Games on <span>GameNonStop</span>
