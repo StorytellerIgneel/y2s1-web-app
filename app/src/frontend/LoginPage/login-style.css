@@ -3,7 +3,7 @@
 }
 
 body{
-    background: url("./src/assets/images/login-background.jpg");
+    background: url("../../../images/login-images/login-background.jpg");
     background-position: center;
     background-size: cover;
     background-attachment: fixed;

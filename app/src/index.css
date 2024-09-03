@@ -14,13 +14,13 @@
 }
 
 @layer base {
-  .App {
+  /* .App {
     height: 100vh;
     margin: 0 auto;
     padding-left: 11rem;
     padding-right: 11rem;
     padding-top: 1.75rem;
-  }
+  } */
 
   h1 {
     font-size: 1.875rem;
