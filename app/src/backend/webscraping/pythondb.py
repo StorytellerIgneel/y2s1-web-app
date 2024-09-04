@@ -28,11 +28,15 @@ def insert_game(game_list):
 
             # Example: Execute a query
             #cursor.execute("INSERT into emails VALUES('GAY', 'teohwh2004@gmail.com', 'ur gay')")  # Replace with your table name
-            for game in game_list:
-                if (check_game_exists(cursor, game.title)):
-                    insert_query = "INSERT INTO games (title, img_src, `desc`, rating, rating_num, release_date, developer, publisher, price) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s);"
-                    cursor.execute(insert_query, (game.title, game.img_src, game.desc, game.rating, game.rating_num, game.release_date, game.developer, game.publisher, game.price))
-                    connection.commit()  # Commit each insertion to the database
+            try:
+                for game in game_list:
+                    if not (check_game_exists(cursor, game.title)): #prevent duplicate game
+                        insert_query = "INSERT INTO games (title, img_src, `desc`, rating, rating_num, release_date, developer, publisher, price) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s);"
+                        cursor.execute(insert_query, (game.title, game.img_src, game.desc, game.rating, game.rating_num, game.release_date, game.developer, game.publisher, game.price))
+                        connection.commit()  # Commit each insertion to the database
+
+            except:
+                print("Error inserting data into MySQL table: ", e)
 
     except Error as e:
         print("Error while connecting to MySQL", e)

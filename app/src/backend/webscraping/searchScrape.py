@@ -57,14 +57,14 @@ driver.get("https://store.steampowered.com")
 
 time.sleep(2)
 search = driver.find_element(By.ID, "store_nav_search_term")
-search.send_keys("gundam")
+search.send_keys("Gundam")
 search.send_keys(Keys.RETURN)
 
 time.sleep(2)
 search_result = driver.find_elements(By.CLASS_NAME, "search_result_row") #search result list
 print(len(search_result))
 
-for i in range(1):
+for i in range(3):
     time.sleep(2)
     search_result[i].click()
     time.sleep(2)
