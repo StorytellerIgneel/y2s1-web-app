@@ -27,7 +27,7 @@ function NavBarTop() {
           />
         </Link>
         <div className="h-7 w-[1px] rounded bg-slate-300"></div>
-        <Link to="/" className="text-xs font-bold">
+        <Link to="/store" className="text-xs font-bold">
           STORE
         </Link>
         <Link to="/support" className="text-xs font-bold text-gray-600">

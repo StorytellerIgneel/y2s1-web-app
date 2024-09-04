@@ -7,10 +7,10 @@ function OrderSummary() {
           <span className="text-sm">Price</span>
           <span className="text-sm">RM xx.xx</span>
         </div>
-        <div className="flex justify-between">
+        {/* <div className="flex justify-between">
           <span className="text-sm">Sale Discount</span>
           <span className="text-sm">-RM xx.xx</span>
-        </div>
+        </div> */}
         <div className="flex justify-between">
           <span className="text-sm">Taxes</span>
           <span className="text-sm">Calculated at Checkout</span>

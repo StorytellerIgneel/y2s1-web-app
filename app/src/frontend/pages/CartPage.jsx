@@ -2,6 +2,8 @@ import CartItem from "../Cart/CartItem";
 import OrderSummary from "../Cart/OrderSummary";
 
 function CartPage() {
+  // const [cart, setCart] = useState({});
+
   return (
     <div className="CartPage">
       <h1>My Cart</h1>
