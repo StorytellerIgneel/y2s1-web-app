@@ -1,11 +1,13 @@
+CREATE DATABASE IF NOT EXISTS  WAD_ASSIGNMENT;
+
 USE WAD_ASSIGNMENT;
-CREATE TABLE users(
+CREATE TABLE IF NOT EXISTS users(
     username varchar(30),
     user_password varchar(30),
     CONSTRAINT PK_WAD_USERS PRIMARY KEY (username)
 );
 
-CREATE TABLE emails(
+CREATE TABLE IF NOT EXISTS emails(
     username varchar(30),
     email varchar(30),
     salutation varchar(5),
@@ -16,7 +18,7 @@ CREATE TABLE emails(
     CONSTRAINT FK_WAD_EMAILS FOREIGN KEY (username) REFERENCES users(username)
 );
 
-CREATE TABLE users (
+CREATE TABLE IF NOT EXISTS users (
     id INT(11) NOT NULL AUTO_INCREMENT,
     username VARCHAR(50) NOT NULL,
     email VARCHAR(50) NOT NULL,
@@ -25,7 +27,7 @@ CREATE TABLE users (
     UNIQUE KEY email (email)
 );
 
-CREATE TABLE games (
+CREATE TABLE IF NOT EXISTS games (
     id INT AUTO_INCREMENT PRIMARY KEY,
     title VARCHAR(255) NOT NULL,
     img_src VARCHAR(255),
@@ -38,6 +40,6 @@ CREATE TABLE games (
     price DECIMAL(10, 2)
 );
 
-CREATE TABLE user_games (
-    user_id INT,
-    game_id INT,
+-- CREATE TABLE IF NOT EXISTS user_games (
+--     user_id INT,
+--     game_id INT,
