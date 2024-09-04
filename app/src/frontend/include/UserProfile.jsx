@@ -16,7 +16,7 @@ function UserProfile({ profile }) {
               alt="user image"
             />
           ) : (
-            <FaUserCircle fill="gray" className="size-3 bg-white "/>
+            <FaUserCircle fill="gray" className="size-8 bg-white "/>
           )}
         </div>
       </div>

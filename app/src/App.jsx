@@ -5,6 +5,7 @@ import WishlistPage from "./frontend/pages/WishlistPage";
 import Store from "./frontend/Store/Store";
 import OAuth from "./backend/OAuth";
 import LoginPage from "./frontend/pages/LoginPage";
+import PaymentPage from "./frontend/pages/PaymentPage";
 // import "./index.css";
 
 function App() {
@@ -15,10 +16,12 @@ function App() {
           <Routes>
             <Route path="/" element={<LoginPage/>} />
             <Route path="/OAuth" element={<OAuth />}/>
-            {/* <Route path="/" element={<OAuth />}/> */}
             <Route path="/store" element ={<Store />} />
             <Route path="/cart" element={<CartPage />} />
-            <Route path="/wishlist" element={<WishlistPage />} />
+            {/* <Route path="/wishlist" element={<WishlistPage />} /> */}
+            {/* for testing */}
+            <Route path="/payment" element={<PaymentPage />} />
+            {/* <Route path="/paymentstatus" element={<PaymentStatus/>}/> */}
           </Routes>
         </BrowserRouter>
       </div>
