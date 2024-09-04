@@ -4,6 +4,7 @@ import NavBar from "./frontend/include/NavBar";
 import WishlistPage from "./frontend/pages/WishlistPage";
 import Store from "./frontend/Store/Store";
 import OAuth from "./backend/OAuth";
+import LoginPage from "./frontend/pages/LoginPage";
 // import "./index.css";
 
 function App() {

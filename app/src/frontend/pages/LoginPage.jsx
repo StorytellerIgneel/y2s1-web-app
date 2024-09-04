@@ -6,7 +6,7 @@ import axios from 'axios';
 import Swal from 'sweetalert2';
 // import 'bootstrap/dist/css/bootstrap.min.css';
 import { Helmet } from "react-helmet";
-import { GoogleOAuthProvider } from "@react-oauth/google";
+import { GoogleLogin, GoogleOAuthProvider } from "@react-oauth/google";
 import { useNavigate } from "react-router-dom";
 
 function LoginPage() {
@@ -70,8 +70,27 @@ function LoginPage() {
 
   const googleLogin = () => {
     // call OAuth login function
-    setTriggerLogin(true);
-  }
+      axios.get(`https://www.googleapis.com/oauth2/v1/userinfo?access_token=${user.access_token}`, {
+            headers: {
+                Authorization: `Bearer ${user.access_token}`,
+                Accept: 'application/json'
+            }
+        })
+        .then((response) => {
+          if (response.data.success) { 
+            console.log(response);
+            navigate('/store');  // Navigate to '/store' if successful
+          } else {
+            Swal.fire({
+              icon: 'error',
+              title: 'Login Error',
+              text: response.data.error
+            }); // Handle the failure case if needed
+          }
+        })
+        .catch((err) => console.log(err));
+    }
+  
 
   const Login = (e) => {
     e.preventDefault();
