@@ -17,9 +17,10 @@ function App() {
             <Route path="/OAuth" element={<OAuth />}/>
             <Route path="/store" element ={<Store />} />
             <Route path="/cart" element={<CartPage />} />
-            <Route path="/wishlist" element={<WishlistPage />} />
+            {/* <Route path="/wishlist" element={<WishlistPage />} /> */}
+            {/* for testing */}
             <Route path="/payment" element={<PaymentPage />} />
-            
+            {/* <Route path="/paymentstatus" element={<PaymentStatus/>}/> */}
           </Routes>
         </BrowserRouter>
       </div>
