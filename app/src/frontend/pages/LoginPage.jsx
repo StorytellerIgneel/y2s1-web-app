@@ -1,5 +1,4 @@
 import "../LoginPage/login-style.css";
-// after adding the import and reloading, the entire component does not load, only works on first load
 
 import React, { useEffect, useState, useRef} from "react";
 import OAuth from "../../backend/OAuth";
@@ -33,7 +32,6 @@ function LoginPage() {
     console.log("Register");
     setRegister(true);
     setLogin(false);
-
   };
 
   const changeToLoginForm = () => {
@@ -110,7 +108,7 @@ function LoginPage() {
 
   return (
     <GoogleOAuthProvider clientId="721278939294-754epiosjucfqahjktvlnt89f7j8o42b.apps.googleusercontent.com">
-      <div>
+      <div className="login-page-body">
         <Helmet>
             <title>GameNonStop | Login & Register</title>
             <link
