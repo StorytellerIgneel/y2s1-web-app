@@ -37,3 +37,7 @@ CREATE TABLE games (
     publisher VARCHAR(255),
     price DECIMAL(10, 2)
 );
+
+CREATE TABLE user_games (
+    user_id INT,
+    game_id INT,

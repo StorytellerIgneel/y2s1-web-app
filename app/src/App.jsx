@@ -1,7 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import CartPage from "./frontend/pages/CartPage";
 import NavBar from "./frontend/include/NavBar";
-import LoginPage from "./frontend/pages/LoginPage";
 import WishlistPage from "./frontend/pages/WishlistPage";
 import Store from "./frontend/Store/Store";
 import OAuth from "./backend/OAuth";
