@@ -3,29 +3,20 @@ import "./Store.css";
 import React from 'react';
 
 import DropdownCart from "./DropdownCart.tsx";
+import Sidebar from "../Sidebar/Sidebar.tsx";
 
+// temporary game posters, will remove it once its able to get from database
 import GodOfWar from "./resource/GodOfWar.jpg";
 import EldenRing from "./resource/EldenRing.jpg";
 import Wukong from "./resource/Wukong.jpg";
 import BaldursGate3 from "./resource/BaldursGate3.jpg";
 import Subnautica from "./resource/Subnautica.jpg";
 
-import Logo from "./resource/GNS_Horizontal2_Black.svg";
-
 function Store() {
   return (
     <div className="body">
 
-        <div className="sidebar">
-            <img src={Logo} alt="GameNonStop-Logo" width="150" height="70"/>
-            <li> Action Game</li>
-            <li> Action Game</li>
-            <li> Action Game</li>
-            <li> Action Game</li>
-            <li> Action Game</li>
-            <li> Action Game</li>
-            <li> Action Game</li>
-        </div>
+        <Sidebar />
 
         <div className="navbar">
             <h1>NavBar </h1>
@@ -39,34 +30,11 @@ function Store() {
                     <img src={GodOfWar} alt="God Of War" width="200" height="300" />
                 </div>
                 <div className="Title">
-                    <h2>God Of War</h2>
-                </div>
-                <div className="Description">
-                    <p>His vengeance against the Gods of Olympus years behind him, Kratos now lives as a man in the realm of Norse Gods and monsters. It is in this harsh, unforgiving world that he must fight to survive… and teach his son to do the same.</p>
+                    <a href="#/GodOfWar">God Of War</a>
                 </div>
                 <div className="Price">
                     <h3>Price: RM209.00</h3>
                 </div>
-                {/* <div className="AddToWishlistButton">
-                    <button>Add to wishlist</button>
-                </div>
-                <div className="AddToCartButton">
-                    <Icon.Cart />
-                    <button>Add to cart</button>
-                </div> */}
-
-                <div className="fa">
-                    <DropdownCart />
-                </div>
-
-                {/* add dropdown menu with a shopping cart icon */}
-                {/* dropdown menu has add to wishlist button and add to cart button */}
-                {/* <div className="dropdown">
-                    <button onClick={enable}>
-                        <img src={ShoppingCart} alt="Shopping Cart" width="30" height="30" />
-                    </button>
-                </div> */}
-                    
             </div>
 
             {/* Elden Ring */}
@@ -158,12 +126,6 @@ function Store() {
                 <div className="Price">
                     <h3>Price: RM72.00</h3>
                 </div>
-                {/* <div className="AddToWishlistButton">
-                    <button>Add to wishlist</button>
-                </div>
-                <div className="AddToCartButton">
-                    <button>Add to cart</button>
-                </div> */}
                 <div className="fa">
                     <DropdownCart />
                 </div>
