@@ -1,37 +1,6 @@
 import { useState } from "react";
 import PaymentOption from "../Payment/PaymentOption";
-
-const paymentMethods = [
-  {
-    id: "creditCard",
-    value: "credit card",
-    imageSrc: "../../../images/payment-methods/credit_card.png",
-    altText: "Credit Card",
-    labelText: "Credit Card",
-  },
-  {
-    id: "touchNGo",
-    value: "touch n go",
-    imageSrc: "../../../images/payment-methods/Touch_'n_Go_logo.svg",
-    altText: "Touch 'n Go",
-    labelText: "Touch 'n Go",
-  },
-  {
-    id: "shopeePay",
-    value: "shopeepay",
-    imageSrc: "../../../images/payment-methods/shopeepay4268.jpg",
-    altText: "ShopeePay",
-    labelText: "ShopeePay",
-  },
-  {
-    id: "grabPay",
-    value: "grabpay",
-    imageSrc:
-      "../../../images/payment-methods/GrabPay_Final_Logo_RGB_green_horizontal-01.png",
-    altText: "GrabPay",
-    labelText: "GrabPay",
-  },
-];
+import paymentMethods from "../Payment/paymentMethods";
 
 function PaymentPage() {
   const [selectedPaymentMethod, setSelectedPaymentMethod] = useState("");
@@ -40,8 +9,87 @@ function PaymentPage() {
     setSelectedPaymentMethod(event.target.value);
   };
 
-  const isCreditCardFormValid = () =>{
-    
+  const [formData, setFormData] = useState({
+    cardNumber: "",
+    expiration: "",
+    cvv: "",
+  });
+
+  const [errors, setErrors] = useState({});
+  const [ccFormValid, setCcFormValid] = useState(false);
+
+  const handleCreditCardInputChange = (event) => {
+    const { name, value } = event.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+
+    const newErrors = validateCreditCardForm({
+      ...formData,
+      [name]: value,
+    });
+    setErrors(newErrors);
+
+    // Determine if the form is valid
+    setCcFormValid(Object.keys(newErrors).length === 0);
+  };
+
+  const validateCreditCardForm = (data) => {
+    const errors = {};
+
+    if (!data.cardNumber.trim()) {
+      errors.cardNumber = "Credit card number is required";
+    } else if (!ccNumberFormat(data.cardNumber)) {
+      errors.cardNumber = "Invalid credit card number";
+    }
+
+    if (!data.expiration.trim()) {
+      errors.expiration = "Expiry date is required";
+    } else if (!ccExpiresFormat(data.expiration)) {
+      errors.expiration = "Invalid expiry date";
+    }
+
+    if (!data.cvv.trim()) {
+      errors.cvv = "CVV is required";
+    } else if (!ccCVVFormat(data.cvv)) {
+      errors.cvv = "Invalid CVV";
+    }
+
+    return errors;
+  };
+
+  const ccNumberFormat = (input) => {
+    var ccNumber = /^(?:4[0-9]{12}(?:[0-9]{3})?)$/; // handle Visa Card Numbers only
+    return ccNumber.test(input);
+  };
+
+  const ccExpiresFormat = (input) => {
+      var ccExpires = /^(0[1-9]|1[0-2])\/[0-9]{2}$/; // handle valid date
+      return ccExpires.test(input);
+  };
+
+  const ccCVVFormat = (input) => {
+    var ccCVV = /^\d{3}$/; // handle 3 digits
+    return ccCVV.test(input);
+  };
+
+
+  const handleSubmit = (event) => {
+    // target credit card form
+    if (selectedPaymentMethod === "credit card") {
+      const newErrors = validateCreditCardForm(formData);
+      setErrors(newErrors);
+  
+      if (Object.keys(newErrors).length === 0) {
+        // Proceed with form submission if no errors
+        console.log("Form submitted successfully");
+      } else {
+        event.preventDefault();
+        console.log("Form contains errors");
+      }
+    } 
+    // other methods will just pass after selection
   };
 
   return (
@@ -57,6 +105,7 @@ function PaymentPage() {
       <form
         method="post"
         className="m-auto flex w-[80%] flex-col items-center space-y-3 p-5"
+        onSubmit={handleSubmit}
       >
         {paymentMethods.map((method) => (
           <PaymentOption
@@ -69,12 +118,17 @@ function PaymentPage() {
             checked={selectedPaymentMethod === method.value}
             onChange={handlePaymentMethodChange}
             showCreditCardForm={selectedPaymentMethod === "credit card"}
+            cardNumber={formData.cardNumber}
+            expiration={formData.expiration}
+            cvv={formData.cvv}
+            onCreditCardInputChange={handleCreditCardInputChange}
+            errors={errors}
           />
         ))}
         <input
           type="submit"
           className="button w-[30%] self-end bg-red-600 hover:bg-red-800 disabled:bg-gray-500"
-          disabled={selectedPaymentMethod === 'credit card' && !isCreditCardFormValid()}
+          disabled={selectedPaymentMethod === "credit card" && ccFormValid===false}
           value="Continue"
         />
       </form>

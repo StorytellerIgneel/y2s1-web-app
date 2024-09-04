@@ -1,5 +1,3 @@
-import React from "react";
-
 function PaymentOption({
   id,
   value,
@@ -9,6 +7,11 @@ function PaymentOption({
   checked,
   onChange,
   showCreditCardForm,
+  onCreditCardInputChange,
+  cardNumber,
+  expiration,
+  cvv,
+  errors,
 }) {
   return (
     <div className="w-full rounded-md bg-gray-200 p-5">
@@ -38,10 +41,16 @@ function PaymentOption({
               <input
                 type="text"
                 id="cardNumber"
+                name="cardNumber"
+                maxLength={16}
                 className="rounded border p-2"
-                placeholder="Enter card number"
+                value={cardNumber}
+                onChange={onCreditCardInputChange}
                 required
               />
+              {errors.cardNumber && (
+                <span className="text-red-500">{errors.cardNumber}</span>
+              )}
             </div>
             <div className="flex justify-between gap-4">
               <div className="flex w-full flex-col">
@@ -49,20 +58,33 @@ function PaymentOption({
                 <input
                   type="text"
                   id="expiration"
+                  name="expiration"
                   className="rounded border p-2"
+                  maxLength={5}
                   placeholder="MM/YY"
+                  value={expiration}
+                  onChange={onCreditCardInputChange}
                   required
                 />
+                {errors.expiration && (
+                  <span className="text-red-500">{errors.expiration}</span>
+                )}
               </div>
               <div className="flex w-full flex-col">
                 <label htmlFor="cvv">CVV</label>
                 <input
                   type="text"
                   id="cvv"
+                  name="cvv"
                   className="rounded border p-2"
-                  placeholder="Enter CVV"
+                  maxLength={3}
+                  value={cvv}
+                  onChange={onCreditCardInputChange}
                   required
                 />
+                {errors.cvv && (
+                  <span className="text-red-500">{errors.cvv}</span>
+                )}
               </div>
             </div>
           </div>
