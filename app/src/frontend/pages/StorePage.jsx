@@ -32,21 +32,14 @@ function Store() {
 
   return (
     <div>
-      <h1>Games List</h1>
-      <ul>
+      <h1>Store</h1>
+      <ul className="product-list">
         {games.map((game) => (
           <li key={game.id}>
             <ProductCard
               slug={game.id}
-              id={game.id}
               title={game.title}
               imgSrc={game.img_src}
-              description={game.desc}
-              rating={game.rating}
-              ratingNum={game.rating_num}
-              releaseDate={game.release_date}
-              developer={game.developer}
-              publisher={game.publisher}
               price={game.price}
             />
           </li>
