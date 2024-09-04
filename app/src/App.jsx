@@ -1,12 +1,14 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import StorePage from "./frontend/pages/StorePage";
 import CartPage from "./frontend/pages/CartPage";
-import NavBar from "./frontend/include/NavBar";
 import WishlistPage from "./frontend/pages/WishlistPage";
-import Store from "./frontend/Store/Store";
 import OAuth from "./backend/OAuth";
 import LoginPage from "./frontend/pages/LoginPage";
 import PaymentPage from "./frontend/pages/PaymentPage";
 import SearchGame from "./backend/php/searchGame";
+import ProductPage from "./frontend/pages/ProductPage";
+import Layout from "./frontend/include/Layout";
+import Home from "./frontend/include/Home";
 // import "./index.css";
 
 function App() {
@@ -15,15 +17,19 @@ function App() {
       <div className="App">
         <BrowserRouter>
           <Routes>
-            <Route path="/" element={<LoginPage/>} />
-            <Route path="/OAuth" element={<OAuth />}/>
-            <Route path="/store" element ={<Store />} />
-            <Route path="/cart" element={<CartPage />} />
-            {/* <Route path="/wishlist" element={<WishlistPage />} /> */}
-            {/* for testing */}
+            <Route path="/" element={<Layout />}>
+              <Route index element={<Home />} />
+              <Route path="/store" element={<StorePage />} />
+              <Route path="/store/:id" element={<ProductPage />} />
+              <Route path="/cart" element={<CartPage />} />
+              {/* for testing */}
+              {/* <Route path="/wishlist" element={<WishlistPage />} /> */}
             <Route path="/searchGame" element={<SearchGame />} />
-            <Route path="/payment" element={<PaymentPage />} />
-            {/* <Route path="/paymentstatus" element={<PaymentStatus/>}/> */}
+              <Route path="/payment" element={<PaymentPage />} />
+              {/* <Route path="/paymentstatus" element={<PaymentStatus/>}/> */}
+            </Route>
+            {/* <Route path="/" element={<LoginPage/>} /> */}
+            <Route path="/OAuth" element={<OAuth />} />
           </Routes>
         </BrowserRouter>
       </div>
