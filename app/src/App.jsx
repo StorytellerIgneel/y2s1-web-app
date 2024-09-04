@@ -3,6 +3,7 @@ import StorePage from "./frontend/pages/StorePage";
 import CartPage from "./frontend/pages/CartPage";
 import WishlistPage from "./frontend/pages/WishlistPage";
 import OAuth from "./backend/OAuth";
+import LoginPage from "./frontend/pages/LoginPage";
 import PaymentPage from "./frontend/pages/PaymentPage";
 import ProductPage from "./frontend/pages/ProductPage";
 import Layout from "./frontend/include/Layout";

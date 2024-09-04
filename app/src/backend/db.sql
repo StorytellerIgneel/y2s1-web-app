@@ -19,7 +19,7 @@ CREATE TABLE IF NOT EXISTS emails(
 );
 
 CREATE TABLE IF NOT EXISTS users (
-    id INT(11) NOT NULL AUTO_INCREMENT,
+    user_id INT(11) NOT NULL AUTO_INCREMENT,
     username VARCHAR(50) NOT NULL,
     email VARCHAR(50) NOT NULL,
     password VARCHAR (20) NOT NULl,
@@ -28,7 +28,7 @@ CREATE TABLE IF NOT EXISTS users (
 );
 
 CREATE TABLE IF NOT EXISTS games (
-    id INT AUTO_INCREMENT PRIMARY KEY,
+    game_id INT AUTO_INCREMENT PRIMARY KEY,
     title VARCHAR(255) NOT NULL,
     img_src VARCHAR(255),
     `desc` TEXT,
@@ -40,6 +40,19 @@ CREATE TABLE IF NOT EXISTS games (
     price DECIMAL(10, 2)
 );
 
--- CREATE TABLE IF NOT EXISTS user_games (
---     user_id INT,
+CREATE TABLE IF NOT EXISTS purchases (
+    purchase_id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT,
+    purchase_date DATETIME,
+    total_amount DECIMAL(10, 2),
+    payment_method VARCHAR(50),
+    FOREIGN KEY (user_id) REFERENCES users(user_id),
+);
+
+CREATE TABLE purchase_items (
+    purchase_item_id INT AUTO_INCREMENT PRIMARY KEY,
+    purchase_id INT,
 --     game_id INT,
+    FOREIGN KEY (purchase_id) REFERENCES Purchases(purchase_id),
+    FOREIGN KEY (game_id) REFERENCES Games(game_id)
+);
