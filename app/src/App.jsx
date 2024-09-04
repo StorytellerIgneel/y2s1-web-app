@@ -6,6 +6,7 @@ import Store from "./frontend/Store/Store";
 import OAuth from "./backend/OAuth";
 import LoginPage from "./frontend/pages/LoginPage";
 import PaymentPage from "./frontend/pages/PaymentPage";
+import SearchGame from "./backend/php/searchGame";
 // import "./index.css";
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
             <Route path="/cart" element={<CartPage />} />
             {/* <Route path="/wishlist" element={<WishlistPage />} /> */}
             {/* for testing */}
+            <Route path="/searchGame" element={<SearchGame />} />
             <Route path="/payment" element={<PaymentPage />} />
             {/* <Route path="/paymentstatus" element={<PaymentStatus/>}/> */}
           </Routes>

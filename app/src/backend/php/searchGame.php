@@ -22,44 +22,39 @@ if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
 if ($_SERVER["REQUEST_METHOD"] == "POST"){
     $searchString = $_POST["searchGame"];
    // echo($name);
+        
+    $dbHost = 'localhost';
+    $dbUsername = 'root';
+    $dbPassword = 'teoH0628$$$$';
+    $dbName = 'wad_assignment';
     
-    if (!empty($name) && !empty($password)){
-        
-        $dbHost = 'localhost';
-        $dbUsername = 'root';
-        $dbPassword = 'teoH0628$$$$';
-        $dbName = 'wad_assignment';
-        
-        // Create connection
-        $conn = mysqli_connect($dbHost, $dbUsername, $dbPassword, $dbName);
-        // if (!$conn)
-        //     die('Could not connect to the database: ' . mysqli_connect_error());
-        // else
-        //     echo 'Connection successful!';
-        $sql = "SELECT title, img_src, price FROM games WHERE title LIKE '%$searchString%'";
+    // Create connection
+    $conn = mysqli_connect($dbHost, $dbUsername, $dbPassword, $dbName);
+    // if (!$conn)
+    //     die('Could not connect to the database: ' . mysqli_connect_error());
+    // else
+    //     echo 'Connection successful!';
+    $sql = "SELECT title, img_src, price FROM games WHERE title LIKE '%$searchString%'";
 
-        $res = mysqli_query($conn, $sql);
-        if ($res){
-            if (mysqli_num_rows($res) > 0){ //check num of rows returned 
-                $games = []; // Initialize an empty array to hold the games
+    $res = mysqli_query($conn, $sql);
+    if ($res){
+        if (mysqli_num_rows($res) > 0){ //check num of rows returned 
+            $games = []; // Initialize an empty array to hold the games
 
-                while ($row = mysqli_fetch_assoc($res)) {
-                    // Each row is an associative array representing a single game
-                    $games[] = [
-                        'title' => $row['title'],
-                        'img_src' => $row['img_src'],
-                        'price' => $row['price']
-                    ];
-                }
-                echo json_encode(['success' => false, 'games' => $games]);
+            while ($row = mysqli_fetch_assoc($res)) {
+                // Each row is an associative array representing a single game
+                $games[] = [
+                    'title' => $row['title'],
+                    'img_src' => $row['img_src'],
+                    'price' => $row['price']
+                ];
             }
-            else
-                echo json_encode(['success' => false, 'error' => 'no games found']);
+            echo json_encode(['success' => false, 'games' => $games]);
         }
-        mysqli_close($conn);
+        else
+            echo json_encode(['success' => false, 'error' => 'no games found']);
     }
-    else
-        echo json_encode(['success' => false, 'error' => 'All fields are required.']);
+    mysqli_close($conn);
 }
 else
-    echo json_encode(["success" => false, 'error' => 'All fields are required.']);
+    echo json_encode(['success' => false, 'error' => 'All fields are required.']);
