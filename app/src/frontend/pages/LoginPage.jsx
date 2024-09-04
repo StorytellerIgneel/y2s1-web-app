@@ -7,8 +7,10 @@ import Swal from 'sweetalert2';
 // import 'bootstrap/dist/css/bootstrap.min.css';
 import { Helmet } from "react-helmet";
 import { GoogleOAuthProvider } from "@react-oauth/google";
+import { useNavigate } from "react-router-dom";
 
 function LoginPage() {
+  const navigate = useNavigate();
   const loginForm = useRef();
   const registerForm = useRef();
   const [currentForm, setCurrentForm] = useState("login");
@@ -81,28 +83,27 @@ function LoginPage() {
         text: 'Please fill in all fields!'
       });
     }
-    else {
-      Swal.fire({
-        title: 'Are you sure you want to submit?',
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonText: "Yes, Submit",
-        cancelButtonText: "No"
-      }).then((result) => {
-        Swal.fire("Submitted!", "Your message has been sent to the customer service team.", "success")
-    })
-    }
-    
-    const url = "http://localhost:8000/backend/php/login.php";
-    
+
+    const url = "http://localhost/y2s1-web-app/app/src/backend/php/login.php";
+
     let formData = new FormData();
-    formData.append('user_name', name);
-    formData.append('user_email', email);
-    formData.append('user_message', password);
-    
+    formData.append('username', name);
+    formData.append('password', password);
+
     axios.post(url, formData)
-    .then((response) => alert(response.data)) 
-    .catch(error => alert(error.message))
+    .then((response) =>  {
+      console.log(response.data);
+      if (response.data.success) { 
+        console.log(response);
+        navigate('/store');  // Navigate to '/store' if successful
+      } else {
+        Swal.fire({
+          icon: 'error',
+          title: 'Login Error',
+          text: response.data.error
+        }); // Handle the failure case if needed
+      }
+    }).catch(error => {console.log(error.message)})
   };
 
   return (

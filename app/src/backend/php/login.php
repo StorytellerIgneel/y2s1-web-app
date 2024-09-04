@@ -22,6 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
 if ($_SERVER["REQUEST_METHOD"] == "POST"){
     $name = $_POST["username"];
     $password = $_POST["password"];
+   // echo($name);
     
     if (!empty($name) && !empty($password)){
         
@@ -32,10 +33,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
         
         // Create connection
         $conn = mysqli_connect($dbHost, $dbUsername, $dbPassword, $dbName);
-        if (!$conn)
-            die('Could not connect to the database: ' . mysqli_connect_error());
-        else
-            echo 'Connection successful!';
+        // if (!$conn)
+        //     die('Could not connect to the database: ' . mysqli_connect_error());
+        // else
+        //     echo 'Connection successful!';
         $sql = "SELECT * from users where username = '$name'";
         $res = mysqli_query($conn, $sql);
         if ($res){
