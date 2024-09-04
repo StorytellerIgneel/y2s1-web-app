@@ -1,6 +1,4 @@
 <?php
-echo "Hello, PHP is working!";
-
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
@@ -22,13 +20,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
   }
     
 if ($_SERVER["REQUEST_METHOD"] == "POST"){
-    echo "gay";
-    $name = $_POST["username"];
-    $email = $_POST["email"];
-    $password = $_POST["password"];
-    echo $name;
+    $searchString = $_POST["searchGame"];
+   // echo($name);
     
-    if (!empty($name) && !empty($email) && !empty($password)){
+    if (!empty($name) && !empty($password)){
         
         $dbHost = 'localhost';
         $dbUsername = 'root';
@@ -37,24 +32,31 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
         
         // Create connection
         $conn = mysqli_connect($dbHost, $dbUsername, $dbPassword, $dbName);
-        if (!$conn) {
-            die('Could not connect to the database: ' . mysqli_connect_error());
-        } else {
-            echo 'Connection successful!';
-        }
-        $sql = "INSERT INTO users(username, email, password) VALUES('$name', '$email', '$password')";
+        // if (!$conn)
+        //     die('Could not connect to the database: ' . mysqli_connect_error());
+        // else
+        //     echo 'Connection successful!';
+        $sql = "SELECT title, img_src, price FROM games WHERE title LIKE '%$searchString%'";
+
         $res = mysqli_query($conn, $sql);
         if ($res){
-            echo "Success";
-        }else{
-            echo "Error: ". $sql. "<br>". mysqli_error($conn);
+            if (mysqli_num_rows($res) > 0){ //check num of rows returned 
+                $games = []; // Initialize an empty array to hold the games
+
+                while ($row = mysqli_fetch_assoc($res)) {
+                    // Each row is an associative array representing a single game
+                    $games[] = [
+                        'title' => $row['title'],
+                        'img_src' => $row['img_src'],
+                        'price' => $row['price']
+                    ];
+                }
+                echo json_encode(['success' => false, 'games' => $games]);
+            }
+            else
+                echo json_encode(['success' => false, 'error' => 'no games found']);
         }
         mysqli_close($conn);
-
-        if (mail($to, $subject, $body, $headers))
-            echo json_encode(["success" => true, "message" => "message sent successfully"]);
-        else
-            echo json_encode(['success' => false, 'error' => 'Failed to send email.']);
     }
     else
         echo json_encode(['success' => false, 'error' => 'All fields are required.']);

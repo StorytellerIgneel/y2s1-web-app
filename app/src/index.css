@@ -14,7 +14,7 @@
 }
 
 @layer base {
-  .App {
+  .layout-container {
     height: 100vh;
     margin: 0 auto;
     padding-left: 11rem;
@@ -40,5 +40,5 @@
 }
 
 .button {
-  @apply text-white text-base font-semibold rounded-md h-12
+  @apply text-white text-base font-semibold rounded-md h-12 text-center
 }
