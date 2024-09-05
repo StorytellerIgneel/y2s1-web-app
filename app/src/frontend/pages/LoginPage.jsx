@@ -114,7 +114,7 @@ function LoginPage() {
       console.log(response.data);
       if (response.data.success) { 
         console.log(response);
-        navigate('/store');  // Navigate to '/store' if successful
+        navigate('/searchGame');  // Navigate to '/store' if successful
       } else {
         Swal.fire({
           icon: 'error',
