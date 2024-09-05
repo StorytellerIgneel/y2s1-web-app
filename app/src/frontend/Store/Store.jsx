@@ -10,7 +10,7 @@ import Wukong from "./resource/Wukong.jpg";
 import BaldursGate3 from "./resource/BaldursGate3.jpg";
 import Subnautica from "./resource/Subnautica.jpg";
 
-import Logo from "./resource/GNS_Horizontal2_Black.svg";
+// import Logo from "./resource/GNS_Horizontal2_Black.svg";
 
 function Store() {
   const [games, setGames] = useState({});

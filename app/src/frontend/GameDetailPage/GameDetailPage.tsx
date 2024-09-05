@@ -1,59 +1,100 @@
 import React from 'react';
 
 import Sidebar from '../Sidebar/Sidebar.tsx';
-import NavBar from '../include/NavBar.jsx';
-import VideoPlayer from "./VideoPlayer.tsx";
 
 import "./GameDetailPage.css"
 
-// temporary game resources, will remove it once its able to get from database
-import GodOfWarTrailer1 from "./resource/GodOfWarTrailer1.webm";
-import GodOfWarTrailer2 from "./resource/GodOfWarTrailer2.webm";
-import GodOfWar1 from "./resource/GodOfWar1.jpg";
-import GodOfWar2 from "./resource/GodOfWar2.jpg";
-import GodOfWar3 from "./resource/GodOfWar3.jpg";
-import GodOfWar4 from "./resource/GodOfWar4.jpg";
-import GodOfWar5 from "./resource/GodOfWar5.jpg";
+// temporary resources, need get from db
+const gamedata = [
+    {
+        gameId:"G001",
+        name:"God Of War",
+        img:'./resource/GodOfWar1.jpg',
+        description:"His vengeance against the Gods of Olympus years behind him, Kratos now lives as a man in the realm of Norse Gods and monsters. It is in this harsh, unforgiving world that he must fight to survive… and teach his son to do the same.",
+        rating: "Overwhelmingly Positive",
+        ratingNum: 97275,
+        releaseDate: "14 Jan 2022",
+        developer: "Santa Monica Studio",
+        publisher: "PlayStation Publishing LLC",
+        price: "209.00"
+    },
+    {
+        gameId:"G002",
+        name:"God Of War 2",
+        img:"./resource/GodOfWar2.jpg",
+        description:"His vengeance against the Gods of Olympus years behind him, Kratos now lives as a man in the realm of Norse Gods and monsters. It is in this harsh, unforgiving world that he must fight to survive… and teach his son to do the same.",
+        rating: "Overwhelmingly Positive",
+        ratingNum: 97275,
+        releaseDate: "14 Jan 2022",
+        developer: "Santa Monica Studio",
+        publisher: "PlayStation Publishing LLC",
+        price: "209.00"
+    },
+    {
+        gameId:"G003",
+        name:"God Of War 3",
+        img:"./resource/GodOfWar3.jpg",
+        description:"His vengeance against the Gods of Olympus years behind him, Kratos now lives as a man in the realm of Norse Gods and monsters. It is in this harsh, unforgiving world that he must fight to survive… and teach his son to do the same.",
+        rating: "Overwhelmingly Positive",
+        ratingNum: 97275,
+        releaseDate: "14 Jan 2022",
+        developer: "Santa Monica Studio",
+        publisher: "PlayStation Publishing LLC",
+        price: "209.00"
+    },
+    {
+        gameId:"G004",
+        name:"God Of War 4",
+        img:"./resource/GodOfWar4.jpg",
+        description:"His vengeance against the Gods of Olympus years behind him, Kratos now lives as a man in the realm of Norse Gods and monsters. It is in this harsh, unforgiving world that he must fight to survive… and teach his son to do the same.",
+        rating: "Overwhelmingly Positive",
+        ratingNum: 97275,
+        releaseDate: "14 Jan 2022",
+        developer: "Santa Monica Studio",
+        publisher: "PlayStation Publishing LLC",
+        price: "209.00"
+    },
+    {
+        gameId:"G005",
+        name:"God Of War 5",
+        img:"./resource/GodOfWar5.jpg",
+        description:"His vengeance against the Gods of Olympus years behind him, Kratos now lives as a man in the realm of Norse Gods and monsters. It is in this harsh, unforgiving world that he must fight to survive… and teach his son to do the same.",
+        rating: "Overwhelmingly Positive",
+        ratingNum: 97275,
+        releaseDate: "14 Jan 2022",
+        developer: "Santa Monica Studio",
+        publisher: "PlayStation Publishing LLC",
+        price: "209.00"
+    }
+]
 
 function GameDetailPage() {
     return (
         <div className="body">
             <Sidebar />
+            <h1>Testing</h1>
             {/* <NavBar /> */}
-            <h1>God of War</h1>
-            <input type="radio" name="position" />
-            <input type="radio" name="position" />
-            <input type="radio" name="position" checked/>
-            <input type="radio" name="position" />
-            <input type="radio" name="position" />
-            <input type="radio" name="position" />
-            <main id="carousel">
-                <div className="item">
-                    <VideoPlayer />
-                </div>
+            <div className="CardSlider">
+                <div className="width-3/4 margin-auto">
+                    <div className="margin-20">
+                        {gamedata.map((d) => (
+                            <div className="text-white border">
+                                <div>
+                                    <img src={d.img} alt="God Of War" />
+                                </div>
 
-                <div className="item">
-                    <img src={GodOfWar1} width="800" height="450"/>
-                </div>
+                                <div>
+                                    <p>{d.name}</p>
+                                    <p>{d.rating}</p>
+                                    <p>{d.ratingNum}</p>
+                                    <p>{d.price}</p>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
 
-                <div className="item">
-                    <img src={GodOfWar2} width="800" height="450"/>
                 </div>
-
-                <div className="item">
-                    <img src={GodOfWar3} width="800" height="450"/>
-                </div>
-
-                <div className="item">
-                    <img src={GodOfWar4} width="800" height="450"/>
-                </div>
-
-                <div className="item">
-                    <img src={GodOfWar5} width="800" height="450"/>
-                </div>
-
-                
-            </main>
+            </div>
         </div>
     );
 }
