@@ -8,7 +8,8 @@ import ProductPage from "./frontend/pages/ProductPage";
 import Layout from "./frontend/include/Layout";
 import Home from "./frontend/include/Home";
 import { CartProvider } from "./frontend/Cart/CartContext";
-import SearchGame from "./frontend/include/SearchGame";
+import SearchBar from "./frontend/include/SearchBar";
+
 // import "./index.css";
 
 function App() {
@@ -25,7 +26,7 @@ function App() {
                 <Route path="/cart" element={<CartPage />} />
                 {/* for testing */}
                 {/* <Route path="/wishlist" element={<WishlistPage />} /> */}
-                <Route path="/searchGame" element={<SearchGame/>}/>
+                <Route path="/searchGame" element={<SearchBar />} />
               </Route>
               {/* <Route path="/" element={<LoginPage/>} /> */}
               <Route path="/OAuth" element={<OAuth />} />
