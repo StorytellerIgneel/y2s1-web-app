@@ -26,7 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
         
     $dbHost = 'localhost';
     $dbUsername = 'root';
-    $dbPassword = 'teoH0628$$$$';
+    $dbPassword = '';
     $dbName = 'wad_assignment';
     
     // Create connection
@@ -35,7 +35,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
     //     die('Could not connect to the database: ' . mysqli_connect_error());
     // else
     //     echo 'Connection successful!';
-    $sql = "SELECT title, img_src, price FROM games WHERE title LIKE '%$searchString%'";
+    $sql = "SELECT id, title, img_src, price FROM games WHERE title LIKE '%$searchString%'";
 
     $res = mysqli_query($conn, $sql);
     if ($res){
@@ -45,6 +45,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
             while ($row = mysqli_fetch_assoc($res)) {
                 // Each row is an associative array representing a single game
                 $games[] = [
+                    'id' => $row['id'],
                     'title' => $row['title'],
                     'img_src' => $row['img_src'],
                     'price' => $row['price']
