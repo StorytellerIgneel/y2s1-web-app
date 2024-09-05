@@ -13,7 +13,7 @@ function SearchBar() {
           className="h-8 w-60 rounded-md bg-white pl-3 pr-10 text-sm font-semibold placeholder-gray-400 focus:outline-none"
         />
       </div>
-      <SearchResults />
+      {/* <SearchResults results={results} />SS */}
     </div>
   );
 }

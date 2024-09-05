@@ -2,7 +2,7 @@ import { useState } from "react";
 import PaymentOption from "../Payment/PaymentOption";
 import paymentMethods from "../Payment/paymentMethods";
 
-function PaymentPage() {
+function PaymentPage({ handleCloseModal }) {
   const [selectedPaymentMethod, setSelectedPaymentMethod] = useState("");
 
   const handlePaymentMethodChange = (event) => {
@@ -93,7 +93,13 @@ function PaymentPage() {
   };
 
   return (
-    <div>
+    <div className="relative bg-white p-7 rounded shadow-lg w-[80%] h-[80%] overflow-auto">
+      <button
+            className="absolute right-2 top-2 text-gray-700 text-xl"
+            onClick={handleCloseModal}
+          >
+            x
+          </button>
       <h1>Checkout</h1>
       <div className="flex items-center">
         <div className="relative flex items-center justify-center pr-4">

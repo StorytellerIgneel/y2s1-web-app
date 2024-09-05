@@ -40,6 +40,8 @@ CREATE TABLE IF NOT EXISTS games (
     price DECIMAL(10, 2)
 );
 
+
+
 CREATE TABLE IF NOT EXISTS purchases (
     purchase_id INT AUTO_INCREMENT PRIMARY KEY,
     user_id INT,
@@ -49,10 +51,10 @@ CREATE TABLE IF NOT EXISTS purchases (
     FOREIGN KEY (user_id) REFERENCES users(user_id),
 );
 
-CREATE TABLE purchase_items (
+CREATE TABLE IF NOT EXISTS purchase_items (
     purchase_item_id INT AUTO_INCREMENT PRIMARY KEY,
     purchase_id INT,
---     game_id INT,
+    game_id INT,
     FOREIGN KEY (purchase_id) REFERENCES Purchases(purchase_id),
     FOREIGN KEY (game_id) REFERENCES Games(game_id)
 );
