@@ -5,19 +5,6 @@ export const CartContext = createContext();
 export const CartProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
 
-  useEffect(() => {
-    // Load cart from local storage
-    const storedCart = localStorage.getItem('cart') || [];
-    if (storedCart) {
-      setCart(JSON.parse(storedCart));
-    }
-  }, []);
-
-  useEffect(() => {
-    // Save cart to local storage whenever cart changes
-    localStorage.setItem('cart', JSON.stringify(cart));
-  }, [cart]);
-
   const addToCartContext = (game) => {
     // Check if the item is already in the cart
     const itemExists = cart.some(item => item.id === game.id);
