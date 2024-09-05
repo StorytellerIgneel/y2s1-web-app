@@ -2,6 +2,7 @@ import { useEffect, useState, useContext } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { CartContext } from "../Cart/CartContext";
+import "../../index.css"
 
 function ProductPage() {
   const { id } = useParams(); // Use useParams to get the product ID from the URL
@@ -84,7 +85,7 @@ function ProductPage() {
       <p>Developer: {game.developer}</p>
       <p>Publisher: {game.publisher}</p>
       <p>Price: RM {game.price}</p>
-      <button onClick={handleClick}>{isInCart ? "In Cart" : "Add to Cart"}</button>
+      <button className="button w-[30%] self-end bg-red-600 hover:bg-red-800" onClick={handleClick}>{isInCart ? "In Cart" : "Add to Cart"}</button>
     </div>
   );
 }

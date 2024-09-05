@@ -9,7 +9,7 @@ import Layout from "./frontend/include/Layout";
 import Home from "./frontend/include/Home";
 import { CartProvider } from "./frontend/Cart/CartContext";
 import SearchBar from "./frontend/include/SearchBar";
-
+import PaymentPage from "./frontend/pages/PaymentPage";
 // import "./index.css";
 
 function App() {
@@ -27,6 +27,7 @@ function App() {
                 {/* for testing */}
                 {/* <Route path="/wishlist" element={<WishlistPage />} /> */}
                 <Route path="/searchGame" element={<SearchBar />} />
+                <Route path="/payment" element={<PaymentPage />} />
               </Route>
               {/* <Route path="/" element={<LoginPage/>} /> */}
               <Route path="/OAuth" element={<OAuth />} />

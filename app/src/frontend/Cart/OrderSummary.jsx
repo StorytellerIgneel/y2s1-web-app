@@ -1,34 +1,15 @@
 import { useContext, useState, useEffect } from "react";
-import PaymentPage from "../pages/PaymentMethodPage";
-
+import PaymentMethodPage from "../pages/PaymentMethodPage";
 import { CartContext } from "./CartContext";
+import Modal from "../include/Modal/Modal";
 
 function OrderSummary() {
   const { getTotalPrice } = useContext(CartContext);
   const [checkoutOpen, setCheckoutOpen] = useState(false);
 
   const handleCheckoutClick = () => {
-    // Open the checkout payment method overlay
     setCheckoutOpen(true); 
   };
-
-  const handleCloseModal = () => {
-    // Close the checkout payment method overlay
-    setCheckoutOpen(false); 
-  };
-
-  // Disable background scrolling when the modal is open
-  useEffect(() => {
-    if (checkoutOpen) {
-      document.body.style.overflow = "hidden"; // Disable scrolling
-    } else {
-      document.body.style.overflow = "auto"; // Enable scrolling when closed
-    }
-
-    return () => {
-      document.body.style.overflow = "auto"; // Cleanup on component unmount
-    };
-  }, [checkoutOpen]);
 
   return (
     <div className="h-auto w-auto flex-col space-y-7 rounded-md bg-gray-200 px-7 pb-10 pt-5">
@@ -40,10 +21,6 @@ function OrderSummary() {
             RM {parseFloat(getTotalPrice()).toFixed(2)}
           </span>
         </div>
-        {/* <div className="flex justify-between">
-          <span className="text-sm">Sale Discount</span>
-          <span className="text-sm">-RM xx.xx</span>
-        </div> */}
         <div className="flex justify-between">
           <span className="text-sm">Taxes</span>
           <span className="text-sm">Calculated at Checkout</span>
@@ -62,11 +39,9 @@ function OrderSummary() {
       >
         Checkout
       </button>
-      {checkoutOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-70">
-          <PaymentPage handleCloseModal={handleCloseModal} />
-        </div>
-      )}
+      <Modal open={checkoutOpen} onClose={() => setCheckoutOpen(false) }>
+          <PaymentMethodPage />
+      </Modal>
     </div>
   );
 }

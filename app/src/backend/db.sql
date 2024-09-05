@@ -48,7 +48,7 @@ CREATE TABLE IF NOT EXISTS purchases (
     purchase_date DATETIME,
     total_amount DECIMAL(10, 2),
     payment_method VARCHAR(50),
-    FOREIGN KEY (user_id) REFERENCES users(user_id),
+    FOREIGN KEY (user_id) REFERENCES users(user_id)
 );
 
 CREATE TABLE IF NOT EXISTS purchase_items (
