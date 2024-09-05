@@ -4,11 +4,11 @@ import CartPage from "./frontend/pages/CartPage";
 import WishlistPage from "./frontend/pages/WishlistPage";
 import OAuth from "./backend/OAuth";
 import LoginPage from "./frontend/pages/LoginPage";
-import PaymentPage from "./frontend/pages/PaymentMethodPage";
 import ProductPage from "./frontend/pages/ProductPage";
 import Layout from "./frontend/include/Layout";
 import Home from "./frontend/include/Home";
 import { CartProvider } from "./frontend/Cart/CartContext";
+import SearchGame from "./frontend/include/SearchGame";
 // import "./index.css";
 
 function App() {
@@ -25,8 +25,7 @@ function App() {
                 <Route path="/cart" element={<CartPage />} />
                 {/* for testing */}
                 {/* <Route path="/wishlist" element={<WishlistPage />} /> */}
-                <Route path="/payment" element={<PaymentPage />} />
-                {/* <Route path="/paymentstatus" element={<PaymentStatus/>}/> */}
+                <Route path="/searchGame" element={<SearchGame/>}/>
               </Route>
               {/* <Route path="/" element={<LoginPage/>} /> */}
               <Route path="/OAuth" element={<OAuth />} />
