@@ -1,4 +1,4 @@
-import { useContext, useState, useEffect } from "react";
+import { useContext, useState } from "react";
 import PaymentMethodPage from "../pages/PaymentMethodPage";
 import { CartContext } from "./CartContext";
 import Modal from "../include/Modal/Modal";
