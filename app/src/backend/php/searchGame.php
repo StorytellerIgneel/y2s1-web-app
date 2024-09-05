@@ -18,9 +18,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
     http_response_code(200);
     exit();
   }
-    
-if ($_SERVER["REQUEST_METHOD"] == "POST"){
-    $searchString = $_POST["searchGame"];
+
+if ($_SERVER["REQUEST_METHOD"] == "POST"){ 
+    $searchString = $_POST['searchGame'];
+    echo $searchString;
    // echo($name);
         
     $dbHost = 'localhost';
@@ -38,8 +39,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 
     $res = mysqli_query($conn, $sql);
     if ($res){
+        
         if (mysqli_num_rows($res) > 0){ //check num of rows returned 
-            $games = []; // Initialize an empty array to hold the games
 
             while ($row = mysqli_fetch_assoc($res)) {
                 // Each row is an associative array representing a single game
@@ -49,7 +50,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
                     'price' => $row['price']
                 ];
             }
-            echo json_encode(['success' => false, 'games' => $games]);
+            echo json_encode(['success' => true, 'games' => $games]);
         }
         else
             echo json_encode(['success' => false, 'error' => 'no games found']);
