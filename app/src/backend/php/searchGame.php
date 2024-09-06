@@ -21,7 +21,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
 
 if ($_SERVER["REQUEST_METHOD"] == "POST"){ 
     $searchString = $_POST['searchGame'];
-    echo $searchString;
    // echo($name);
         
     $dbHost = 'localhost';

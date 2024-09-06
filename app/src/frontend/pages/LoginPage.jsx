@@ -1,4 +1,4 @@
-import "../LoginPage/login-style.css";
+import "../css/login-style.css";
 
 import React, { useEffect, useState, useRef} from "react";
 import OAuth from "../../backend/OAuth";

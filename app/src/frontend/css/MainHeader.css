@@ -1,0 +1,44 @@
+body {
+    font-family: "Archivo Black", sans-serif;
+}
+
+.main-page-header {
+    position: relative;
+    width: 100%;
+    padding: 30px 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 10;
+    background: white;
+}
+
+
+.main-page-header ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-page-header ul li {
+    list-style: none;
+    margin-left: 20px;
+}
+
+.main-page-header ul li a {
+    text-decoration: none;
+    padding: 6px 15px;
+    color: black;
+    border-radius: 20px;
+    transition: all .55s ease;
+}
+
+.main-page-header ul li a:hover {
+    background: #E81C24;
+    color: white;
+}
+
+.main-page-header ul li a.active {
+    background: #E81C24;
+    color: white;
+}

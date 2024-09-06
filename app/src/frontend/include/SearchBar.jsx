@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 function SearchBar() {
   const [searchGame, setSearchGame] = useState("");
@@ -15,23 +16,17 @@ function SearchBar() {
       axios
         .post(url, formData)
         .then((response) => {
-          console.log(response.data);
-          if (response.data.success) {
-            setResults(response.data.games || []);
-          } else {
-            setResults([]);
-          }
+          if (response.data.success) setResults(response.data.games);
+          else setResults([]); //clear search results
         })
         .catch((error) => {
           console.log(error.message);
-          setResults([]);
+          //setResults([]);
         });
     } else {
       setResults([]); // Clear results if search term is empty
     }
   }, [searchGame]);
-
-  console.log(results);
 
   return (
     <div>
@@ -42,13 +37,14 @@ function SearchBar() {
         onChange={(e) => setSearchGame(e.target.value)}
         value={searchGame}
       />
-      <div className="mt-2">
+      <div className="absolute mt-2 rounded-sm py-2">
         {results.length > 0 ? (
           results.map((game) => (
             <SearchResults
               key={game.id}
               img_src={game.img_src}
               title={game.title}
+              slug={game.id}
             />
           ))
         ) : (
@@ -59,12 +55,18 @@ function SearchBar() {
   );
 }
 
-function SearchResults({ img_src, title }) {
+function SearchResults({ img_src, title, slug }) {
   return (
-    <div className="mb-2 flex h-10 w-60 items-center space-x-2">
-      <img src={img_src} alt={title} className="h-8 w-16 rounded" />
-      <p className="text-sm font-semibold">{title}</p>
-    </div>
+    <Link to={`/store/${slug}`}>
+      <div className="flex h-12 w-72 items-center space-x-2 bg-white">
+        <img
+          src={img_src}
+          alt={title}
+          className="h-10 w-20 rounded object-cover"
+        />
+        <p className="text-sm font-semibold">{title}</p>
+      </div>
+    </Link>
   );
 }
 
