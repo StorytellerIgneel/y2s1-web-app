@@ -10,6 +10,7 @@ import ProductPage from "./frontend/pages/ProductPage";
 import Layout from "./frontend/include/Layout";
 import Home from "./frontend/include/Home";
 import SearchBar from "./frontend/include/SearchBar";
+import MainPage from "./nicholasidiot/MainPage";
 // import "./index.css";
 
 function App() {
@@ -30,6 +31,7 @@ function App() {
             {/* <Route path="/paymentstatus" element={<PaymentStatus/>}/> */}
             {/* <Route path="/" element={<LoginPage/>} /> */}
             <Route path="/OAuth" element={<OAuth />} />
+            <Route path="/Main" element={<MainPage />} />
           </Routes>
         </BrowserRouter>
       </div>
