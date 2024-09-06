@@ -2,7 +2,8 @@ import React from "react";
 import { useContext } from "react";
 import { CartContext } from "../Cart/CartContext";
 import { PaymentItem } from "../Cart/CartItem";
-import "../../index.css"
+import { UserProfileLeft } from "../include/UserProfile";
+import "../../index.css";
 
 function PaymentPage({ selcetedPaymentMethod }) {
   return (
@@ -15,12 +16,12 @@ function PaymentPage({ selcetedPaymentMethod }) {
         </div>
         <p className="text-lg font-bold">Payment</p>
       </div>
-      <div className="inine-flex">
-        <div>
-          <CartItemsList className="w-1/2" />
+      <div className="flex space-x-6 p-14">
+        <div className="w-1/2">
+          <CartItemsList />
           <div>sdsdsd</div>
         </div>
-        <div>
+        <div className="w-1/2">
           <TermsAndAgreement selcetedPaymentMethod={selcetedPaymentMethod} />
         </div>
       </div>
@@ -46,20 +47,35 @@ function CartItemsList() {
 
 function TermsAndAgreement({ selcetedPaymentMethod }) {
   return (
-    <div>
-      <div className="bg-gray-200 px-16 rounded-lg">
-        <p>Payment via {selcetedPaymentMethod}</p>
-        <div className="inline-flex bg-gray-300 rounded-lg p-5">
-          <input type="checkbox" id="terms" name="terms" value="terms" required/>
-          <label htmlFor="terms" className="text-justify px-5">
-            I agree to the terms of the GameNonStop Subscriber Agreement.{" "}
-            {selcetedPaymentMethod} transactions are authorized through IntelPay
-            website. Click the button below to open a new web browser window to
-            initiate the transaction.
-          </label>
+    <div className="space-y-5">
+      <div className="space-y-8 rounded-lg bg-gray-200 px-16 py-5">
+        <UserProfileLeft />
+        <div className="space-y-5">
+          <p className="font-bold">Payment via {selcetedPaymentMethod}</p>
+          <div className="inline-flex rounded-lg bg-gray-300 p-5">
+            <input
+              type="checkbox"
+              id="terms"
+              name="terms"
+              value="terms"
+              required
+            />
+            <label htmlFor="terms" className="px-5 text-justify text-xs">
+              I agree to the terms of the GameNonStop Subscriber Agreement.{" "}
+              {selcetedPaymentMethod} transactions are authorized through
+              IntelPay website. Click the button below to open a new web browser
+              window to initiate the transaction.
+            </label>
+          </div>
         </div>
       </div>
-      <input type="button" className="button w-[30%] self-end bg-red-600 hover:bg-red-800 disabled:bg-gray-500" value="Checkout" />
+      <div className="flex justify-end">
+        <input
+          type="button"
+          className="button w-[50%] bg-red-600 hover:bg-red-800 disabled:bg-gray-500"
+          value="Checkout"
+        />
+      </div>
     </div>
   );
 }

@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 
 import SearchBar from "./SearchBar";
-import UserProfile from "./UserProfile";
+import UserProfileRight from "./UserProfile";
 import { CartContext } from "../Cart/CartContext";
 import { IoCartSharp, IoStar } from "react-icons/io5";
 
@@ -37,7 +37,7 @@ function NavBarTop() {
           About Us
         </Link>
       </div>
-      <UserProfile />
+      <UserProfileRight />
     </div>
   );
 }
