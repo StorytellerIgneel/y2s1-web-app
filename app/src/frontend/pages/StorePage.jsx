@@ -13,7 +13,6 @@ function Store() {
         const response = await axios.get(
           "http://localhost/y2s1-web-app/app/src/backend/php/get_game.php",
         );
-        console.log(response.data); // Log the response to see the structure
         setGames(response.data); // Set the fetched data to games state
       } catch (error) {
         setError(error);
@@ -50,7 +49,6 @@ function Store() {
 }
 
 function ProductCard({ slug, title, imgSrc, price }) {
-  console.log(slug)
   return (
       <div className="rounded-xl bg-gray-200 m-3 p-3 shadow-sm hover:bg-red-100 hover:scale-105 max-w-xs h-auto ">
         <Link to={`/store/${slug}`}> 

@@ -20,7 +20,7 @@ function ProductPage() {
     formData.append('game_id', game_id);
 
     axios.post(url, formData)
-    .then((response) =>  {})
+    .then((response) =>  { console.log(response.data)})
     .catch(error => {console.log(error.message)})
   };
 

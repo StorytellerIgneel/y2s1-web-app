@@ -6,6 +6,11 @@ import re
 from datetime import datetime
 from pythondb import insert_game
 
+import sys
+
+# Get the parameter passed from the JavaScript request
+search_game = sys.argv[1] if len(sys.argv) > 1 else ''
+
 class Game:
     def __init__(self, title, img_src, desc, rating, rating_num, release_date, developer, publisher, price):
         self.title = title
@@ -57,14 +62,14 @@ driver.get("https://store.steampowered.com")
 
 time.sleep(2)
 search = driver.find_element(By.ID, "store_nav_search_term")
-search.send_keys("Pico")
+search.send_keys(search_game)
 search.send_keys(Keys.RETURN)
 
 time.sleep(2)
 search_result = driver.find_elements(By.CLASS_NAME, "search_result_row") #search result list
 print(len(search_result))
 
-for i in range(3):
+for i in range(1):
     time.sleep(2)
     search_result[i].click()
     time.sleep(2)

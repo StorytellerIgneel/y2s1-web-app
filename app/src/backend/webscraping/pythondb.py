@@ -15,7 +15,7 @@ def insert_game(game_list):
             host='localhost',         # Replace with your host
             database='wad_assignment', # Replace with your database name
             user='root',     # Replace with your username
-            password=''  # Replace with your password
+            password='teoH0628$$$$'  # Replace with your password
         )
 
         if connection.is_connected():
