@@ -7,7 +7,7 @@ export const CartProvider = ({ children }) => {
 
   const addToCartContext = (game) => {
     // Check if the item is already in the cart
-    const itemExists = cart.some(item => item.id === game.id);
+    const itemExists = cart.some(item => item.game_id === game.game_id);
     if (!itemExists) {
       setCart((prevCart) => [...prevCart, game]);
     }
@@ -15,7 +15,7 @@ export const CartProvider = ({ children }) => {
 
   const removeFromCartContext = (gameId) => {
     console.log("Removing from cart:", gameId);
-    setCart((prevCart) => prevCart.filter((game) => game.id !== gameId));
+    setCart((prevCart) => prevCart.filter((game) => game.game_id !== gameId));
   };
 
     // Calculate total price of items in the cart

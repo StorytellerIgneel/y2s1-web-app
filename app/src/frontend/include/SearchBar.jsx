@@ -41,10 +41,10 @@ function SearchBar() {
         {results.length > 0 ? (
           results.map((game) => (
             <SearchResults
-              key={game.id}
+              key={game.game_id}
               img_src={game.img_src}
               title={game.title}
-              slug={game.id}
+              slug={game.game_id}
             />
           ))
         ) : (

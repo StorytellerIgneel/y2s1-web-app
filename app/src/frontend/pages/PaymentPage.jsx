@@ -35,7 +35,7 @@ function CartItemsList() {
   ) : (
     cart.map((game) => (
       <PaymentItem
-        key={game.id}
+        key={game.game_id}
         title={game.title}
         imgSrc={game.img_src}
         price={game.price}

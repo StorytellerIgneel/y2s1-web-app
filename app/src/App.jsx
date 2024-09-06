@@ -19,7 +19,7 @@ function App() {
               <Route path="/" element={<Layout />}>
                 <Route index element={<MainPage />} />
                 <Route path="/store" element={<StorePage />} />
-                <Route path="/store/:id" element={<ProductPage />} />
+                <Route path="/store/:game_id" element={<ProductPage />} />
                 <Route path="/cart" element={<CartPage />} />
                 {/* for testing */}
                 {/* <Route path="/wishlist" element={<WishlistPage />} /> */}
