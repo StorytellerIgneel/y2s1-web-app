@@ -1,11 +1,10 @@
 import { FaUserCircle } from "react-icons/fa";
 
-function UserProfile({ profile }) {
+function UserProfileRight({ profile }) {
   return (
     <a href="">
-      <div className="flex items-center space-x-5 p-3">
+      <div className="flex items-center space-x-5">
         <p className="hidden text-xs font-bold text-gray-600 md:block" href="">
-          {/* TODO: Make this dynamic */}
           {profile?.name || "Guest"}
         </p>
         <div className="flex space-x-2">
@@ -16,7 +15,7 @@ function UserProfile({ profile }) {
               alt="user image"
             />
           ) : (
-            <FaUserCircle fill="gray" className="size-8 bg-white "/>
+            <FaUserCircle fill="gray" className="size-8"/>
           )}
         </div>
       </div>
@@ -24,4 +23,30 @@ function UserProfile({ profile }) {
   );
 }
 
-export default UserProfile;
+export function UserProfileLeft({ profile }) {
+  return (
+    <a href="">
+      <div className="flex items-center space-x-5">
+        
+        <div className="flex space-x-2">
+          {profile ? (
+            <img
+              className="h-8 w-8 rounded-full border border-gray-100 shadow-sm sm:h-10 sm:w-10"
+              src="../../../images/test-data/the-last-of-us-part-i.jpg"
+              alt="user image"
+            />
+          ) : (
+            <FaUserCircle fill="gray" className="size-8"/>
+          )}
+        </div>
+        <p className="hidden text-xs font-bold text-gray-600 md:block" href="">
+          {profile?.name || "Guest"}
+        </p>
+      </div>
+    </a>
+  );
+}
+
+
+
+export default UserProfileRight;
