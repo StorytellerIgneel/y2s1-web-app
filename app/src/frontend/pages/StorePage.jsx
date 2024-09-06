@@ -34,16 +34,18 @@ function Store() {
     <div>
       <h1>Store</h1>
       <ul className="product-list">
-        {games.map((game) => (
-          <li key={game.id}>
-            <ProductCard
-              slug={game.id}
-              title={game.title}
-              imgSrc={game.img_src}
-              price={game.price}
-            />
-          </li>
-        ))}
+        <div className="flex item-stretch flex-row flex-wrap">
+          {games.map((game) => (
+            <li key={game.id}>
+                <ProductCard
+                  slug={game.id}
+                  title={game.title}
+                  imgSrc={game.img_src}
+                  price={game.price}
+                  />
+            </li>
+          ))}
+        </div>
       </ul>
     </div>
   );
