@@ -1,7 +1,6 @@
-import "../Store/Store.css";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import ProductCard from "../Store/ProductCard"; // Make sure ProductCard is imported correctly
+import { Link } from "react-router-dom";
 
 function Store() {
   const [games, setGames] = useState([]); // Initialize as an empty array
@@ -32,18 +31,34 @@ function Store() {
     <div>
       <h1>Store</h1>
       <ul className="product-list">
-        {games.map((game) => (
-          <li key={game.id}>
-            <ProductCard
-              slug={game.id}
-              title={game.title}
-              imgSrc={game.img_src}
-              price={game.price}
-            />
-          </li>
-        ))}
+        <div className="flex item-stretch flex-row flex-wrap justify-between">
+          {games.map((game) => (
+            <li key={game.id}>
+                <ProductCard
+                  slug={game.id}
+                  title={game.title}
+                  imgSrc={game.img_src}
+                  price={game.price}
+                  />
+            </li>
+          ))}
+        </div>
       </ul>
     </div>
+  );
+}
+
+function ProductCard({ slug, title, imgSrc, price }) {
+  return (
+      <div className="rounded-xl bg-gray-200 m-3 p-3 shadow-sm hover:bg-red-100 hover:scale-105 max-w-xs h-auto ">
+        <Link to={`/store/${slug}`}> 
+          <img className="h-40 rounded-md object-scale-down" src={imgSrc} alt={title} />
+        </Link>
+        <Link to={`/store/${slug}`}> 
+          <p className="font-bold text-lg py-2">{title}</p>
+        </Link>
+          <p>{parseFloat(price) === 0.00 ? "FREE" : `RM ${price}`}</p>
+      </div>
   );
 }
 

@@ -4,16 +4,6 @@ import { IoClose } from "react-icons/io5";
 import "./modal.css";
 
 export default function Modal({ open, children, onClose }) {
-  useEffect(() => {
-    if (open) {
-      document.body.style.overflow = "hidden"; 
-    } else {
-      document.body.style.overflow = "auto"; 
-    }
-    return () => {
-      document.body.style.overflow = "auto"; 
-    };
-  }, [open]);
 
   if (!open) return null;
   return ReactDom.createPortal(
