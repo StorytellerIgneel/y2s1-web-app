@@ -80,7 +80,7 @@ function ProductPage() {
     <div>
       <h1>{game.title}</h1> {/*Title*/}
       <img src={game.img_src} alt={game.title} />
-      <div className="">
+      <div className="rounded-xl bg-red-100 p-5">
         <p>{game.desc}</p>
         <p>
           Rating: {game.rating} ({game.rating_num})
@@ -89,7 +89,7 @@ function ProductPage() {
         <p>Developer: {game.developer}</p>
         <p>Publisher: {game.publisher}</p>
         <p>Price: RM {game.price}</p>
-        <button className="button w-[30%] self-end bg-red-600 hover:bg-red-800" onClick={handleClick}>{isInCart ? "In Cart" : "Add to Cart"}</button>
+        <button className="m-5 button w-[30%] self-end bg-red-600 hover:bg-red-800" onClick={handleClick}>{isInCart ? "In Cart" : "Add to Cart"}</button>
       </div>
     </div>
   );
