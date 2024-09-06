@@ -13,26 +13,23 @@ function ProductPage() {
   const navigate = useNavigate();
   const [isInCart, setIsInCart] = useState(false);
 
-  // const addToCart = async () => {
-  //   try {
-  //     const response = await axios.post(
-  //       "http://localhost/y2s1-web-app/app/src/backend/php/add_to_cart.php",
-  //       {
-  //         product_id: game_id, // Use the id from useParams
-  //       },
-  //     );
-  //     console.log("Cart updated:", response.data);
-  //   } catch (error) {
-  //     console.error("Error adding to cart:", error);
-  //   }
-  // };
+  const addToCart = (game_id) => {
+    const url = "http://localhost/y2s1-web-app/app/src/backend/php/add_to_cart.php";
+
+    let formData = new FormData();
+    formData.append('game_id', game_id);
+
+    axios.post(url, formData)
+    .then((response) =>  {})
+    .catch(error => {console.log(error.message)})
+  };
 
   const handleClick = () => {
     if (isInCart) {
       // Redirect to the cart page if item is in the cart
       navigate('/cart'); 
     } else {
-      // addToCart();
+      addToCart(game_id);
       addToCartContext(game);
     }
   };
@@ -45,7 +42,6 @@ function ProductPage() {
         const response = await axios.get(
           `http://localhost/y2s1-web-app/app/src/backend/php/get_game.php?game_id=${game_id}`,
         );
-        console.log(response);
         setGame(response.data);
       } catch (error) {
         setError(error);
@@ -81,7 +77,7 @@ function ProductPage() {
     <div>
       <h1>{game.title}</h1> {/*Title*/}
       <img src={game.img_src} alt={game.title} />
-      <div className="rounded-xl bg-red-100 p-5">
+      <div className="">
         <p>{game.desc}</p>
         <p>
           Rating: {game.rating} ({game.rating_num})
@@ -90,7 +86,7 @@ function ProductPage() {
         <p>Developer: {game.developer}</p>
         <p>Publisher: {game.publisher}</p>
         <p>Price: RM {game.price}</p>
-        <button className="m-5 button w-[30%] self-end bg-red-600 hover:bg-red-800" onClick={handleClick}>{isInCart ? "In Cart" : "Add to Cart"}</button>
+        <button className="button w-[30%] self-end bg-red-600 hover:bg-red-800" onClick={handleClick}>{isInCart ? "In Cart" : "Add to Cart"}</button>
       </div>
     </div>
   );
