@@ -42,6 +42,7 @@ function ProductPage() {
         const response = await axios.get(
           `http://localhost/y2s1-web-app/app/src/backend/php/get_game.php?game_id=${game_id}`,
         );
+        console.log(response);
         setGame(response.data);
       } catch (error) {
         setError(error);

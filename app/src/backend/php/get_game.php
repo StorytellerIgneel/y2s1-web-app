@@ -22,7 +22,7 @@ $game_id = isset($_GET['game_id']) ? intval($_GET['game_id']) : 0;
 
 if ($game_id > 0) {
     // SQL query to fetch a specific game
-    $sql = "SELECT * FROM games WHERE game_id=?";
+    $sql = "SELECT * FROM games WHERE id=?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("i", $game_id);
     $stmt->execute();
