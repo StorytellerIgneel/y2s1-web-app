@@ -34,4 +34,5 @@ if (!isset($_SESSION['cart'])) {
 // Add game to cart
 if (!in_array($game_id, $_SESSION['cart'])) {
     $_SESSION['cart'][] = $game_id;
+    echo "Game added to cart!";
 }
