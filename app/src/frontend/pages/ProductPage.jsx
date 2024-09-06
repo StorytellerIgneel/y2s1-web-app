@@ -5,7 +5,7 @@ import { CartContext } from "../Cart/CartContext";
 import "../../index.css"
 
 function ProductPage() {
-  const { id } = useParams(); // Use useParams to get the product ID from the URL
+  const { game_id } = useParams(); // Use useParams to get the product ID from the URL
   const [game, setGame] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -13,26 +13,26 @@ function ProductPage() {
   const navigate = useNavigate();
   const [isInCart, setIsInCart] = useState(false);
 
-  const addToCart = async () => {
-    try {
-      const response = await axios.post(
-        "http://localhost/y2s1-web-app/app/src/backend/php/add_to_cart.php",
-        {
-          product_id: id, // Use the id from useParams
-        },
-      );
-      console.log("Cart updated:", response.data);
-    } catch (error) {
-      console.error("Error adding to cart:", error);
-    }
-  };
+  // const addToCart = async () => {
+  //   try {
+  //     const response = await axios.post(
+  //       "http://localhost/y2s1-web-app/app/src/backend/php/add_to_cart.php",
+  //       {
+  //         product_id: game_id, // Use the id from useParams
+  //       },
+  //     );
+  //     console.log("Cart updated:", response.data);
+  //   } catch (error) {
+  //     console.error("Error adding to cart:", error);
+  //   }
+  // };
 
   const handleClick = () => {
     if (isInCart) {
       // Redirect to the cart page if item is in the cart
       navigate('/cart'); 
     } else {
-      addToCart();
+      // addToCart();
       addToCartContext(game);
     }
   };
@@ -43,7 +43,7 @@ function ProductPage() {
     const fetchGame = async () => {
       try {
         const response = await axios.get(
-          `http://localhost/y2s1-web-app/app/src/backend/php/get_game.php?id=${id}`,
+          `http://localhost/y2s1-web-app/app/src/backend/php/get_game.php?game_id=${game_id}`,
         );
         setGame(response.data);
       } catch (error) {
@@ -54,13 +54,13 @@ function ProductPage() {
     };
 
     fetchGame();
-  }, [id]);
+  }, [game_id]);
 
   useEffect(() => {
     // update `isInCart` based on the current `cart` state
     const checkIsInCart = () => {
       if (game) {
-        const inCart = cart.some(item => item.id === game.id);
+        const inCart = cart.some(item => item.game_id === game.game_id);
         setIsInCart(inCart);
       }
     };
@@ -71,7 +71,7 @@ function ProductPage() {
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error loading game: {error.message}</p>;
 
-  if (!game) return <p>No game found with id: {id}</p>;
+  if (!game) return <p>No game found with id: {game_id}</p>;
 
   return (
     <div>

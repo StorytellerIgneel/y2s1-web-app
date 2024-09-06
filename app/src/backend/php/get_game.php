@@ -18,11 +18,11 @@ if ($conn->connect_error) {
 }
 
 // Get the game ID from the query string
-$game_id = isset($_GET['id']) ? intval($_GET['id']) : 0;
+$game_id = isset($_GET['game_id']) ? intval($_GET['game_id']) : 0;
 
 if ($game_id > 0) {
     // SQL query to fetch a specific game
-    $sql = "SELECT * FROM games WHERE id = ?";
+    $sql = "SELECT * FROM games WHERE game_id=?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("i", $game_id);
     $stmt->execute();

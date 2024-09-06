@@ -32,7 +32,7 @@ function PaymentOption({
         />
         <label htmlFor={id}>{labelText}</label>
       </div>
-      {value === "credit card" && showCreditCardForm && (
+      {value === "Credit Card" && showCreditCardForm && (
         <form className="credit-card-form mt-4 w-full rounded-md bg-gray-100 p-5">
           <h2 className="mb-3 font-bold">CARD DETAILS</h2>
           <div className="flex flex-col space-y-3">

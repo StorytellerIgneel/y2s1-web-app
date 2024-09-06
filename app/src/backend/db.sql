@@ -58,3 +58,39 @@ CREATE TABLE IF NOT EXISTS purchase_items (
     FOREIGN KEY (purchase_id) REFERENCES Purchases(purchase_id),
     FOREIGN KEY (game_id) REFERENCES Games(game_id)
 );
+
+INSERT INTO `games` (`game_id`, `title`, `img_src`, `desc`, `rating`, `rating_num`, `release_date`, `developer`, `publisher`, `price`) VALUES 
+('105600', 'Terraria', 'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/105600/header.jpg?t=1666290860', 'Dig, fight, explore, build! Nothing is impossible in this action-packed adventure game. Four Pack also available!', 'Overwhelmingly Positive', '1057516', '2011-05-17', 'Re-Logic', 'Re-Logic', '26.75');
+
+INSERT INTO `games` (`game_id`, `title`, `img_src`, `desc`, `rating`, `rating_num`, `release_date`, `developer`, `publisher`, `price`) VALUES 
+('814380', 'Sekiro™: Shadows Die Twice - GOTY Edition', 'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/814380/header.jpg?t=1721684463', 'Game of the Year - The Game Awards 2019 Best Action Game of 2019 - IGN Carve your own clever path to vengeance in the award-winning adventure from developer FromSoftware, creators of Bloodborne and the Dark Souls series. Take Revenge. Restore Your Honor. Kill Ingeniously.', 'Overwhelmingly Positive', '216477', '2019-03-22', 'FromSoftware, Inc.', 'Activision (Excluding Japan and Asia), FromSoftware, Inc. (Japan), 方块游戏 (Asia)', '285.00');
+
+INSERT INTO `games` (`game_id`, `title`, `img_src`, `desc`, `rating`, `rating_num`, `release_date`, `developer`, `publisher`, `price`) VALUES 
+('648800', 'Raft', 'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/648800/header.jpg?t=1725373838', 'Raft™ throws you and your friends into an epic oceanic adventure! Alone or together, players battle to survive a perilous voyage across a vast sea! Gather debris, scavenge reefs, and build your own floating home, but be wary of the man-eating sharks!', 'Very Positive', '274865', '2022-06-21', 'Redbeet Interactive', 'Axolot Games', '38.00');
+
+INSERT INTO `games` (`game_id`, `title`, `img_src`, `desc`, `rating`, `rating_num`, `release_date`, `developer`, `publisher`, `price`) VALUES 
+('1245620', 'ELDEN RING', 'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1245620/header.jpg?t=1721682743', 'THE NEW FANTASY ACTION RPG. Rise, Tarnished, and be guided by grace to brandish the power of the Elden Ring and become an Elden Lord in the Lands Between.', 'Very Positive', '700781', '2022-02-25', 'FromSoftware, Inc.', 'FromSoftware, Inc., Bandai Namco Entertainment', '199.00');
+
+INSERT INTO `games` (`game_id`, `title`, `img_src`, `desc`, `rating`, `rating_num`, `release_date`, `developer`, `publisher`, `price`) VALUES 
+('1551360', 'Forza Horizon 5', 'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1551360/header.jpg?t=1723160896', 'Explore the vibrant open world landscapes of Mexico with limitless, fun driving action in the world’s greatest cars. Blast off into Forza Horizon 5: Hot Wheels or Conquer the Sierra Nueva in the ultimate Horizon Rally Adventure experience. Requires Forza Horizon 5 game, expansion sold separately.', 'Very Positive', '175662', '2021-11-09', 'Playground Games', 'Xbox Game Studios', '199.00');
+
+INSERT INTO `games` (`game_id`, `title`, `img_src`, `desc`, `rating`, `rating_num`, `release_date`, `developer`, `publisher`, `price`) VALUES 
+('736260', 'Baba Is You', 'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/736260/header.jpg?t=1698353847', 'Baba Is You is a puzzle game where the rules you have to follow are present as blocks you can interact with. By manipulating them, you can change how the game works, repurpose things you find in the levels, and cause surprising interactions!', 'Overwhelmingly Positive', '17488', '2019-03-14', 'Hempuli Oy', 'Hempuli Oy', '32.00');
+
+INSERT INTO `games` (`game_id`, `title`, `img_src`, `desc`, `rating`, `rating_num`, `release_date`, `developer`, `publisher`, `price`) VALUES 
+('1260320', 'Party Animals', 'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1260320/header.jpg?t=1719555296', 'Fight your friends as puppies, kittens and other fuzzy creatures in PARTY ANIMALS! Paw it out with your friends remotely, or huddle together for chaotic fun on the same screen. Interact with the world under our realistic physics engine. Did I mention PUPPIES?', 'Mostly Positive', '37750', '2023-09-20', 'Recreate Games', 'Source Technology', '62.00');
+
+INSERT INTO `games` (`game_id`, `title`, `img_src`, `desc`, `rating`, `rating_num`, `release_date`, `developer`, `publisher`, `price`) VALUES 
+('1332010', 'Stray', 'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1332010/header.jpg?t=1715873569', 'Lost, alone and separated from family, a stray cat must untangle an ancient mystery to escape a long-forgotten cybercity and find their way home.', 'Overwhelmingly Positive', '129193', '2022-07-19', 'BlueTwelve Studio', 'Annapurna Interactive', '69.00');
+
+INSERT INTO `games` (`game_id`, `title`, `img_src`, `desc`, `rating`, `rating_num`, `release_date`, `developer`, `publisher`, `price`) VALUES 
+('1593500', 'God of War', 'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1593500/header.jpg?t=1721154083', 'His vengeance against the Gods of Olympus years behind him, Kratos now lives as a man in the realm of Norse Gods and monsters. It is in this harsh, unforgiving world that he must fight to survive… and teach his son to do the same.', 'Overwhelmingly Positive', '97379', '2022-01-14', 'Santa Monica Studio, Jetpack Interactive', 'PlayStation Publishing LLC', '209.00');
+
+INSERT INTO `games` (`game_id`, `title`, `img_src`, `desc`, `rating`, `rating_num`, `release_date`, `developer`, `publisher`, `price`) VALUES 
+('2358720', 'Black Myth: Wukong', 'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2358720/header.jpg?t=1725007201', 'Black Myth: Wukong is an action RPG rooted in Chinese mythology. You shall set out as the Destined One to venture into the challenges and marvels ahead, to uncover the obscured truth beneath the veil of a glorious legend from the past.', 'Overwhelmingly Positive', '561242', '2024-08-20', 'Game Science', 'Game Science', '219.00');
+
+INSERT INTO `games` (`game_id`, `title`, `img_src`, `desc`, `rating`, `rating_num`, `release_date`, `developer`, `publisher`, `price`) VALUES 
+('1091500', 'Cyberpunk 2077', 'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1091500/header.jpg?t=1721647847', 'Cyberpunk 2077 is an open-world, action-adventure story set in Night City, a megalopolis obsessed with power, glamour, and body modification. You play as V, a mercenary outlaw going after a one-of-a-kind implant that is the key to immortality.', 'Very Positive', '555496', '2020-12-09', 'CD PROJEKT RED', 'CD PROJEKT RED', '159.00');
+
+
+

@@ -7,10 +7,22 @@ function OrderSummary() {
   const { getTotalPrice } = useContext(CartContext);
   const [checkoutOpen, setCheckoutOpen] = useState(false);
 
+  useEffect(() => {
+    if (checkoutOpen) {
+      document.body.style.overflow = "hidden"; 
+    } else {
+      document.body.style.overflow = "auto"; 
+    }
+    return () => {
+      document.body.style.overflow = "auto"; 
+    };
+  }, [checkoutOpen]);
+  
+
   const handleCheckoutClick = () => {
     setCheckoutOpen(true); 
   };
-
+  
   return (
     <div className="h-auto w-auto flex-col space-y-7 rounded-md bg-gray-200 px-7 pb-10 pt-5">
       <p className="text-lg font-bold">Order Summary</p>

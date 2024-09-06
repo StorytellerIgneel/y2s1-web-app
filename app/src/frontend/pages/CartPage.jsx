@@ -16,7 +16,7 @@ function CartPage() {
             <p>Your cart is empty</p>
           ) : (
             cart.map(game => (
-              <CartItem key={game.id} id={game.id} title={game.title} imgSrc={game.img_src} price={game.price} />
+              <CartItem key={game.game_id} id={game.game_id} title={game.title} imgSrc={game.img_src} price={game.price} />
             ))
           )}
         </div>

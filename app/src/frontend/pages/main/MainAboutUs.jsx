@@ -1,4 +1,3 @@
-import React from 'react';
 import video from '../../../assets/videos/gamevid.mp4'; // Import the image
 
 const MainAboutUsSection = () => (

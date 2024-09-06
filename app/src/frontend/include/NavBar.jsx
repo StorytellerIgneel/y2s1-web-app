@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 
 import SearchBar from "./SearchBar";
-import UserProfile from "./UserProfile";
+import UserProfileRight from "./UserProfile";
 import { CartContext } from "../Cart/CartContext";
 import { IoCartSharp, IoStar } from "react-icons/io5";
 
@@ -17,7 +17,7 @@ function NavBar() {
 
 function NavBarTop() {
   return (
-    <div className="flex h-15 items-center justify-between px-0.5 sm:px-16">
+    <div className="flex h-15 items-center justify-between px-0.5 sm:px-16 bg-white">
       <div className="flex items-center space-x-2.5 p-3 sm:space-x-5">
         <Link to="/">
           <img
@@ -37,7 +37,7 @@ function NavBarTop() {
           About Us
         </Link>
       </div>
-      <UserProfile />
+      <UserProfileRight />
     </div>
   );
 }
