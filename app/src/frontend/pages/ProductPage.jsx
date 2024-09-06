@@ -13,19 +13,16 @@ function ProductPage() {
   const navigate = useNavigate();
   const [isInCart, setIsInCart] = useState(false);
 
-  // const addToCart = async () => {
-  //   try {
-  //     const response = await axios.post(
-  //       "http://localhost/y2s1-web-app/app/src/backend/php/add_to_cart.php",
-  //       {
-  //         product_id: game_id, // Use the id from useParams
-  //       },
-  //     );
-  //     console.log("Cart updated:", response.data);
-  //   } catch (error) {
-  //     console.error("Error adding to cart:", error);
-  //   }
-  // };
+  const addToCart = (game_id) => {
+    const url = "http://localhost/y2s1-web-app/app/src/backend/php/add_to_cart.php";
+
+    let formData = new FormData();
+    formData.append('game_id', game_id);
+
+    axios.post(url, formData)
+    .then((response) =>  {})
+    .catch(error => {console.log(error.message)})
+  };
 
   const handleClick = () => {
     if (isInCart) {
@@ -33,7 +30,7 @@ function ProductPage() {
       navigate('/cart'); 
     } else {
       // addToCart();
-      addToCartContext(game);
+      addToCart(game_id);
     }
   };
 

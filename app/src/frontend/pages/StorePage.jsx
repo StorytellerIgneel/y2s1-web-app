@@ -39,7 +39,7 @@ function Store() {
                   title={game.title}
                   imgSrc={game.img_src}
                   price={game.price}
-                  />
+                />
             </li>
           ))}
         </div>
