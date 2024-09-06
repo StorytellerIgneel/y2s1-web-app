@@ -9,6 +9,7 @@ import Layout from "./frontend/include/Layout";
 import Home from "./frontend/include/Home";
 import { CartProvider } from "./frontend/Cart/CartContext";
 import SearchBar from "./frontend/include/SearchBar";
+import MainPage from "./frontend/pages/main/MainPage";
 import PaymentPage from "./frontend/pages/PaymentPage";
 // import "./index.css";
 
@@ -31,7 +32,8 @@ function App() {
               </Route>
               {/* <Route path="/" element={<LoginPage/>} /> */}
               <Route path="/OAuth" element={<OAuth />} />
-            </Routes>
+              <Route path="/Main" element={<MainPage />} />
+          </Routes>
           </BrowserRouter>
         </CartProvider>
       </div>
