@@ -1,4 +1,3 @@
-import "../Store/Store.css";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import ProductCard from "../Store/ProductCard"; // Make sure ProductCard is imported correctly
