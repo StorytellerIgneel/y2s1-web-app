@@ -30,9 +30,9 @@ function App() {
                 <Route path="/searchGame" element={<SearchBar />} />
                 <Route path="/payment" element={<PaymentPage />} />
               </Route>
-              {/* <Route path="/" element={<LoginPage/>} /> */}
+              <Route path="/login" element={<LoginPage/>} />
               <Route path="/OAuth" element={<OAuth />} />
-              <Route path="/Main" element={<MainPage />} />
+              <Route path="/main" element={<MainPage />} />
           </Routes>
           </BrowserRouter>
         </CartProvider>
