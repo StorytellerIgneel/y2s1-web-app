@@ -21,12 +21,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
 
 if ($_SERVER["REQUEST_METHOD"] == "POST"){ 
     $searchString = $_POST['searchGame'];
-    echo $searchString;
    // echo($name);
         
     $dbHost = 'localhost';
     $dbUsername = 'root';
-    $dbPassword = '';
+    $dbPassword = 'teoH0628$$$$';
     $dbName = 'wad_assignment';
     
     // Create connection

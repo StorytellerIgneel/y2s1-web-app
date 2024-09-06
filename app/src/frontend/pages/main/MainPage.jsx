@@ -4,7 +4,7 @@ import MainFooter from './MainFooter';
 import MainHomeSection from './MainHomeSection';
 import MainPlayableGamesSection from './MainPlayableGamesSection';
 import MainAboutUsSection from './MainAboutUs';
-import './style.css'; // Import your CSS file
+import "../../css/style.css"
 
 function MainPage() {
   return (

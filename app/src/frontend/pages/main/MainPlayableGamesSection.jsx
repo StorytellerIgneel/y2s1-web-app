@@ -1,5 +1,8 @@
 import React from 'react';
-import './MainPlayableGamesSection.css'; // Import the section-specific CSS
+import '../../css/MainPlayableGamesSection.css'; // Import the section-specific CSS
+import pacman from '../../../assets/images/pac_man_official_pacman_video_game.jpg'; // Import the image
+import flappy_bird from '../../../assets/images/flappy-birds.jpg'; // Import the image
+import wordle from '../../../assets/images/wordle.jpg'; // Import the image
 
 const MainPlayableGamesSection = () => (
   <section className="section2" id="play">
@@ -9,7 +12,7 @@ const MainPlayableGamesSection = () => (
       {/* Example Card */}
       <div className="cards autoShow">
         <div className="face front">
-          <img src="./images/pac_man_official_pacman_video_game.jpg" alt="Pac-Man"/>
+          <img src={pacman} alt="Pac-Man"/>
           <h3>Pac-Man</h3>
         </div>
         <div className="face back">
@@ -23,7 +26,7 @@ const MainPlayableGamesSection = () => (
       </div>
       <div className="cards autoShow">
           <div className="face front">
-              <img src="./images/flappy-birds.jpg"/>
+              <img src={flappy_bird}/>
               <h3>Flappy Bird</h3>
           </div>
           <div className="face back">
@@ -31,14 +34,14 @@ const MainPlayableGamesSection = () => (
               <p>"Flappy Bird is a simple yet addictive game where you tap to navigate a bird through a series of
                   pipes. Timing and precision are key as you try to achieve the highest score. Easy to learn, hard
                   to master, and endlessly fun."</p>
-              <button className="card-button" onClick="window.location.href='https://flappybird.io/';">
+              <button className="card-button"  onClick={() => {window.location.href='https://flappybird.io/'}}>
                   <i className="fa-solid fa-circle-play"></i>Play
               </button>
           </div>
       </div>
       <div className="cards autoShow">
           <div className="face front">
-              <img src="../assets/images/wordle.jpg"/>
+              <img src={wordle}/>
               <h3>Wordle</h3>
           </div>
           <div className="face back">
@@ -46,7 +49,7 @@ const MainPlayableGamesSection = () => (
               <p>"Wordle is a daily word puzzle game where you guess a five-letter word in six tries. Each guess
                   gives color-coded feedback to help you get closer to the correct word. Fun, challenging, and
                   perfect for word enthusiasts."</p>
-              <button className="card-button" onClick={() => {window.location.href='https://wordly.org/'}}>
+              <button className="card-button" onClick={ () => {window.location.href = 'https://wordly.org/'}}>
                   <i className="fa-solid fa-circle-play"></i>Play
               </button>
           </div>

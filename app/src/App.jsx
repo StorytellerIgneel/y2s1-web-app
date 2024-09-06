@@ -9,7 +9,7 @@ import Layout from "./frontend/include/Layout";
 import Home from "./frontend/include/Home";
 import { CartProvider } from "./frontend/Cart/CartContext";
 import SearchBar from "./frontend/include/SearchBar";
-import MainPage from "./nicholasidiot/MainPage";
+import MainPage from "./frontend/pages/main/MainPage";
 import PaymentPage from "./frontend/pages/PaymentPage";
 // import "./index.css";
 

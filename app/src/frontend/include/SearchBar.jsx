@@ -15,23 +15,19 @@ function SearchBar() {
       axios
         .post(url, formData)
         .then((response) => {
-          console.log(response.data);
-          if (response.data.success) {
-            setResults(response.data.games || []);
-          } else {
-            setResults([]);
-          }
+          if (response.data.success)
+            setResults(response.data.games);
+          else
+            setResults([]); //clear search results
         })
         .catch((error) => {
           console.log(error.message);
-          setResults([]);
+          //setResults([]);
         });
     } else {
       setResults([]); // Clear results if search term is empty
     }
   }, [searchGame]);
-
-  console.log(results);
 
   return (
     <div>

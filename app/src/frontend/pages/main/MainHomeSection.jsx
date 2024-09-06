@@ -1,4 +1,5 @@
 import React from 'react';
+import guy_playing_pc from '../../../assets/images/guy-playing-pc.png'; // Import the image
 
 const MainHomeSection = () => (
   <section className="section1 home">
@@ -11,7 +12,7 @@ const MainHomeSection = () => (
       </button>
     </div>
     <div className="home-img">
-      <img src="./images/guy-playing-pc.png" alt="Guy playing PC"/>
+      <img src={guy_playing_pc} alt="Guy playing PC"/>
     </div>
   </section>
 );
