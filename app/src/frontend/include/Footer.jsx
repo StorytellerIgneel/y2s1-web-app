@@ -1,7 +1,6 @@
-import React from 'react';
-import '../../css/footer.css'; // Import the footer-specific CSS
-import footer_logo from '../../../assets/images/GNS_Horizontal_White.svg'; // Import the image
-function MainFooter (){
+import '../css/footer.css'; // Import the footer-specific CSS
+import footer_logo from '../../assets/images/GNS_Horizontal_White.svg'; // Import the image
+function Footer (){
     return(
     <footer className="footer">
     <div className="container">
@@ -10,7 +9,7 @@ function MainFooter (){
         </div>
         <nav className="footer-nav">
             <a href="#">Home</a>
-            <a href="#">Shop</a>z
+            <a href="#">Shop</a>
             <a href="#">FAQ</a>
             <a href="#">About</a>
             <a href="#">Contact</a>
@@ -26,6 +25,6 @@ function MainFooter (){
         </div>
     </div>
 </footer>
-)};
+)}
 
-export default MainFooter;
+export default Footer;

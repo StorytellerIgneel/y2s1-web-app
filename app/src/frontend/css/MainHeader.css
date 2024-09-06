@@ -2,7 +2,7 @@ body {
     font-family: "Archivo Black", sans-serif;
 }
 
-header {
+.main-page-header {
     position: relative;
     width: 100%;
     padding: 30px 100px;
@@ -14,18 +14,18 @@ header {
 }
 
 
-header ul {
+.main-page-header ul {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-header ul li {
+.main-page-header ul li {
     list-style: none;
     margin-left: 20px;
 }
 
-header ul li a {
+.main-page-header ul li a {
     text-decoration: none;
     padding: 6px 15px;
     color: black;
@@ -33,12 +33,12 @@ header ul li a {
     transition: all .55s ease;
 }
 
-header ul li a:hover {
+.main-page-header ul li a:hover {
     background: #E81C24;
     color: white;
 }
 
-header ul li a.active {
+.main-page-header ul li a.active {
     background: #E81C24;
     color: white;
 }

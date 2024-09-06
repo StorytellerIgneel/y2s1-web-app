@@ -25,8 +25,6 @@ function Store() {
     loadGames();
   }, []);
 
-  console.log(games);
-
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error loading games: {error.message}</p>;
 
