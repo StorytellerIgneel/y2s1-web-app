@@ -4,7 +4,7 @@ import CartPage from "./frontend/pages/CartPage";
 import OAuth from "./backend/OAuth";
 import ProductPage from "./frontend/pages/ProductPage";
 import Layout from "./frontend/include/Layout";
-import Home from "./frontend/include/Home";
+// import Home from "./frontend/include/Home";
 import { CartProvider } from "./frontend/Cart/CartContext";
 import SearchBar from "./frontend/include/SearchBar";
 import PaymentPage from "./frontend/pages/PaymentPage";
@@ -18,7 +18,7 @@ function App() {
           <BrowserRouter>
             <Routes>
               <Route path="/" element={<Layout />}>
-                <Route index element={<Home />} />
+                {/* <Route index element={<Home />} /> */}
                 <Route path="/store" element={<StorePage />} />
                 <Route path="/store/:id" element={<ProductPage />} />
                 <Route path="/cart" element={<CartPage />} />
