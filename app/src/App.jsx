@@ -8,6 +8,7 @@ import { CartProvider } from "./frontend/Cart/CartContext";
 import SearchBar from "./frontend/include/SearchBar";
 import MainPage from "./frontend/pages/MainPage";
 import PaymentPage from "./frontend/pages/PaymentPage";
+import LoginPage from "./frontend/pages/LoginPage";
 import "./index.css";
 
 function App() {
@@ -26,7 +27,7 @@ function App() {
                 <Route path="/searchGame" element={<SearchBar />} />
                 <Route path="/payment" element={<PaymentPage />} />
               </Route>
-              {/* <Route path="/" element={<LoginPage/>} /> */}
+              <Route path="/" element={<LoginPage/>} />
               <Route path="/OAuth" element={<OAuth />} />
               <Route path="/Main" element={<MainPage />} />
           </Routes>

@@ -79,17 +79,17 @@ function ProductPage() {
   return (
     <div>
       <h1>{game.title}</h1> {/*Title*/}
-      <img src={game.img_src} alt={game.title} />
-      <div className="rounded-xl bg-red-100 p-5">
-        <p>{game.desc}</p>
+      <img src={game.img_src} alt={game.title} /> {/*Image*/}
+      <div className="rounded-xl bg-red-100 my-3 p-5">
+        <p>{game.desc}</p> {/*Game Description*/}
         <p>
-          Rating: {game.rating} ({game.rating_num})
+          Rating: {game.rating} ({game.rating_num}) {/*Game rating and its rating num*/}
         </p>
-        <p>Release Date: {game.release_date}</p>
-        <p>Developer: {game.developer}</p>
-        <p>Publisher: {game.publisher}</p>
-        <p>Price: RM {game.price}</p>
-        <button className="m-5 button w-[30%] self-end bg-red-600 hover:bg-red-800" onClick={handleClick}>{isInCart ? "In Cart" : "Add to Cart"}</button>
+        <p>Release Date: {game.release_date}</p> {/*Release Date*/}
+        <p>Developer: {game.developer}</p> {/*Developer*/}
+        <p>Publisher: {game.publisher}</p> {/*Publisher*/}
+        <p>Price: RM {game.price}</p> {/*Price*/}
+        <button className="bottom-0 right-0 button w-[30%] self-end bg-red-600 hover:bg-red-700 m-5" onClick={handleClick}>{isInCart ? "In Cart" : "Add to Cart"}</button>
       </div>
     </div>
   );
