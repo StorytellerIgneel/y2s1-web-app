@@ -6,7 +6,7 @@ header('Access-Control-Allow-Headers: Content-Type');
 // Database connection parameters
 $servername = "localhost";
 $username = "root";
-$password = "";
+$password = "teoH0628$$$$";
 $dbname = "WAD_ASSIGNMENT";
 
 // Create a new connection
