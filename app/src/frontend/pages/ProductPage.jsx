@@ -56,6 +56,8 @@ function ProductPage() {
     fetchGame();
   }, [game_id]);
 
+
+  //check if its in cart
   useEffect(() => {
     // update `isInCart` based on the current `cart` state
     const checkIsInCart = () => {
@@ -68,6 +70,7 @@ function ProductPage() {
     checkIsInCart();
   }, [cart, game]);
 
+
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error loading game: {error.message}</p>;
 
@@ -75,17 +78,19 @@ function ProductPage() {
 
   return (
     <div>
-      <h1>{game.title}</h1>
+      <h1>{game.title}</h1> {/*Title*/}
       <img src={game.img_src} alt={game.title} />
-      <p>{game.desc}</p>
-      <p>
-        Rating: {game.rating} ({game.rating_num})
-      </p>
-      <p>Release Date: {game.release_date}</p>
-      <p>Developer: {game.developer}</p>
-      <p>Publisher: {game.publisher}</p>
-      <p>Price: RM {game.price}</p>
-      <button className="button w-[30%] self-end bg-red-600 hover:bg-red-800" onClick={handleClick}>{isInCart ? "In Cart" : "Add to Cart"}</button>
+      <div className="">
+        <p>{game.desc}</p>
+        <p>
+          Rating: {game.rating} ({game.rating_num})
+        </p>
+        <p>Release Date: {game.release_date}</p>
+        <p>Developer: {game.developer}</p>
+        <p>Publisher: {game.publisher}</p>
+        <p>Price: RM {game.price}</p>
+        <button className="button w-[30%] self-end bg-red-600 hover:bg-red-800" onClick={handleClick}>{isInCart ? "In Cart" : "Add to Cart"}</button>
+      </div>
     </div>
   );
 }
