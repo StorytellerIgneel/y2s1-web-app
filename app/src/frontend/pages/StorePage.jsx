@@ -34,9 +34,9 @@ function Store() {
       <ul className="product-list">
         <div className="flex item-stretch flex-row flex-wrap justify-between">
           {games.map((game) => (
-            <li key={game.id}>
+            <li key={game.game_id}>
                 <ProductCard
-                  slug={game.id}
+                  slug={game.game_id}
                   title={game.title}
                   imgSrc={game.img_src}
                   price={game.price}
