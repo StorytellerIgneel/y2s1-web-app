@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { googleLogout, useGoogleLogin } from '@react-oauth/google';
+import "../frontend/css/login-style.css"
 import axios from 'axios';
 
 function OAuth({ triggerLogin }) {
@@ -46,10 +47,7 @@ function OAuth({ triggerLogin }) {
 
     return (
         <div>
-            <h2>React Google Login</h2>
-            <br />
-            <br />
-            {profile ? (
+            {/* {profile ? (
                 <div>
                     <img src={profile.picture} alt="user image" />
                     <h3>User Logged in</h3>
@@ -61,7 +59,11 @@ function OAuth({ triggerLogin }) {
                 </div>
             ) : (
                 <button onClick={() => login()} className='button bg-black px-3'>Sign in with Google 🚀 </button>
-            )}
+            )} */}
+            <div className='social-login'>
+            <i className="fa-brands fa-google" onClick={() => login()}></i>
+
+            </div>
         </div>
     );
 }

@@ -1,9 +1,9 @@
 import "../css/login-style.css";
 
-import React, { useEffect, useState, useRef} from "react";
+import React, { useEffect, useState, useRef } from "react";
 import OAuth from "../../backend/OAuth";
-import axios from 'axios';
-import Swal from 'sweetalert2';
+import axios from "axios";
+import Swal from "sweetalert2";
 // import 'bootstrap/dist/css/bootstrap.min.css';
 import { Helmet } from "react-helmet";
 import { GoogleLogin, GoogleOAuthProvider } from "@react-oauth/google";
@@ -23,7 +23,7 @@ function LoginPage() {
   const [triggerLogin, setTriggerLogin] = useState(false);
 
   const handleLoginClick = () => {
-    console.log(name, password)
+    console.log(name, password);
     setLogin(true);
     setRegister(false);
   };
@@ -39,233 +39,248 @@ function LoginPage() {
     const registerBtn = document.querySelector("#register");
     const loginForm = document.querySelector(".login-form");
     const registerForm = document.querySelector(".register-form");
+
+    // Change button colors
     loginBtn.style.backgroundColor = "#ff3131";
     registerBtn.style.backgroundColor = "rgba(255,255,255,0.2)";
 
+    // Show login form and hide register form
     loginForm.style.left = "10%";
-    registerForm.style.left = "-50%";
-
     loginForm.style.opacity = 1;
+
+    registerForm.style.left = "-50%";
     registerForm.style.opacity = 0;
 
+    // Adjust border radius (optional)
     document.querySelector(".col-1").style.borderRadius = "0 10% 30% 0";
-  }
+  };
 
   const changeToRegisterForm = () => {
     const loginBtn = document.querySelector("#login");
     const registerBtn = document.querySelector("#register");
     const loginForm = document.querySelector(".login-form");
     const registerForm = document.querySelector(".register-form");
+
+    // Change button colors
     registerBtn.style.backgroundColor = "#ff3131";
     loginBtn.style.backgroundColor = "rgba(255,255,255,0.2)";
 
-    loginForm.style.left = "150%";
-    registerForm.style.left = "60%";
 
+    // Show register form and hide login form
+    loginForm.style.left = "150%"; // Push login form off screen
     loginForm.style.opacity = 0;
+    
+    registerForm.style.left = "50%"; // Bring register form into view
     registerForm.style.opacity = 1;
 
+    // Adjust border radius (optional)
     document.querySelector(".col-1").style.borderRadius = "0 30% 10% 0";
-  }
+  };
 
   const googleLogin = () => {
     // call OAuth login function
-      axios.get(`https://www.googleapis.com/oauth2/v1/userinfo?access_token=${user.access_token}`, {
-            headers: {
-                Authorization: `Bearer ${user.access_token}`,
-                Accept: 'application/json'
-            }
-        })
-        .then((response) => {
-          if (response.data.success) { 
-            console.log(response);
-            navigate('/store');  // Navigate to '/store' if successful
-          } else {
-            Swal.fire({
-              icon: 'error',
-              title: 'Login Error',
-              text: response.data.error
-            }); // Handle the failure case if needed
-          }
-        })
-        .catch((err) => console.log(err));
-    }
-  
+    axios
+      .get(
+        `https://www.googleapis.com/oauth2/v1/userinfo?access_token=${user.access_token}`,
+        {
+          headers: {
+            Authorization: `Bearer ${user.access_token}`,
+            Accept: "application/json",
+          },
+        },
+      )
+      .then((response) => {
+        if (response.data.success) {
+          console.log(response);
+          navigate("/store"); // Navigate to '/store' if successful
+        } else {
+          Swal.fire({
+            icon: "error",
+            title: "Login Error",
+            text: response.data.error,
+          }); // Handle the failure case if needed
+        }
+      })
+      .catch((err) => console.log(err));
+  };
 
   const Login = (e) => {
     e.preventDefault();
 
-    if (name === "" && email === "" && password === ""){
+    if (name === "" && email === "" && password === "") {
       Swal.fire({
-        icon: 'error',
-        title: 'Oops...',
-        text: 'Please fill in all fields!'
+        icon: "error",
+        title: "Oops...",
+        text: "Please fill in all fields!",
       });
     }
 
     const url = "http://localhost/y2s1-web-app/app/src/backend/php/login.php";
 
     let formData = new FormData();
-    formData.append('username', name);
-    formData.append('password', password);
+    formData.append("username", name);
+    formData.append("password", password);
 
-    axios.post(url, formData)
-    .then((response) =>  {
-      console.log(response.data);
-      if (response.data.success) { 
-        console.log(response);
-        navigate('/searchGame');  // Navigate to '/store' if successful
-      } else {
-        Swal.fire({
-          icon: 'error',
-          title: 'Login Error',
-          text: response.data.error
-        }); // Handle the failure case if needed
-      }
-    }).catch(error => {console.log(error.message)})
+    axios
+      .post(url, formData)
+      .then((response) => {
+        console.log(response.data);
+        if (response.data.success) {
+          console.log(response);
+          navigate("/store"); // Navigate to '/store' if successful
+        } else {
+          Swal.fire({
+            icon: "error",
+            title: "Login Error",
+            text: response.data.error,
+          }); // Handle the failure case if needed
+        }
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
   };
 
   return (
     <GoogleOAuthProvider clientId="721278939294-754epiosjucfqahjktvlnt89f7j8o42b.apps.googleusercontent.com">
       <div className="login-page-body">
         <Helmet>
-            <title>GameNonStop | Login & Register</title>
-            <link
-              href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap"
-              rel="stylesheet"
-            />
-            <link
-              rel="stylesheet"
-              href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-              integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
-              crossorigin="anonymous"
-              referrerpolicy="no-referrer"
-            />
-          </Helmet>
-            <div className="form-container">
-              <div className="col col-1">
-                <div className="image-layer">
-                  <img
-                    src="../../../images/login-images/guy-playing-pc.png"
-                    className="form-image-main pcguy"
+          <title>GameNonStop | Login & Register</title>
+          <link
+            href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap"
+            rel="stylesheet"
+          />
+          <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+            integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+          />
+        </Helmet>
+        <div className="form-container">
+          <div className="col-1">
+            <div className="image-layer">
+              <img
+                src="../../../images/login-images/guy-playing-pc.png"
+                className="form-image-main pcguy"
+              />
+              <img
+                src="./../../images/login-images/login-controller.png"
+                className="form-image controller"
+              />
+              <img
+                src="./../../images/login-images/PSsymbol.png"
+                className="form-image symbol"
+              />
+            </div>
+            <p className="featured-words">
+              You Are Few Minutes A Way To Get Your Favourite Games on{" "}
+              <img src="../../../public/images/logo/light/GNS_TextOnly_Black.svg" alt="" />
+            </p>
+          </div>
+          <div className="col-2">
+            <div className="btn-box">
+              <button
+                className="btn btn-1"
+                id="login"
+                onClick={changeToLoginForm}
+              >
+                Sign In
+              </button>
+              <button
+                className="btn btn-2"
+                id="register"
+                onClick={changeToRegisterForm}
+              >
+                Sign Up
+              </button>
+            </div>
+            <form ref={loginForm} onSubmit={Login} className="login-form">
+              <span className="form-title">Sign In</span>
+              <div>
+                <div className="input-box">
+                  <input
+                    type="text"
+                    className="input-field"
+                    name="username"
+                    onChange={(e) => setName(e.target.value)}
+                    placeholder="Username"
+                    required
                   />
-                  <img
-                    src="./../../images/login-images/login-controller.png"
-                    className="form-image controller"
-                  />
-                  <img
-                    src="./../../images/login-images/PSsymbol.png"
-                    className="form-image symbol"
-                  />
+                  <i className="fa-solid fa-user icon"></i>
                 </div>
-                <p className="featured-words">
-                  You Are Few Minutes A Way To Get Your Favourite Games on{" "}
-                  <span>GameNonStop</span>
-                </p>
-              </div>
-              <div className="col col-2">
-                <div className="btn-box">
-                  <button className="btn btn-1" id="login" onClick={changeToLoginForm}>
-                    Sign In
+                <div className="input-box">
+                  <input
+                    type="password"
+                    className="input-field"
+                    name="password"
+                    onChange={(e) => setPassword(e.target.value)}
+                    placeholder="Password"
+                    required
+                  />
+                  <i className="fa-solid fa-unlock icon"></i>
+                </div>
+                <div className="input-submit">
+                  <button
+                    className={
+                      login ? "loginBtn-clicked" : "loginBtn-notClicked"
+                    }
+                    onClick={handleLoginClick}
+                  >
+                    <span>Sign In </span>
+                    <i className="fa-solid fa-right-to-bracket"></i>
                   </button>
-                  <button className="btn btn-2" id="register" onClick={changeToRegisterForm}>
-                    Sign Up
+                </div>
+              </div>
+              <OAuth triggerLogin={triggerLogin} />
+            </form>
+            <form ref={registerForm} onSubmit={Login} className="register-form">
+              <span className="form-title">Sign Up</span>
+              <div className="form-inputs">
+                <div className="input-box">
+                  <input
+                    type="email"
+                    className="input-field"
+                    name="email"
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="Email"
+                    required
+                  />
+                  <i className="fa-solid fa-envelope icon"></i>
+                </div>
+                <div className="input-box">
+                  <input
+                    type="text"
+                    className="input-field"
+                    name="username"
+                    onChange={(e) => setName(e.target.value)}
+                    placeholder="Username"
+                    required
+                  />
+                  <i className="fa-solid fa-user icon"></i>
+                </div>
+                <div className="input-box">
+                  <input
+                    type="password"
+                    className="input-field"
+                    name="password"
+                    onChange={(e) => setPassword(e.target.value)}
+                    placeholder="Password"
+                    required
+                  />
+                  <i className="fa-solid fa-unlock icon"></i>
+                </div>
+                <div className="input-submit">
+                  <button onClick={handleLoginClick}>
+                    <span>Sign Up </span>
+                    <i className="fa-solid fa-right-to-bracket"></i>
                   </button>
                 </div>
-                <form ref={loginForm} onSubmit={Login} className="login-form">
-                <div className="login-form">
-                  <div className="form-title">
-                    <span className="title">Sign In</span>
-                  </div>
-                  <div className="form-inputs">
-                    <div className="input-box">
-                      <input
-                        type="text"
-                        className="input-field"
-                        name = "username"
-                        onChange = {(e) => setName(e.target.value)}
-                        placeholder="Username"
-                        required
-                      />
-                      <i className="fa-solid fa-user icon"></i>
-                    </div>
-                    <div className="input-box">
-                      <input
-                        type="password"
-                        className="input-field"
-                        name = "password"
-                        onChange = {(e) => setPassword(e.target.value)}
-                        placeholder="Password"
-                        required
-                      />
-                      <i className="fa-solid fa-unlock icon"></i>
-                    </div>
-                    <div className="input-box submit">
-                      <button className={login? "loginBtn-clicked" : "loginBtn-notClicked"
-                      } onClick={handleLoginClick}>
-                        <span>Sign In</span>
-                        <i className="fa-solid fa-right-to-bracket"></i>
-                      </button>
-                    </div>
-                  </div>
-                  <div className="social-login">
-                    <i className="fa-brands fa-google"></i>
-                  </div>
-                </div>
-                </form>
-                <form ref={registerForm} onSubmit={Login} className="register-form">
-                <div className="register-form">
-                  <div className="form-title">
-                    <span className="title">Sign Up</span>
-                  </div>
-                  <div className="form-inputs">
-                    <div className="input-box">
-                      <input
-                        type="email"
-                        className="input-field"
-                        name = "email"
-                        onChange = {(e) => setEmail(e.target.value)}
-                        placeholder="Email"
-                        required
-                      />
-                      <i className="fa-solid fa-envelope icon"></i>
-                    </div>
-                    <div className="input-box">
-                      <input
-                        type="text"
-                        className="input-field"
-                        name = "username"
-                        onChange = {(e) => setName(e.target.value)}
-                        placeholder="Username"
-                        required
-                      />
-                      <i className="fa-solid fa-user icon"></i>
-                    </div>
-                    <div className="input-box">
-                      <input
-                        type="password"
-                        className="input-field"
-                        name = "password"
-                        onChange = {(e) => setPassword(e.target.value)}
-                        placeholder="Password"
-                        required
-                      />
-                      <i className="fa-solid fa-unlock icon"></i>
-                    </div>
-                    <div className="input-box submit">
-                      <button onClick={handleLoginClick}>
-                        {/* <span>Sign Up</span> */}
-                        <i className="fa-solid fa-right-to-bracket"></i>
-                      </button>
-                    </div>
-                  </div>
-                  <div className="social-login">
-                    <i className="fa-brands fa-google" onClick={googleLogin}></i>
-                    <OAuth triggerLogin={triggerLogin} />
-                  </div>
-                </div>
-                </form>
               </div>
+              <OAuth triggerLogin={triggerLogin} />
+            </form>
+          </div>
         </div>
       </div>
     </GoogleOAuthProvider>
