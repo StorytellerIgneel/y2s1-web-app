@@ -27,7 +27,7 @@
 
 /* Container for the carousel */
 .container {
-  @apply w-full h-[800px] relative overflow-hidden m-0 auto;
+  @apply w-full h-[800px] relative overflow-hidden mx-auto; /* Using mx-auto for centering */
   perspective: 1000px;
   transform-style: preserve-3d;
   position: relative;

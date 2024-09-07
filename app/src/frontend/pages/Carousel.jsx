@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import axios from "axios"; // Axios for API calls
-import "../css/Carousel.css";
+//import "../css/Carousel.css";
 
 const RADIUS = 1200;
 const FLIP_RANGE = 3;
