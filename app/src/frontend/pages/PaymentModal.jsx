@@ -3,9 +3,11 @@ import { CartContext } from "../Cart/CartContext";
 import { PaymentItem } from "../Cart/CartItem";
 import { PaymentSummary } from "../Cart/OrderSummary";
 import { UserProfileLeft } from "../include/UserProfile";
+import PaymentStatusModal from "./PaymentStatusModal";
+import Modal from "../include/Modal/Modal";
 import "../../index.css";
 
-function PaymentPage({ selcetedPaymentMethod }) {
+function PaymentModal({ selcetedPaymentMethod }) {
   return (
     <div>
       <h1>Checkout</h1>
@@ -20,7 +22,9 @@ function PaymentPage({ selcetedPaymentMethod }) {
         <div className="w-1/2">
           <CartItemsList />
           <div className="h-0.5 w-auto bg-gray-300"></div>
-          <PaymentSummary />
+          <div className="p-2">
+            <PaymentSummary />
+          </div>
         </div>
         <div className="w-1/2">
           <TermsAndAgreement selcetedPaymentMethod={selcetedPaymentMethod} />
@@ -48,15 +52,21 @@ function CartItemsList() {
 
 function TermsAndAgreement({ selcetedPaymentMethod }) {
   const [agree, setAgree] = useState(false);
+  const [paymentStatusOpen, setPaymentStatusOpen] = useState(false);
+
+  const handleContinueClick = () => {
+    setPaymentStatusOpen(true); 
+  };
+
   return (
-    <div className="space-y-5">
+    <div className="space-y-5 sticky top-5">
       <div className="space-y-8 rounded-lg bg-gray-200 px-16 py-5">
         <div className="py-4">
           <UserProfileLeft />
         </div>
         <div className="space-y-5">
           <p className="font-bold">Payment via {selcetedPaymentMethod}</p>
-          <div className="inline-flex rounded-lg bg-gray-300 p-5">
+          <div className="inline-flex rounded-lg bg-gray-300 p-2 items-center">
             <input
               type="checkbox"
               id="terms"
@@ -64,9 +74,10 @@ function TermsAndAgreement({ selcetedPaymentMethod }) {
               value="terms"
               onChange={(e) => setAgree(e.target.checked)}
               required
+              className="checkbox"
             />
-            <label htmlFor="terms" className="px-5 text-justify text-xs">
-              I agree to the terms of the GameNonStop Subscriber Agreement.
+            <label htmlFor="terms" className="px-3 py-2 text-justify text-xs">
+              I agree to the terms of the GameNonStop Subscriber Agreement. {}
               {selcetedPaymentMethod} transactions are authorized through
               IntelPay website. Click the button below to open a new web browser
               window to initiate the transaction.
@@ -80,9 +91,13 @@ function TermsAndAgreement({ selcetedPaymentMethod }) {
           className="button w-[50%] bg-red-600 hover:bg-red-800 disabled:bg-gray-500"
           value="Checkout"
           disabled={!agree}
+          onClick={handleContinueClick}
         />
       </div>
+      <Modal open={paymentStatusOpen} onClose={() => setPaymentStatusOpen(false) }>
+        <PaymentStatusModal />
+      </Modal>
     </div>
   );
 }
-export default PaymentPage;
+export default PaymentModal;

@@ -51,7 +51,7 @@ export default CartItem;
 export function PaymentItem({ imgSrc, title, price }) {
   return (
     <div>
-      <div className="flex h-auto w-auto gap-x-4 pb-4 items-center">
+      <div className="flex h-auto w-auto items-center gap-x-4 pb-4">
         <img
           className="h-20 w-40 rounded-md object-cover"
           src={imgSrc}
@@ -59,8 +59,10 @@ export function PaymentItem({ imgSrc, title, price }) {
         />
         <div className="inline-flex flex-grow flex-col justify-between">
           <div className="flex items-center justify-between">
-            <div className="text-sm font-bold">{title}</div>
-            <span className="px-2 py-1 text-sm font-semibold">RM {price}</span>
+            <div className="text-sm font-bold line-clamp-3 flex-grow">{title}</div>
+              <p className="px-2 py-1 text-sm font-semibold whitespace-nowrap">
+                RM {price}
+              </p>
           </div>
         </div>
       </div>
