@@ -2,7 +2,7 @@
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
-	font-family: "Archivo Black", sans-serif;
+	/* font-family: "Archivo Black", sans-serif; */
 
 	/* Variables for storing colors */
 	--card-clr: #fff;

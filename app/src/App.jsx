@@ -5,9 +5,7 @@ import OAuth from "./backend/OAuth";
 import ProductPage from "./frontend/pages/ProductPage";
 import Layout from "./frontend/include/Layout";
 import { CartProvider } from "./frontend/Cart/CartContext";
-import SearchBar from "./frontend/include/SearchBar";
 import MainPage from "./frontend/pages/MainPage";
-import PaymentPage from "./frontend/pages/PaymentPage";
 import LoginPage from "./frontend/pages/LoginPage";
 import "./index.css";
 
@@ -24,8 +22,6 @@ function App() {
                 <Route path="/cart" element={<CartPage />} />
                 {/* for testing */}
                 {/* <Route path="/wishlist" element={<WishlistPage />} /> */}
-                <Route path="/searchGame" element={<SearchBar />} />
-                <Route path="/payment" element={<PaymentPage />} />
               </Route>
               <Route path="/login" element={<LoginPage/>} />
               <Route path="/OAuth" element={<OAuth />} />
