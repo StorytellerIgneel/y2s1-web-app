@@ -1,11 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { googleLogout, useGoogleLogin } from '@react-oauth/google';
+import UserContext from '../frontend/pages/LoginContext';
 import "../frontend/css/login-style.css"
 import axios from 'axios';
 
 function OAuth({ triggerLogin }) {
     const [ user, setUser ] = useState(null);
     const [ profile, setProfile ] = useState(null);
+
+    const { loginUser } = useContext(UserContext);
 
     const login = useGoogleLogin({
         onSuccess: (codeResponse) => setUser(codeResponse),
@@ -30,13 +33,14 @@ function OAuth({ triggerLogin }) {
                     })
                     .then((res) => {
                         setProfile(res.data);
+                        loginUser(res.data);
                         console.log(user.access_token);
                         console.log(res.data);
                     })
                     .catch((err) => console.log(err));
             }
         },
-        [ user ]
+        [loginUser, user]
     );
 
     // log out function to log the user out of google and set the profile array to null

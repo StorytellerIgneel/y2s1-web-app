@@ -4,7 +4,7 @@ import UserContext from "../pages/LoginContext";
 export const CartContext = createContext();
 
 export const CartProvider = ({ children }) => {
-  const { user } = useContext(UserContext); // Access user from UserContext
+  // const { user } = useContext(UserContext); // Access user from UserContext
   const [cart, setCart] = useState([]);
 
     useEffect(() => {
@@ -27,7 +27,7 @@ export const CartProvider = ({ children }) => {
       // Save the updated cart to localStorage
       localStorage.setItem("cart", JSON.stringify(uniqueCart));
       //console.log('Cart updated and saved to localStorage:', uniqueCart);
-      console.log(localStorage.getItem("cart"));
+      //console.log(localStorage.getItem("cart"));
     }, [cart]);
     
 
@@ -36,7 +36,8 @@ export const CartProvider = ({ children }) => {
     };
 
     const removeFromCart = (game_id) => {
-      setCart((prevCart) => prevCart.filter((game) => game.game_id !== game_id));
+      console.log(game_id)
+      setCart((prevCart) => (prevCart.filter((game) => game.game_id !== game_id)));
     };
 
   // Function to clear the cart

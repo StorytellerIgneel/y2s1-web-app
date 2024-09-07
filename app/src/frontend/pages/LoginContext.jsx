@@ -48,7 +48,7 @@ export const UserProvider = ({ children }) => {
       // // Update localStorageUser when user logs out
       // setLocalStorageUser(null);
     }
-  }, [user]);
+  }, [localuser, user]);
 
   // useEffect(() => {
   //   // Initialize user state with the value from localStorage if it's not set
@@ -60,6 +60,7 @@ export const UserProvider = ({ children }) => {
   // Function to handle user login
   const loginUser = (userInfo) => {
     setUser(userInfo);
+    console.log(userInfo);
   };
 
   // Function to handle user logout
@@ -70,7 +71,7 @@ export const UserProvider = ({ children }) => {
 
   return (
     <UserContext.Provider
-      value={{ localuser, loginUser, logoutUser }}
+      value={{ localuser, user, loginUser, logoutUser }}
     >
       {children}
     </UserContext.Provider>

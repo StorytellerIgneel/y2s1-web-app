@@ -1,55 +1,53 @@
 import { FaUserCircle } from "react-icons/fa";
-import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { Link } from "react-router-dom";
+import UserContext from "../pages/LoginContext";
 
-function UserProfileRight({ profile }) {
-  const navigate = useNavigate();
+function UserProfileRight() {
+  const { user } = useContext(UserContext);
 
-  const handleNavigate = () => {
-    navigate("/login");
-  }
+  return (
+    <Link to="/login">
+      <div className="flex items-center space-x-5">
+        <p className="hidden text-xs font-bold text-gray-600 md:block" href="">
+          {user ? user.name : "Guest"}
+        </p>
+        <div className="flex space-x-2">
+          {user ? (
+            <img
+              className="h-8 w-8 rounded-full border border-gray-100 shadow-sm sm:h-10 sm:w-10"
+              src={user.picture}
+              alt={user.name}
+            />
+          ) : (
+            <FaUserCircle fill="gray" className="size-8" />
+          )}
+        </div>
+      </div>
+    </Link>
+  );
+}
+
+export function UserProfileLeft() {
+  const { user } = useContext(UserContext);
   return (
     <div className="flex items-center space-x-5">
-      <p className="hidden text-xs font-bold text-gray-600 md:block" href="">
-        {profile?.name || "Guest"}
-      </p>
       <div className="flex space-x-2">
-        {profile ? (
+        {user ? (
           <img
             className="h-8 w-8 rounded-full border border-gray-100 shadow-sm sm:h-10 sm:w-10"
-            src="../../../images/test-data/the-last-of-us-part-i.jpg"
-            alt="user image" onClick={handleNavigate}
+            src={user.picture}
+            alt={user.name}
           />
         ) : (
-          <FaUserCircle fill="gray" className="size-8"/>
+          <FaUserCircle fill="gray" className="size-8" />
         )}
       </div>
+      <p className="hidden text-xs font-bold text-gray-600 md:block" href="">
+        {user ? user.name : "Guest"}
+      </p>
     </div>
   );
 }
-
-export function UserProfileLeft({ profile }) {
-  return (
-      <div className="flex items-center space-x-5">
-        
-        <div className="flex space-x-2">
-          {profile ? (
-            <img
-              className="h-8 w-8 rounded-full border border-gray-100 shadow-sm sm:h-10 sm:w-10"
-              src="../../../images/test-data/the-last-of-us-part-i.jpg"
-              alt="user image"
-            />
-          ) : (
-            <FaUserCircle fill="gray" className="size-8"/>
-          )}
-        </div>
-        <p className="hidden text-xs font-bold text-gray-600 md:block" href="">
-          {profile?.name || "Guest"}
-        </p>
-      </div>
-  );
-}
-
-
 
 export default UserProfileRight;
