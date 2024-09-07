@@ -1,13 +1,11 @@
 import { FaUserCircle } from "react-icons/fa";
 import { useContext } from "react";
-import { Link } from "react-router-dom";
 import UserContext from "../pages/LoginContext";
 
 function UserProfileRight() {
   const { user } = useContext(UserContext);
 
   return (
-    <Link to="/login">
       <div className="flex items-center space-x-5">
         <p className="hidden text-xs font-bold text-gray-600 md:block" href="">
           {user ? user.name : "Guest"}
@@ -24,7 +22,6 @@ function UserProfileRight() {
           )}
         </div>
       </div>
-    </Link>
   );
 }
 

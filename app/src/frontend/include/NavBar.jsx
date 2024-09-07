@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import { Link } from "react-router-dom";
 
 import SearchBar from "./SearchBar";
@@ -17,7 +17,7 @@ function NavBar() {
 
 function NavBarTop() {
   return (
-    <div className="flex h-15 items-center justify-between px-0.5 sm:px-16 bg-white">
+    <div className="h-15 flex items-center justify-between bg-white px-0.5 sm:px-16">
       <div className="flex items-center space-x-2.5 p-3 sm:space-x-5">
         <Link to="/">
           <img
@@ -37,7 +37,9 @@ function NavBarTop() {
           About Us
         </Link>
       </div>
-      <UserProfileRight />
+      <Link to="/profile">
+        <UserProfileRight  />
+      </Link>
     </div>
   );
 }
@@ -45,13 +47,15 @@ function NavBarTop() {
 function NavBarBottom() {
   const { cart } = useContext(CartContext);
   return (
-    <div className="flex h-15 items-center justify-between bg-gray-100 px-3 sm:px-20 md:px-44">
+    <div className="h-15 flex items-center justify-between bg-gray-100 px-3 sm:px-20 md:px-44">
       <SearchBar />
       <div className="flex items-center space-x-6 p-3 sm:space-x-10">
         <Link to="/cart" className="flex items-center space-x-1">
           <div className="relative flex h-10 w-10 items-center justify-center rounded-full">
             <IoCartSharp className="size-6" fill="gray" />
-            <span className="absolute top-2/3 right-1/2 bg-red-500 text-white text-sm px-2 h-5 rounded-xl flex items-center justify-center">{cart.length}</span>
+            <span className="absolute right-1/2 top-2/3 flex h-5 items-center justify-center rounded-xl bg-red-500 px-2 text-sm text-white">
+              {cart.length}
+            </span>
           </div>
           <p className="text-sm font-bold text-gray-600">Cart</p>
         </Link>
