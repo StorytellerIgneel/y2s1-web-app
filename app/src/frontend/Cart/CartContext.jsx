@@ -4,7 +4,7 @@ import UserContext from "../pages/LoginContext";
 export const CartContext = createContext();
 
 export const CartProvider = ({ children }) => {
-  const { user } = useContext(UserContext); // Access user from UserContext
+  // const { user } = useContext(UserContext); // Access user from UserContext
   const [cart, setCart] = useState([]);
 
     useEffect(() => {
