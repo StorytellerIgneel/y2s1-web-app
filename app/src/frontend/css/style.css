@@ -21,11 +21,15 @@
         transform: translateY(0) scale(1);
     }
 }
+
 .main-page-body{
     display: flex;
     flex-wrap: wrap;
     min-height: 100vh;
-    background: #E81C24;
+    background: #282828;
+    position: absolute;
+    left: 0;
+    width: 100%;
 }
 
 
@@ -44,6 +48,11 @@
     background-position: center;
     background-attachment: fixed;
     background-size: cover;
+}
+
+.home-buttons {
+    display: flex;
+    gap: 1rem;
 }
 
 .home-text h1{

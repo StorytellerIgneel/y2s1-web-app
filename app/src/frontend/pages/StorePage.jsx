@@ -1,8 +1,10 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { Link } from "react-router-dom";
+import UserContext from "./LoginContext";
 
 function Store() {
+  const { user, loginUser } = useContext(UserContext);
   const [games, setGames] = useState([]); // Initialize as an empty array
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -21,7 +23,7 @@ function Store() {
         setLoading(false);
       }
     };
-
+    console.log(user);
     loadGames();
   }, []);
 
