@@ -25,7 +25,6 @@ function UserProfileRight({ profile }) {
 
 export function UserProfileLeft({ profile }) {
   return (
-    <a href="">
       <div className="flex items-center space-x-5">
         
         <div className="flex space-x-2">
@@ -43,7 +42,6 @@ export function UserProfileLeft({ profile }) {
           {profile?.name || "Guest"}
         </p>
       </div>
-    </a>
   );
 }
 

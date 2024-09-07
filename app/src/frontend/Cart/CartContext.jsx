@@ -1,4 +1,4 @@
-import { useEffect, createContext, useState } from "react";
+import { createContext, useState } from "react";
 
 export const CartContext = createContext();
 
@@ -18,6 +18,11 @@ export const CartProvider = ({ children }) => {
     setCart((prevCart) => prevCart.filter((game) => game.game_id !== gameId));
   };
 
+  // Function to clear the cart
+  const clearCart = () => {
+    setCart([]);
+  };
+
     // Calculate total price of items in the cart
     const getTotalPrice = () => {
       return cart.reduce((total, game) => total + parseFloat(game.price), 0);
@@ -25,7 +30,7 @@ export const CartProvider = ({ children }) => {
 
   return (
     <CartContext.Provider
-      value={{ cart, addToCartContext, removeFromCartContext, getTotalPrice }}
+      value={{ cart, addToCartContext, removeFromCartContext, getTotalPrice, clearCart }}
     >
       {children}
     </CartContext.Provider>

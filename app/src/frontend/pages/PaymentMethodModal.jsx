@@ -1,10 +1,10 @@
 import { useState } from "react";
 import PaymentOption from "../Payment/PaymentOption";
 import paymentMethods from "../Payment/paymentMethods";
-import PaymentPage from "./PaymentPage";
+import PaymentModal from "./PaymentModal";
 import Modal from "../include/Modal/Modal";
 
-function PaymentMethodPage() {
+function PaymentMethodModal() {
   const [selectedPaymentMethod, setSelectedPaymentMethod] = useState("");
   const [formData, setFormData] = useState({
     cardNumber: "",
@@ -133,10 +133,10 @@ function PaymentMethodPage() {
         />
       </form>
       <Modal open={paymentOpen} onClose={() => setPaymentOpen(false) }>
-          <PaymentPage selcetedPaymentMethod={selectedPaymentMethod}/>
+          <PaymentModal selcetedPaymentMethod={selectedPaymentMethod}/>
       </Modal>
     </div>
   );
 }
 
-export default PaymentMethodPage;
+export default PaymentMethodModal;
