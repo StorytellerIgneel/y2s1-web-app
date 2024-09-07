@@ -58,4 +58,32 @@ function OrderSummary() {
   );
 }
 
+
+export function PaymentSummary() {
+  const { getTotalPrice } = useContext(CartContext);
+  return (
+    <div>
+      <div className="flex-col space-y-4">
+        <div className="flex justify-between">
+          <span className="text-sm">Subtotal</span>
+          <span className="text-sm">
+            RM {parseFloat(getTotalPrice()).toFixed(2)}
+          </span>
+        </div>
+        <div className="flex justify-between">
+          <span className="text-md font-bold">Total</span>
+          <span className="text-md font-bold">
+            RM {parseFloat(getTotalPrice()).toFixed(2)}
+          </span>
+        </div>
+        <div className="flex justify-between">
+          <span className="text-sm">Included 8% VAT</span>
+          <span className="text-sm"></span>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+
 export default OrderSummary;
