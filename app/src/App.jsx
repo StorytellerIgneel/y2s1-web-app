@@ -9,6 +9,7 @@ import MainPage from "./frontend/pages/MainPage";
 import LoginPage from "./frontend/pages/LoginPage";
 import "./index.css";
 import { UserProvider } from "./frontend/pages/LoginContext";
+import ProfilePage from "./frontend/pages/ProfilePage";
 
 function App() {
   return (
@@ -22,12 +23,12 @@ function App() {
                   <Route path="/store" element={<StorePage />} />
                   <Route path="/store/:game_id" element={<ProductPage />} />
                   <Route path="/cart" element={<CartPage />} />
+                  <Route path="/profile" element={<ProfilePage />} />
                   {/* for testing */}
                   {/* <Route path="/wishlist" element={<WishlistPage />} /> */}
                 </Route>
                 <Route path="/login" element={<LoginPage/>} />
                 <Route path="/OAuth" element={<OAuth />} />
-                <Route path="/main" element={<MainPage />} />
             </Routes>
             </BrowserRouter>
           </CartProvider>
