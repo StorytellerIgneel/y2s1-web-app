@@ -1,7 +1,7 @@
 import { useEffect, useState, useContext } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
-import { CartContext } from "../Cart/CartContext";
+import CartContext from "../Cart/CartContext";
 import "../../index.css"
 
 function ProductPage() {
@@ -9,28 +9,28 @@ function ProductPage() {
   const [game, setGame] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const { cart, addToCartContext } = useContext(CartContext); 
+  const { cart, addToCart } = useContext(CartContext); 
   const navigate = useNavigate();
   const [isInCart, setIsInCart] = useState(false);
 
-  const addToCart = (game_id) => {
-    const url = "http://localhost/y2s1-web-app/app/src/backend/php/add_to_cart.php";
+  // const addToCart = (game_id) => {
+  //   const url = "http://localhost/y2s1-web-app/app/src/backend/php/add_to_cart.php";
 
-    let formData = new FormData();
-    formData.append('game_id', game_id);
+  //   let formData = new FormData();
+  //   formData.append('game_id', game_id);
 
-    axios.post(url, formData)
-    .then((response) =>  { console.log(response.data)})
-    .catch(error => {console.log(error.message)})
-  };
+  //   axios.post(url, formData)
+  //   .then((response) =>  { console.log(response.data)})
+  //   .catch(error => {console.log(error.message)})
+  // };
 
   const handleClick = () => {
     if (isInCart) {
       // Redirect to the cart page if item is in the cart
       navigate('/cart'); 
     } else {
-      addToCart(game_id);
-      addToCartContext(game);
+      //addToCart(game_id);
+      addToCart(game);
     }
   };
 
