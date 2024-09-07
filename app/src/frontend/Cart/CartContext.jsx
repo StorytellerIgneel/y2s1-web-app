@@ -35,8 +35,8 @@ export const CartProvider = ({ children }) => {
       setCart((prevCart) => [...prevCart, item]);
     };
 
-    const removeFromCart = (itemId) => {
-      setCart((prevCart) => prevCart.filter(item => item.id !== itemId));
+    const removeFromCart = (game_id) => {
+      setCart((prevCart) => prevCart.filter((game) => game.game_id !== game_id));
     };
 
   // Function to clear the cart

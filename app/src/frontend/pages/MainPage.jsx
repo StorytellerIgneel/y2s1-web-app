@@ -2,6 +2,7 @@ import MainHeader from './main/MainHeader';
 import MainHomeSection from './main/MainHomeSection';
 import MainPlayableGamesSection from './main/MainPlayableGamesSection';
 import MainAboutUsSection from './main/MainAboutUs';
+import Footer from '../include/Footer'
 import "../css/style.css"
 
 function MainPage() {
@@ -11,6 +12,7 @@ function MainPage() {
       <MainHomeSection />
       <MainPlayableGamesSection />
       <MainAboutUsSection />
+      <Footer />
     </div>
   );
 }
