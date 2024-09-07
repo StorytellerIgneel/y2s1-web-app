@@ -1,6 +1,6 @@
 import "../css/login-style.css";
 
-import React, { useEffect, useState, useRef} from "react";
+import React, { useEffect, useState, useRef, useContext} from "react";
 import OAuth from "../../backend/OAuth";
 import axios from 'axios';
 import Swal from 'sweetalert2';
@@ -8,8 +8,10 @@ import Swal from 'sweetalert2';
 import { Helmet } from "react-helmet";
 import { GoogleLogin, GoogleOAuthProvider } from "@react-oauth/google";
 import { useNavigate } from "react-router-dom";
+import UserContext from "./LoginContext";
 
 function LoginPage() {
+  const { user, loginUser } = useContext(UserContext);
   const navigate = useNavigate();
   const loginForm = useRef();
   const registerForm = useRef();
@@ -78,7 +80,7 @@ function LoginPage() {
         })
         .then((response) => {
           if (response.data.success) { 
-            console.log(response);
+            loginUser({name, password});
             navigate('/store');  // Navigate to '/store' if successful
           } else {
             Swal.fire({
