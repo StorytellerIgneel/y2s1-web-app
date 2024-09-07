@@ -30,35 +30,39 @@ function Store() {
   return (
     <div>
       <h1>Store</h1>
-      <ul className="product-list">
-        <div className="flex item-stretch flex-row flex-wrap justify-between">
+      <div className="my-0 mx-auto">
+        <ul className="product-list grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {games.map((game) => (
             <li key={game.game_id}>
-                <ProductCard
-                  slug={game.game_id}
-                  title={game.title}
-                  imgSrc={game.img_src}
-                  price={game.price}
-                  />
+              <ProductCard
+                slug={game.game_id}
+                title={game.title}
+                imgSrc={game.img_src}
+                price={game.price}
+              />
             </li>
           ))}
-        </div>
-      </ul>
+        </ul>
+      </div>
     </div>
   );
 }
 
 function ProductCard({ slug, title, imgSrc, price }) {
   return (
-      <div className="rounded-xl bg-gray-200 m-3 p-3 shadow-sm hover:bg-red-100 hover:scale-105 max-w-xs h-auto ">
-        <Link to={`/store/${slug}`}> 
-          <img className="h-40 rounded-md object-scale-down" src={imgSrc} alt={title} />
-        </Link>
-        <Link to={`/store/${slug}`}> 
-          <p className="font-bold text-lg py-2">{title}</p>
-        </Link>
-          <p>{parseFloat(price) === 0.00 ? "FREE" : `RM ${price}`}</p>
-      </div>
+    <div className="m-3 h-auto max-w-xs rounded-xl bg-gray-200 p-3 shadow-sm hover:scale-105 hover:bg-red-100">
+      <Link to={`/store/${slug}`} className="rounded-md">
+        <img
+          className="h-35 rounded-md object-scale-down"
+          src={imgSrc}
+          alt={title}
+        />
+      </Link>
+      <Link to={`/store/${slug}`}>
+        <p className="truncate py-2 text-lg font-bold">{title}</p>
+      </Link>
+      <p>{parseFloat(price) === 0.0 ? "FREE" : `RM ${price}`}</p>
+    </div>
   );
 }
 

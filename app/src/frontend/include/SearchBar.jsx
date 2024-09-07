@@ -6,6 +6,17 @@ function SearchBar() {
   const [searchGame, setSearchGame] = useState("");
   const [results, setResults] = useState([]);
 
+  const searchScrape = () => {
+    console.log(searchGame)
+    axios.post('http://localhost:5000/searchScrape', { game_title: searchGame })
+    .then(response => {
+      console.log('Python script output:', response.data.output);
+    })
+    .catch(error => {
+      console.error('Error triggering Python script:', error);
+    });
+  }
+
   useEffect(() => {
     if (searchGame.trim() !== "") {
       const url =
@@ -37,6 +48,12 @@ function SearchBar() {
         onChange={(e) => setSearchGame(e.target.value)}
         value={searchGame}
       />
+      <button
+        className="h-8 px-4 rounded-md bg-blue-500 text-white hover:bg-blue-700 focus:outline-none"
+        onClick={searchScrape}
+      >
+        Search
+      </button>
       <div className="absolute mt-2 rounded-sm py-2">
         {results.length > 0 ? (
           results.map((game) => (

@@ -30,9 +30,6 @@ export default {
           900: "#85171b",
           950: "#490609",
         },
-        backgroundImage: {
-          'bg-pattern': "url('./src/assets/LightBackground.png')"
-        },
       },
     },
   },
