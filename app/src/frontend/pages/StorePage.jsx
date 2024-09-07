@@ -13,6 +13,7 @@ function Store() {
         const response = await axios.get(
           "http://localhost/y2s1-web-app/app/src/backend/php/get_game.php",
         );
+        console.log(response.data)
         setGames(response.data); // Set the fetched data to games state
       } catch (error) {
         setError(error);
