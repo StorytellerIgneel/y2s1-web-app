@@ -7,6 +7,7 @@ function CartItem({ game_id, title, imgSrc, price }) {
 
   function handleRemoveClick() {
     removeFromCart(game_id);
+    console.log(localStorage.getItem("cart"))
   }
 
   return (

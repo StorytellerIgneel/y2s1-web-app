@@ -25,7 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
     $password = $_POST["password"];
     $email  = $_POST["email"];
     
-    if (!empty($name) && !empty($password) && !empty($email)){
+    if (!empty($username) && !empty($password) && !empty($email)){
         $dbHost = 'localhost';
         $dbUsername = 'root';
         $dbPassword = 'teoH0628$$$$';
@@ -40,8 +40,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
         }
         $sql = "INSERT INTO users (username, email, password) VALUES ('$username', '$email', '$password')";
         $res = mysqli_query($conn, $sql);
-        if ($res)
-            echo json_encode(["success" => true, "message" => "User registered successfully"]);
+        if ($res){
+            $sql = "SELECT * from users where username = '$name'";
+            $res = mysqli_query($conn, $sql);
+            $user = mysqli_fetch_assoc($res);
+            echo json_encode(["success" => true, "message" => "User registered successfully", 'user' => [
+                    'id' => $user['id'],
+                    'username' => $user['username'],
+                    'email' => $user['email'],
+                ]]);
+        }
         else
             echo json_encode(['success' => false, 'error' => mysqli_error($conn)]);
         mysqli_close($conn);

@@ -18,14 +18,14 @@ function LoginPage() {
   const [currentForm, setCurrentForm] = useState("login");
   const [sent, setSent] = useState(false);
   const [login, setLogin] = useState(false);
-  const [name, setName] = useState("");
+  const [username, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [register, setRegister] = useState(false);
   const [triggerLogin, setTriggerLogin] = useState(false);
 
   const handleLoginClick = () => {
-    console.log(name, password);
+    console.log(username, password);
     setLogin(true);
     setRegister(false);
   };
@@ -89,7 +89,7 @@ function LoginPage() {
         })
         .then((response) => {
           if (response.data.success) { 
-            loginUser({name, password});
+            loginUser({username, password});
             //console
             navigate('/store');  // Navigate to '/store' if successful
           } else {
@@ -107,7 +107,7 @@ function LoginPage() {
   const Login = (e) => {
     e.preventDefault();
 
-    if (name === "" && email === "" && password === "") {
+    if (username === "" && email === "" && password === "") {
       Swal.fire({
         icon: "error",
         title: "Oops...",
@@ -118,13 +118,51 @@ function LoginPage() {
     const url = "http://localhost/y2s1-web-app/app/src/backend/php/login.php";
 
     let formData = new FormData();
-    formData.append("username", name);
+    formData.append("username", username);
     formData.append("password", password);
 
     axios.post(url, formData)
     .then((response) =>  {
       console.log(response.data);
       if (response.data.success) { 
+        let id = response.data.user.id;
+        let username = response.data.user.username;
+        let email = response.data.user.email;
+        loginUser({id, username, email});
+        navigate('/store');  // Navigate to '/store' if successful
+      } else {
+        Swal.fire({
+          icon: 'error',
+          title: 'Login Error',
+          text: response.data.error
+        }); // Handle the failure case if needed
+      }
+    }).catch(error => {console.log(error.message)})
+  };
+
+  const Register = (e) => {
+    e.preventDefault();
+
+    if (username === "" && email === "" && password === "") {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Please fill in all fields!",
+      });
+    }
+
+    const url = "http://localhost/y2s1-web-app/app/src/backend/php/register.php";
+
+    let formData = new FormData();
+    formData.append("username", username);
+    formData.append("password", password);
+    formData.append("email", email);
+
+    axios.post(url, formData)
+    .then((response) =>  {
+      console.log(response.data);
+      if (response.data.success) {
+        
         let id = response.data.user.id;
         let username = response.data.user.username;
         let email = response.data.user.email;
@@ -234,7 +272,7 @@ function LoginPage() {
               </div>
               <OAuth triggerLogin={triggerLogin} />
             </form>
-            <form ref={registerForm} onSubmit={Login} className="register-form">
+            <form ref={registerForm} onSubmit={Register} className="register-form">
               <span className="form-title">Sign Up</span>
               <div className="form-inputs">
                 <div className="input-box">
@@ -271,7 +309,7 @@ function LoginPage() {
                   <i className="fa-solid fa-unlock icon"></i>
                 </div>
                 <div className="input-submit">
-                  <button onClick={handleLoginClick}>
+                  <button onClick={handleRegisterClick}>
                     <span>Sign Up </span>
                     <i className="fa-solid fa-right-to-bracket"></i>
                   </button>
