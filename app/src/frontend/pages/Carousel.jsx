@@ -1,29 +1,42 @@
-import { useEffect, useRef } from "react";
-import "./Carousel.css";
+import { useEffect, useRef, useState } from "react";
+import axios from "axios"; // Axios for API calls
+import "../css/Carousel.css";
 
 const RADIUS = 1200;
 const FLIP_RANGE = 3;
 
-const CarouselFlow = (props) => {
+const CarouselFlow = () => {
+  const [imageData, setImageData] = useState([]); // To store the fetched images
   const el = useRef(null);
   const img = useRef(null);
   let angleUnit, currentIndex, currentAngle;
 
-  // Help function to set element style transform property
+  // Helper function to set element style transform property
   function setTransform(el, xpos, zpos, angle, flipAngle) {
     el.style.transform = `translateX(${xpos}px) translateZ(${zpos}px) rotateY(${angle}deg) rotateX(${flipAngle}deg)`;
   }
 
+  // Fetch random games from the database
   useEffect(() => {
-    angleUnit = 360 / props.imageData.length;
-    currentIndex = currentAngle = 0;
-    target(0, true);
-  }, [props.imageData]);
+    // Replace with your API URL
+    axios.get("http://localhost/WAD_ASSIGNMENT/connect.php")
+      .then((response) => {
+        setImageData(response.data); // Store the image data in state
+        if (response.data.length > 0) {
+          angleUnit = 360 / response.data.length;
+          currentIndex = currentAngle = 0;
+          target(0, true);
+        }
+      })
+      .catch((error) => {
+        console.error("Error fetching images:", error);
+      });
+  }, []);
 
   // Target an item and make it center
   function target(index, initial = false) {
     // Display full-size image if matched index
-    if (!initial && index === currentIndex) pickImage(props.imageData[index]);
+    if (!initial && index === currentIndex) pickImage(imageData[index].img_src);
 
     // Calculate the amount of angle to shift
     let deltaAngle = -(index - currentIndex) * angleUnit;
@@ -69,11 +82,11 @@ const CarouselFlow = (props) => {
   return (
     <div className="container my-4">
       <div className="carouselflow" ref={el}>
-        {props.imageData.map((it, index) => (
+        {imageData.map((game, index) => (
           <div
             onClick={() => target(index)}
             key={index}
-            style={{ backgroundImage: `url(${it})` }}
+            style={{ backgroundImage: `url(${game.img_src})` }}
             className="carouselflow-item"
           ></div>
         ))}

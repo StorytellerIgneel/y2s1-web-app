@@ -1,0 +1,82 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --carousel-width: 320px;
+  --carousel-height: 320px;
+  --carousel-item-border: 6px;
+  --carousel-transition-duration: 1s;
+  --carousel-box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.7);
+  
+  font-family: 'Inter', 'Avenir', 'Helvetica', 'Arial', sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #333;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+/* Container for the carousel */
+.container {
+  @apply w-full h-[800px] relative overflow-hidden m-0 auto;
+  perspective: 1000px;
+  transform-style: preserve-3d;
+  position: relative;
+}
+
+/* The entire carousel flow */
+.carouselflow {
+  @apply absolute top-1/2 left-1/2;
+  transform-style: preserve-3d;
+  transition: transform var(--carousel-transition-duration) ease-out;
+  transform-origin: center;
+  cursor: pointer;
+}
+
+/* Individual carousel items */
+.carouselflow-item {
+  width: var(--carousel-width);
+  height: var(--carousel-height);
+  position: absolute;
+  top: calc(var(--carousel-height) / -2); /* Centering the item */
+  left: calc(var(--carousel-width) / -2); /* Centering the item */
+  
+  background-color: #111;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+
+  border: var(--carousel-item-border) solid #eee;
+  border-radius: 8px;
+  box-shadow: var(--carousel-box-shadow);
+
+  transform-origin: center bottom;
+  backface-visibility: visible;
+  
+  /* Smooth transition for rotating and scaling */
+  transition: transform 1.25s cubic-bezier(0.17, 0.75, 0.58, 0.95);
+}
+
+/* The full-size image display */
+.image-display {
+  @apply fixed top-1/2 left-1/2 border-2 border-white rounded-md;
+  width: 1000px;
+  height: 600px;
+
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.5s ease-out;
+  
+  transform: translate(-50%, -50%) scale(0, 0); /* Hidden initially */
+  cursor: pointer;
+}
