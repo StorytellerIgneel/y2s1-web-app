@@ -4,7 +4,7 @@ import CartItem from "../Cart/CartItem";
 import OrderSummary from "../Cart/OrderSummary";
 
 function CartPage() {  
-  const { cart, removeFromCart } = useContext(CartContext);
+  const { cart } = useContext(CartContext);
   
   return (
     <div className="CartPage">
