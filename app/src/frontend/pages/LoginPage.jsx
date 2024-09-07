@@ -81,6 +81,7 @@ function LoginPage() {
         .then((response) => {
           if (response.data.success) { 
             loginUser({name, password});
+            //console
             navigate('/store');  // Navigate to '/store' if successful
           } else {
             Swal.fire({
@@ -115,8 +116,11 @@ function LoginPage() {
     .then((response) =>  {
       console.log(response.data);
       if (response.data.success) { 
-        console.log(response);
-        navigate('/searchGame');  // Navigate to '/store' if successful
+        let id = response.data.user.id;
+        let username = response.data.user.username;
+        let email = response.data.user.email;
+        loginUser({id, username, email});
+        navigate('/store');  // Navigate to '/store' if successful
       } else {
         Swal.fire({
           icon: 'error',

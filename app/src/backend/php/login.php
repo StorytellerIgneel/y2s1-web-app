@@ -44,9 +44,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
             if (mysqli_num_rows($res) > 0){ //check num of rows returned 
                 // Fetch the row as an associative array
                 $user = mysqli_fetch_assoc($res);
-                // Check if password matches
-                if ($user['password'] == $password)
-                    echo json_encode(['success' => true, 'message' => 'Login successful']);
+                if ($user['password'] == $password) //matches
+                    echo json_encode(['success' => true, 'message' => 'Login successful', 'user' => [
+                    'id' => $user['id'],
+                    'username' => $user['username'],
+                    'email' => $user['email'],
+                ]]);
                 else
                     echo json_encode(['success' => false, 'error' => 'Incorrect password']);
             }

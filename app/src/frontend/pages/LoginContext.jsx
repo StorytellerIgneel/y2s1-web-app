@@ -4,25 +4,58 @@ export const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
   const [user, setUser] = useState(null);
+  const [localuser, setLocalUser] = useState("");
 
-  useEffect(() => {
-    // Retrieve user info from localStorage on component mount
-    const storedUser = JSON.parse(localStorage.getItem('user'));
-    if (storedUser) {
-      setUser(storedUser);
-    }
-  }, []);
+  // const getUserFromLocalStorage = (user) => {
+  //   const storedUser = localStorage.getItem(`user_${user.id}`);
+  //   return storedUser ? JSON.parse(storedUser) : null;
+  // };
+
+  // useEffect(() => {
+  //   // Retrieve user info from localStorage on component mount
+  //   //const storedUser = JSON.parse(localStorage.getItem('user'));
+  //   if (storedUser) {
+  //     setUser(storedUser);
+  //   }
+  // }, []);
+
+  // useEffect(() => {
+  //   if(userSet)
+  //     setLocalUser(getUserFromLocalStorage)
+  // }, [userSet])
+
+  // useEffect(() => {
+  //   const storedUser = getUserFromLocalStorage();
+  //   if (storedUser) {
+  //     setUser(storedUser);
+  //   }
+  // }, []);
 
   useEffect(() => {
     if (user) {
       // Save the logged-in user to localStorage
-      localStorage.setItem('user', JSON.stringify(user));
-      console.log('User logged in and saved to localStorage:', user);
+      localStorage.setItem("user", JSON.stringify(user));
+      localStorage.setItem("cart", JSON.stringify([]));
+      setLocalUser(`user_${user.id}`)
+      console.log(localuser)
+      // setUserSet(true);
+      // console.log(localuser);
     } else {
       // Clear the user from localStorage when logged out
-      localStorage.removeItem('user');
+      // localStorage.removeItem('user');
+      // localStorage.removeItem("cart"); // Clear associated cart as well
+      
+      // // Update localStorageUser when user logs out
+      // setLocalStorageUser(null);
     }
   }, [user]);
+
+  // useEffect(() => {
+  //   // Initialize user state with the value from localStorage if it's not set
+  //   if (user === null && localStorageUser) {
+  //     setUser(localStorageUser);
+  //   }
+  // }, [localStorageUser, user]);
 
   // Function to handle user login
   const loginUser = (userInfo) => {
@@ -37,7 +70,7 @@ export const UserProvider = ({ children }) => {
 
   return (
     <UserContext.Provider
-      value={{ user, loginUser, logoutUser }}
+      value={{ localuser, loginUser, logoutUser }}
     >
       {children}
     </UserContext.Provider>

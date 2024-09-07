@@ -6,7 +6,6 @@ import OrderSummary from "../Cart/OrderSummary";
 
 function CartPage() {  
   const { cart, removeFromCart } = useContext(CartContext);
-  console.log(cart);
   
   return (
     <div className="CartPage">
