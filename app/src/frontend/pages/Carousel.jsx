@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import axios from "axios"; // Axios for API calls
 import "../css/Carousel.css";
+import { Link } from "react-router-dom";
 
 const RADIUS = 1200;
 const FLIP_RANGE = 3;
@@ -19,7 +20,10 @@ const CarouselFlow = () => {
   // Fetch random games from the database
   useEffect(() => {
     // Replace with your API URL
-    axios.get("http://localhost/WAD_ASSIGNMENT/connect.php")
+    axios
+      .get(
+        "http://localhost/y2s1-web-app/app/src/backend/php/carousel_get_game.php",
+      )
       .then((response) => {
         setImageData(response.data); // Store the image data in state
         if (response.data.length > 0) {
@@ -80,24 +84,27 @@ const CarouselFlow = () => {
   };
 
   return (
-    <div className="container my-4">
-      <div className="carouselflow" ref={el}>
-        {imageData.map((game, index) => (
-          <div
-            onClick={() => target(index)}
-            key={index}
-            style={{ backgroundImage: `url(${game.img_src})` }}
-            className="carouselflow-item"
-          ></div>
-        ))}
+    <div>
+      <div className="carousel-container">
+        <div className="carouselflow" ref={el}>
+          {imageData.map((game) => (
+            <Link
+              to={`/store/${game.game_id}`}
+              key={game.game_id}
+              onClick={() => target(game.game_id)}
+              style={{ backgroundImage: `url(${game.img_src})` }}
+              className="carouselflow-item"
+            ></Link>
+          ))}
+        </div>
+        <div
+          onClick={() => {
+            img.current.style.transform = "scale(0, 0)";
+          }}
+          className="image-display"
+          ref={img}
+        ></div>
       </div>
-      <div
-        onClick={() => {
-          img.current.style.transform = "scale(0, 0)";
-        }}
-        className="image-display"
-        ref={img}
-      ></div>
     </div>
   );
 };

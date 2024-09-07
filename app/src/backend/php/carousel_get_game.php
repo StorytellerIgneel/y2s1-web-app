@@ -1,4 +1,12 @@
 <?php
+
+// Allow requests from any origin
+header("Access-Control-Allow-Origin: *");
+// Allow certain HTTP methods
+header("Access-Control-Allow-Methods: POST, OPTIONS");
+// Allow certain headers
+header("Access-Control-Allow-Headers: Content-Type");
+
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -31,7 +39,7 @@ if ($result->num_rows > 0) {
 
 // Return JSON response
 header('Content-Type: application/json');
-echo json_encode(['games' => $games]);
+echo json_encode($games);
 
 $conn->close();
 ?>
