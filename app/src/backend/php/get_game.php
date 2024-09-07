@@ -1,11 +1,13 @@
 <?php
+session_start();
+
 header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Methods: GET, POST, OPTIONS');
 header('Access-Control-Allow-Headers: Content-Type');
 // Database connection parameters
 $servername = "localhost";
 $username = "root";
-$password = "";
+$password = "teoH0628$$$$";
 $dbname = "WAD_ASSIGNMENT";
 // Create a new connection
 $conn = new mysqli($servername, $username, $password, $dbname);

@@ -1,6 +1,6 @@
 import "../css/login-style.css";
 
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState, useRef, useContext} from "react";
 import OAuth from "../../backend/OAuth";
 import axios from "axios";
 import Swal from "sweetalert2";
@@ -8,8 +8,10 @@ import Swal from "sweetalert2";
 import { Helmet } from "react-helmet";
 import { GoogleLogin, GoogleOAuthProvider } from "@react-oauth/google";
 import { useNavigate } from "react-router-dom";
+import UserContext from "./LoginContext";
 
 function LoginPage() {
+  const { user, loginUser } = useContext(UserContext);
   const navigate = useNavigate();
   const loginForm = useRef();
   const registerForm = useRef();
@@ -79,30 +81,27 @@ function LoginPage() {
 
   const googleLogin = () => {
     // call OAuth login function
-    axios
-      .get(
-        `https://www.googleapis.com/oauth2/v1/userinfo?access_token=${user.access_token}`,
-        {
-          headers: {
-            Authorization: `Bearer ${user.access_token}`,
-            Accept: "application/json",
-          },
-        },
-      )
-      .then((response) => {
-        if (response.data.success) {
-          console.log(response);
-          navigate("/store"); // Navigate to '/store' if successful
-        } else {
-          Swal.fire({
-            icon: "error",
-            title: "Login Error",
-            text: response.data.error,
-          }); // Handle the failure case if needed
-        }
-      })
-      .catch((err) => console.log(err));
-  };
+      axios.get(`https://www.googleapis.com/oauth2/v1/userinfo?access_token=${user.access_token}`, {
+            headers: {
+                Authorization: `Bearer ${user.access_token}`,
+                Accept: 'application/json'
+            }
+        })
+        .then((response) => {
+          if (response.data.success) { 
+            loginUser({name, password});
+            navigate('/store');  // Navigate to '/store' if successful
+          } else {
+            Swal.fire({
+              icon: 'error',
+              title: 'Login Error',
+              text: response.data.error
+            }); // Handle the failure case if needed
+          }
+        })
+        .catch((err) => console.log(err));
+    }
+  
 
   const Login = (e) => {
     e.preventDefault();

@@ -2,17 +2,18 @@ import { useContext } from "react";
 import { CartContext } from "./CartContext";
 import { Link } from "react-router-dom";
 
-function CartItem({ id, title, imgSrc, price }) {
-  const { removeFromCartContext } = useContext(CartContext);
+function CartItem({game_id, title, imgSrc, price }) {
+  const { removeFromCart } = useContext(CartContext);
 
   function handleRemoveClick() {
-    removeFromCartContext(id);
-  }
+    const {game_id, title, imgSrc, price } = game;
+    removeFromCart(game);
+    };
 
   return (
     <div className="py-4">
       <div className="flex h-auto w-auto gap-x-4 pb-4">
-        <Link to={`/store/${id}`}>
+        <Link to={`/store/${game_id}`}>
           <img
             className="h-20 w-40 rounded-md object-cover"
             src={imgSrc}
@@ -21,7 +22,7 @@ function CartItem({ id, title, imgSrc, price }) {
         </Link>
         <div className="inline-flex flex-grow flex-col justify-between">
           <div className="flex items-center justify-between">
-            <Link to={`/store/${id}`}>
+            <Link to={`/store/${game_id}`}>
               <div className="text-lg font-bold">{title}</div>
             </Link>
             <span className="px-2 py-1 text-sm font-bold">RM {price}</span>

@@ -1,4 +1,5 @@
 <?php
+session_start();
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
@@ -25,7 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
         
     $dbHost = 'localhost';
     $dbUsername = 'root';
-    $dbPassword = '';
+    $dbPassword = 'teoH0628$$$$';
     $dbName = 'wad_assignment';
     
     // Create connection

@@ -4,9 +4,10 @@ import { CartContext } from '../Cart/CartContext';
 import CartItem from "../Cart/CartItem";
 import OrderSummary from "../Cart/OrderSummary";
 
-function CartPage() {
-  const { cart } = useContext(CartContext);
-
+function CartPage() {  
+  const { cart, removeFromCart } = useContext(CartContext);
+  console.log(cart);
+  
   return (
     <div className="CartPage">
       <h1>My Cart</h1>
@@ -16,7 +17,10 @@ function CartPage() {
             <p>Your cart is empty</p>
           ) : (
             cart.map(game => (
-              <CartItem key={game.game_id} id={game.game_id} title={game.title} imgSrc={game.img_src} price={game.price} />
+              <li key={game.game_id} className='cart-item'>
+                {game.name} - ${game.price}
+                <button onClick={() => removeFromCart(game.id)}>Remove</button>
+              </li>
             ))
           )}
         </div>
