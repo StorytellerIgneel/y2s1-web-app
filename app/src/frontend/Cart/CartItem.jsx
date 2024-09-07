@@ -2,13 +2,12 @@ import { useContext } from "react";
 import { CartContext } from "./CartContext";
 import { Link } from "react-router-dom";
 
-function CartItem({game_id, title, imgSrc, price }) {
+function CartItem({ game_id, title, imgSrc, price }) {
   const { removeFromCart } = useContext(CartContext);
 
   function handleRemoveClick() {
-    const {game_id, title, imgSrc, price } = game;
-    removeFromCart(game);
-    };
+    removeFromCart(game_id);
+  }
 
   return (
     <div className="py-4">
