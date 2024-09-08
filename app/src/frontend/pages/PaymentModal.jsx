@@ -6,6 +6,8 @@ import PaymentStatusModal from "./PaymentStatusModal";
 import Modal from "../include/Modal/Modal";
 import axios from "axios";
 import "../../index.css";
+import Swal from 'sweetalert2';
+import { useNavigate } from "react-router-dom";
 
 function PaymentModal({ selcetedPaymentMethod }) {
   return (
@@ -54,6 +56,7 @@ function TermsAndAgreement({ selcetedPaymentMethod }) {
   const [agree, setAgree] = useState(false);
   const [paymentStatusOpen, setPaymentStatusOpen] = useState(false);
   const { cart, getTotalPrice } = useContext(CartContext);
+  const navigate = useNavigate();
 
   const handleContinueClick = () => {
     const url = "http://localhost/y2s1-web-app/app/src/backend/php/payment.php";
