@@ -7,8 +7,8 @@ header('Access-Control-Allow-Headers: Content-Type');
 // Database connection parameters
 $servername = "localhost";
 $username = "root";
-$password = "teoH0628$$$$";
-//$password = "";
+// $password = "teoH0628$$$$";
+$password = "";
 $dbname = "WAD_ASSIGNMENT";
 // Create a new connection
 $conn = new mysqli($servername, $username, $password, $dbname);
