@@ -11,6 +11,7 @@ import "./index.css";
 import { UserProvider } from "./frontend/pages/LoginContext";
 import Email from "./frontend/Email/email";
 import ProfilePage from "./frontend/pages/ProfilePage.jsx";
+import FAQ from "./frontend/pages/FAQ.jsx";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
                   <Route path="/support" element={<Email />} />
                   <Route path="/cart" element={<CartPage />} />
                   <Route path="/profile" element={<ProfilePage />} />
+                  <Route path="/faq" element={<FAQ/>}/>
                 </Route>
                 <Route path="/login" element={<LoginPage/>} />
             </Routes>
