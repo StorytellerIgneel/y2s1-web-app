@@ -24,28 +24,25 @@ class Game:
         self.price = price
 
     def __str__(self):
+        print(type(self.price))
+        print(type(self.release_date))
         return (f"Title: {self.title}\n"
                 f"Image Source: {self.img_src}\n"
                 f"Description: {self.desc}\n"
                 f"Rating: {self.rating}\n"
-                f"Rating Number: {self.rating_num}\n"
+                f"{self.rating_num}\n"
                 f"Release Date: {self.release_date}\n"
                 f"Developer: {self.developer}\n"
                 f"Publisher: {self.publisher}\n"
-                f"Price: {self.price}\n")
-
-def convert_rating_num(rating_num):
-    try:
-        # Remove non-numeric characters and convert to int
-        return int(re.sub(r'[^\d]', '', rating_num))
-    except ValueError:
-        return None
+                f"{self.price}\n"
+                )
 
 def convert_release_date(release_date):
     try:
-        # Convert date format to YYYY-MM-DD
-        return datetime.strptime(release_date, '%b %d, %Y').strftime('%Y-%m-%d')
+        # Convert date format from '13 Jul, 2023' to '2023-07-13'
+        return datetime.strptime(release_date, '%d %b, %Y').strftime('%Y-%m-%d')
     except ValueError:
+        # If the format does not match, return None
         return None
 
 def convert_price(price):
@@ -62,7 +59,7 @@ driver.get("https://store.steampowered.com")
 
 time.sleep(2)
 search = driver.find_element(By.ID, "store_nav_search_term")
-search.send_keys("Atelier Marie")
+search.send_keys("Naruto")
 search.send_keys(Keys.RETURN)
 
 time.sleep(2)
@@ -86,7 +83,6 @@ for i in range(1):
         publisher = devs[1].find_element(By.CSS_SELECTOR, "div.summary.column").text
         price = driver.find_element(By.CSS_SELECTOR, "div.game_purchase_price.price").text
 
-        rating_num = convert_rating_num(ratingNum)
         release_date = convert_release_date(releaseDate)
         price = convert_price(price)
 
