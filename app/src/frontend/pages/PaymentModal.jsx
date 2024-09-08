@@ -4,6 +4,7 @@ import { PaymentItem } from "../Cart/CartItem";
 import { UserProfileLeft } from "../include/UserProfile";
 import PaymentStatusModal from "./PaymentStatusModal";
 import Modal from "../include/Modal/Modal";
+import axios from "axios";
 import "../../index.css";
 
 function PaymentModal({ selcetedPaymentMethod }) {
@@ -52,30 +53,35 @@ function CartItemsList() {
 function TermsAndAgreement({ selcetedPaymentMethod }) {
   const [agree, setAgree] = useState(false);
   const [paymentStatusOpen, setPaymentStatusOpen] = useState(false);
-  const { cart } = useContext(CartContext);
+  const { cart, getTotalPrice } = useContext(CartContext);
 
   const handleContinueClick = () => {
-    // const url = "http://localhost/y2s1-web-app/app/src/backend/php/payment.php";
+    const url = "http://localhost/y2s1-web-app/app/src/backend/php/payment.php";
 
-    // let formData = new FormData();
-    // formData.append("user_id", localStorage.getItem("user")["id"]);
-    // formData.append("game_list", cart);
-    
+    let formData = new FormData();
+    formData.append("user_id", localStorage.getItem("user")["id"]);
+    formData.append("game_list", cart);
+    formData.append("payment_method", selcetedPaymentMethod);
+    formData.append("total_amount", parseFloat(getTotalPrice()).toFixed(2));
 
-
-    // axios.post(url, formData)
-    // .then((response) =>  {
-    //   console.log(response.data);
-    //   if (response.data.success) { 
-    //     navigate('/store');  // Navigate to '/store' if successful
-    //   } else {
-    //     Swal.fire({
-    //       icon: 'error',
-    //       title: 'Payment Error',
-    //       text: response.data.error
-    //     }); // Handle the failure case if needed
-    //   }
-    // }).catch(error => {console.log(error.message)})
+    axios.post(url, formData)
+    .then((response) =>  {
+      console.log(response.data);
+      if (response.data.success) {
+        Swal.fire({
+          icon: 'success',
+          title: 'Purchase Complete!',
+          text: "You can now view your purchase history"
+        }); // Handle the failure case if needed
+        navigate('/store');  // Navigate to '/store' if successful
+      } else {
+        Swal.fire({
+          icon: 'error',
+          title: 'Payment Error',
+          text: response.data.error
+        }); // Handle the failure case if needed
+      }
+    }).catch(error => {console.log(error.message)})
 
     setPaymentStatusOpen(true); 
   };
