@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import axios from "axios"; // Axios for API calls
 import "../css/Carousel.css";
+import { Link, useNavigate } from "react-router-dom";
 
 const RADIUS = 1200;
 const FLIP_RANGE = 3;
@@ -9,7 +10,9 @@ const CarouselFlow = () => {
   const [imageData, setImageData] = useState([]); // To store the fetched images
   const el = useRef(null);
   const img = useRef(null);
+  const videoModal = useRef(null); // To reference the video modal
   let angleUnit, currentIndex, currentAngle;
+  const navigate = useNavigate(); // For redirecting to the product page
 
   // Helper function to set element style transform property
   function setTransform(el, xpos, zpos, angle, flipAngle) {
@@ -18,11 +21,8 @@ const CarouselFlow = () => {
 
   // Fetch random games from the database
   useEffect(() => {
-    // Replace with your API URL
     axios
-      .get(
-        "http://localhost/y2s1-web-app/app/src/backend/php/carousel_get_game.php",
-      )
+      .get("http://localhost/y2s1-web-app/app/src/backend/php/carousel_get_game.php")
       .then((response) => {
         setImageData(response.data); // Store the image data in state
         if (response.data.length > 0) {
@@ -41,7 +41,6 @@ const CarouselFlow = () => {
     // Display full-size image if matched index
     if (!initial && index === currentIndex) pickImage(imageData[index].img_src);
 
-    // Calculate the amount of angle to shift
     let deltaAngle = -(index - currentIndex) * angleUnit;
     if (deltaAngle < -180) deltaAngle += 360;
     else if (deltaAngle > 180) deltaAngle -= 360;
@@ -49,15 +48,12 @@ const CarouselFlow = () => {
     currentAngle += deltaAngle;
     currentIndex = index;
 
-    // Rotate the container and flip item angle
     const cf = el.current;
     cf.style.transform = `translateZ(-1250px) rotateY(${currentAngle}deg)`;
 
-    // Flip items angle
     let fliptAngle = 90;
     const items = cf.children;
 
-    // Iterate the items and apply transformation
     for (let i = 0; i < items.length; i++) {
       const item = items[i];
       const itemAngle = angleUnit * i;
@@ -82,6 +78,16 @@ const CarouselFlow = () => {
     img.current.style.transform = "scale(1, 1)";
   };
 
+  // Play video in modal
+  const playVideo = () => {
+    videoModal.current.style.transform = "scale(1, 1)";
+  };
+
+  // Close video modal
+  const closeVideo = () => {
+    videoModal.current.style.transform = "scale(0, 0)";
+  };
+
   return (
     <div>
       <div className="carousel-container">
@@ -89,7 +95,15 @@ const CarouselFlow = () => {
           {imageData.map((game, index) => (
             <div
               key={game.game_id}
-              onClick={() => target(index)}
+              onClick={() => {
+                if (index === currentIndex) {
+                  // If the center image is clicked, play the video
+                  playVideo();
+                } else {
+                  // Rotate carousel on side images click
+                  target(index);
+                }
+              }}
               style={{ backgroundImage: `url(${game.img_src})` }}
               className="carouselflow-item"
             ></div>
@@ -102,6 +116,19 @@ const CarouselFlow = () => {
           className="image-display"
           ref={img}
         ></div>
+      </div>
+
+      {/* Video modal */}
+      <div className="video-modal" ref={videoModal}>
+        <span className="close" onClick={closeVideo}>&times;</span>
+        <iframe
+          width="1000"
+          height="600"
+          src="https://video.akamai.steamstatic.com/store_trailers/256730989/movie480.webm?t=1538496199" //temporary video
+          frameBorder="0"
+          allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+        ></iframe>
       </div>
     </div>
   );
