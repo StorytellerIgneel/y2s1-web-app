@@ -1,17 +1,37 @@
-import MainHeader from './main/MainHeader';
-import MainHomeSection from './main/MainHomeSection';
-import MainPlayableGamesSection from './main/MainPlayableGamesSection';
-import MainAboutUsSection from './main/MainAboutUs';
-import Footer from '../include/Footer'
-import "../css/style.css"
+import { useLocation } from "react-router-dom";
+import { useEffect } from "react";
+
+import MainHeader from "./main/MainHeader";
+import MainHomeSection from "./main/MainHomeSection";
+import MainPlayableGamesSection from "./main/MainPlayableGamesSection";
+import MainAboutUsSection from "./main/MainAboutUs";
+import Footer from "../include/Footer";
+import "../css/style.css";
 
 function MainPage() {
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.hash) {
+      const element = document.getElementById(location.hash.substring(1));
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  }, [location]);
+
   return (
-    <div className='main-page-body'>
+    <div className="main-page-body">
       {/* <MainHeader /> */}
-      <MainHomeSection />
-      <MainPlayableGamesSection />
-      <MainAboutUsSection />
+      <section id="home">
+        <MainHomeSection />
+      </section>
+      <section id="play" className="w-screen">
+        <MainPlayableGamesSection />
+      </section>
+      <section id="about-us" >
+        <MainAboutUsSection />
+      </section>
       <Footer />
     </div>
   );
