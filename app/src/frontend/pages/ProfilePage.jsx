@@ -9,7 +9,7 @@ import "../css/profile-page.css";
 const ProfilePage = () => {
   const navigate = useNavigate();
   const { user } = useContext(UserContext);
-  const [games, setGames] = useState([]);
+  const [purchases, setPurchases] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -70,13 +70,13 @@ const ProfilePage = () => {
       console.log(response.data.game_list);
       if (response.data.success) {
         console.log("success")
-        setGames(response.data.game_list);
+        setPurchases(response.data.game_list);
       } else {
         mockGames = []
       }
     }).catch(error => {console.log(error.message)})
 
-    setGames(mockGames);
+    setPurchases(mockGames);
     setLoading(false);
   }, []);
 
@@ -87,19 +87,27 @@ const ProfilePage = () => {
     <div>
       <div className="profile-page">
         <header className="profile-header">
-            {user? (<img src={user.picture} alt={user.name}/>) : (<FaUserCircle className="profile-placeholder"/>)}
+          {user ? (
+            user.picture ? (
+              <img src={user.picture} alt={user.name? user.name : user.username} />
+            ) : (
+              <FaUserCircle className="profile-placeholder" />
+            )
+          ) : (
+            <FaUserCircle className="profile-placeholder" />
+          )}
           <div className="profile-info">
-            <h1>{user? user.name : "Guest"}</h1>
-            <p>{user? user.email : "No email"}</p>
+            <h1>{user ? (user.name? user.name : user.username) : "Guest"}</h1>
+            <p>{user ? user.email : "No email"}</p>
           </div>
         </header>
         <section className="profile-games">
           <h2>Purchased Games</h2>
-          {games.length === 0 ? (
+          {purchases.length === 0 ? (
             <p>No games purchased</p>
           ) : (
             <ul className="games-list">
-              {games.map((game) => (
+              {purchases.map((game) => (
                 <li key={game.game_id} className="game-item">
                   <img
                     src={game.img_src}

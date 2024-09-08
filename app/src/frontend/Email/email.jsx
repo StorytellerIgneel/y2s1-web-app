@@ -2,7 +2,6 @@ import React, { useRef, useState } from 'react';
 import emailjs from '@emailjs/browser';
 import axios from 'axios';
 import Swal from 'sweetalert2';
-// import 'bootstrap/dist/css/bootstrap.min.css';
 import "./Email.css"
 
 const Email = () => {
@@ -69,6 +68,7 @@ const Email = () => {
 
   return (
     <div>
+      <h1>Contact Us</h1>
       <div className="container-lg">
         <form ref={form} onSubmit={sendEmail}>
           <div className="form-group d-flex align-items-center">
@@ -129,7 +129,6 @@ const Email = () => {
                 <option value="@yahoo.com">@yahoo.com</option>
                 <option value="@hotmail.com">@hotmail.com</option>
               </select>
-              <span className="input-group-text" id="basic-addon2">@gmail.com</span>
             </div>
           </label>
 
@@ -177,7 +176,7 @@ const Email = () => {
         </form>
       </div>
 
-      <div className="container mx-auto my-5">
+      <div className="mx-auto my-5">
         <h1 className="text-center mb-5 text-3xl font-bold">Contact Us</h1>
 
         <div className="flex flex-col items-center space-y-4">
