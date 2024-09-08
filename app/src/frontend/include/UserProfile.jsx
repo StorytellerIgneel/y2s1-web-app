@@ -7,8 +7,8 @@ function UserProfileRight() {
   const { user, logoutUser } = useContext(UserContext);
 
   return (
-    <div className="flex items-center space-x-5">
-      {user!=null ? (
+      <div className="flex items-center space-x-5">
+        {user!=null ? (
         <Link to="/login">
         <button onClick={logoutUser} className="button text-sm px-3 py-1 rounded-full h-auto bg-blue-500 hover:bg-blue-600">Logout</button>
       </Link>
@@ -17,16 +17,20 @@ function UserProfileRight() {
           <button className="button text-sm px-3 py-1 h-auto rounded-full bg-red-600 hover:bg-red-700">Login</button>
         </Link>
       )}
-      <p className="hidden text-xs font-bold text-gray-600 md:block" href="">
-        {user!=null ? user.name : "Guest"}
+        <p className="hidden text-xs font-bold text-gray-600 md:block" href="">
+        {user ? (user.name ? user.email : "Guest") : "Guest"}
       </p>
       <div className="flex space-x-2">
         {user ? (
-          <img
-            className="h-8 w-8 rounded-full border border-gray-100 shadow-sm sm:h-10 sm:w-10"
-            src={user.picture}
-            alt={user.name}
-          />
+          user.picture ? (
+            <img
+              className="h-8 w-8 rounded-full border border-gray-100 shadow-sm sm:h-10 sm:w-10"
+              src={user.picture}
+              alt={user.name}
+            />
+          ) : (
+            <FaUserCircle fill="gray" className="size-8" />
+          )
         ) : (
           <FaUserCircle fill="gray" className="size-8" />
         )}

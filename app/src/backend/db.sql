@@ -15,7 +15,7 @@ CREATE TABLE IF NOT EXISTS emails(
 
 CREATE TABLE IF NOT EXISTS users (
     user_id INT(11) NOT NULL AUTO_INCREMENT,
-    username VARCHAR(50) NOT NULL,
+    username VARCHAR(50) NOT NULL,  
     email VARCHAR(50) NOT NULL,
     password VARCHAR (20) NOT NULl,
     PRIMARY KEY (user_id),
@@ -34,8 +34,6 @@ CREATE TABLE IF NOT EXISTS games (
     publisher VARCHAR(255),
     price DECIMAL(10, 2)
 );
-
-
 
 CREATE TABLE IF NOT EXISTS purchases (
     purchase_id INT AUTO_INCREMENT PRIMARY KEY,

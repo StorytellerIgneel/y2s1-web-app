@@ -51,7 +51,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
                 $user = mysqli_fetch_assoc($res);
 
                 echo json_encode(["success" => true, "message" => "User registered successfully", 'user' => [
-                        'id' => $user['id'],
+                        'id' => $user['user_id'],
                         'username' => $user['username'],
                         'email' => $user['email'],
                         ],
@@ -65,7 +65,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
             $user = mysqli_fetch_assoc($res);
 
             echo json_encode(["success" => true, "message" => "User registered successfully", 'user' => [
-                    'id' => $user['id'],
+                    'id' => $user['user_id'],
                     'username' => $user['username'],
                     'email' => $user['email'],
                     ],
