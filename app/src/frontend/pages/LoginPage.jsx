@@ -90,29 +90,29 @@ function LoginPage() {
     document.querySelector(".col-1").style.borderRadius = "0 30% 10% 0";
   };
 
-  const googleLogin = () => {
-    // call OAuth login function
-      axios.get(`https://www.googleapis.com/oauth2/v1/userinfo?access_token=${user.access_token}`, {
-            headers: {
-                Authorization: `Bearer ${user.access_token}`,
-                Accept: 'application/json'
-            }
-        })
-        .then((response) => {
-          if (response.data.success) { 
-            loginUser({username, password});
-            //console
-            navigate('/store');  // Navigate to '/store' if successful
-          } else {
-            Swal.fire({
-              icon: 'error',
-              title: 'Login Error',
-              text: response.data.error
-            }); // Handle the failure case if needed
-          }
-        })
-        .catch((err) => console.log(err));
-    }
+  // const googleLogin = () => {
+  //   // call OAuth login function
+  //     axios.get(`https://www.googleapis.com/oauth2/v1/userinfo?access_token=${user.access_token}`, {
+  //           headers: {
+  //               Authorization: `Bearer ${user.access_token}`,
+  //               Accept: 'application/json'
+  //           }
+  //       })
+  //       .then((response) => {
+  //         if (response.data.success) { 
+  //           loginUser({username, password});
+  //           //console
+  //           navigate('/store');  // Navigate to '/store' if successful
+  //         } else {
+  //           Swal.fire({
+  //             icon: 'error',
+  //             title: 'Login Error',
+  //             text: response.data.error
+  //           }); // Handle the failure case if needed
+  //         }
+  //       })
+  //       .catch((err) => console.log(err));
+  //   }
   
 
   const Login = (e) => {

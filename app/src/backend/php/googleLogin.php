@@ -21,12 +21,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
   }
     
 if ($_SERVER["REQUEST_METHOD"] == "POST"){
-    $name = $_POST["username"];
-    $password = $_POST["password"];
+    $username = $_POST["username"];
+    $email = $_POST["email"];
+    $password = "google";
    // echo($name);
     
-    if (!empty($name) && !empty($password)){
-        
+    if (!empty($username) && !empty($email)){
         $dbHost = 'localhost';
         $dbUsername = 'root';
         $dbPassword = 'teoH0628$$$$';
@@ -38,23 +38,38 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
         //     die('Could not connect to the database: ' . mysqli_connect_error());
         // else
         //     echo 'Connection successful!';
-        $sql = "SELECT * from users where username = '$name'";
+        $sql = "SELECT * from users where username = '$username'";
         $res = mysqli_query($conn, $sql);
-        if ($res){
-            if (mysqli_num_rows($res) > 0){ //check num of rows returned 
-                // Fetch the row as an associative array
+        if (mysqli_num_rows($res) === 0){ //first time google login
+            // Fetch the row as an associative array
+            $sql = "INSERT INTO users (username, email, password) VALUES ('$username', '$email', '$password')";
+            $res = mysqli_query($conn, $sql);
+            if ($res){
+                $sql = "SELECT * from users where username = '$username'";
+                $res = mysqli_query($conn, $sql);
                 $user = mysqli_fetch_assoc($res);
-                if ($user['password'] == $password) //matches
-                    echo json_encode(['success' => true, 'message' => 'Login successful', 'user' => [
+
+                echo json_encode(["success" => true, "message" => "User registered successfully", 'user' => [
+                        'id' => $user['id'],
+                        'username' => $user['username'],
+                        'email' => $user['email'],
+                        ],
+                        "register" => true
+            ]);
+            }
+            else
+                echo json_encode(['success' => false, 'error' => 'User registration failed.']);
+        }
+        else{ //previously logged already
+            $user = mysqli_fetch_assoc($res);
+
+            echo json_encode(["success" => true, "message" => "User registered successfully", 'user' => [
                     'id' => $user['id'],
                     'username' => $user['username'],
                     'email' => $user['email'],
-                ]]);
-                else
-                    echo json_encode(['success' => false, 'error' => 'Incorrect password']);
-            }
-            else
-                echo json_encode(['success' => false, 'error' => 'Username not found.']);
+                    ],
+                    "register" => false
+            ]);
         }
         mysqli_close($conn);
     }
