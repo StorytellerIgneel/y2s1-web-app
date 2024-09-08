@@ -25,6 +25,7 @@
   perspective: 1000px;
   transform-style: preserve-3d;
   margin: 0px auto;
+  overflow: hidden;
 }
 
 /* The entire carousel flow */

@@ -280,7 +280,7 @@ function LoginPage() {
             </div>
             <p className="featured-words">
               You Are Few Minutes A Way To Get Your Favourite Games on{" "}
-              <img src="../../../public/images/logo/light/GNS_TextOnly_Black.svg" alt="" />
+              <img src="../../../images/logo/light/GNS_TextOnly_Black.svg" alt="" />
             </p>
           </div>
           <div className="col-2">
