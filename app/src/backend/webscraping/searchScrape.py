@@ -62,7 +62,7 @@ driver.get("https://store.steampowered.com")
 
 time.sleep(2)
 search = driver.find_element(By.ID, "store_nav_search_term")
-search.send_keys(search_game)
+search.send_keys("Atelier Marie")
 search.send_keys(Keys.RETURN)
 
 time.sleep(2)

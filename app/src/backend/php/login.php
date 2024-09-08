@@ -47,7 +47,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
                 $user = mysqli_fetch_assoc($res);
                 if ($user['password'] == $password) //matches
                     echo json_encode(['success' => true, 'message' => 'Login successful', 'user' => [
-                    'id' => $user['id'],
+                    'id' => $user['user_id'],
                     'username' => $user['username'],
                     'email' => $user['email'],
                 ]]);

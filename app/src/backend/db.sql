@@ -1,11 +1,6 @@
 CREATE DATABASE IF NOT EXISTS  WAD_ASSIGNMENT;
 
 USE WAD_ASSIGNMENT;
-CREATE TABLE IF NOT EXISTS users(
-    username varchar(30),
-    user_password varchar(30),
-    CONSTRAINT PK_WAD_USERS PRIMARY KEY (username)
-);
 
 CREATE TABLE IF NOT EXISTS emails(
     username varchar(30),
@@ -39,8 +34,6 @@ CREATE TABLE IF NOT EXISTS games (
     publisher VARCHAR(255),
     price DECIMAL(10, 2)
 );
-
-
 
 CREATE TABLE IF NOT EXISTS purchases (
     purchase_id INT AUTO_INCREMENT PRIMARY KEY,
