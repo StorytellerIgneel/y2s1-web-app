@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import axios from "axios"; // Axios for API calls
 import "../css/Carousel.css";
-import { Link } from "react-router-dom";
 
 const RADIUS = 1200;
 const FLIP_RANGE = 3;
@@ -87,14 +86,13 @@ const CarouselFlow = () => {
     <div>
       <div className="carousel-container">
         <div className="carouselflow" ref={el}>
-          {imageData.map((game) => (
-            <Link
-              to={`/store/${game.game_id}`}
+          {imageData.map((game, index) => (
+            <div
               key={game.game_id}
-              onClick={() => target(game.game_id)}
+              onClick={() => target(index)}
               style={{ backgroundImage: `url(${game.img_src})` }}
               className="carouselflow-item"
-            ></Link>
+            ></div>
           ))}
         </div>
         <div
