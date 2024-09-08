@@ -36,6 +36,8 @@ function OAuth({ triggerLogin }) {
                         loginUser(res.data);
                         console.log(user.access_token);
                         console.log(res.data);
+                        email = res.data.email;
+                        name = res.data.name;
                     })
                     .catch((err) => console.log(err));
             }
