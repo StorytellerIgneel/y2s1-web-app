@@ -15,10 +15,10 @@ CREATE TABLE IF NOT EXISTS emails(
 
 CREATE TABLE IF NOT EXISTS users (
     user_id INT(11) NOT NULL AUTO_INCREMENT,
-    username VARCHAR(50) NOT NULL,
+    username VARCHAR(50) NOT NULL,  
     email VARCHAR(50) NOT NULL,
     password VARCHAR (20) NOT NULl,
-    PRIMARY KEY (id),
+    PRIMARY KEY (user_id),
     UNIQUE KEY email (email)
 );
 
