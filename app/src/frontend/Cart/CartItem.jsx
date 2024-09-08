@@ -32,13 +32,7 @@ function CartItem({ game_id, title, imgSrc, price }) {
               className="px-2 text-sm text-gray-600 hover:font-semibold"
               onClick={handleRemoveClick}
             >
-              Remove
-            </button>
-            <button
-              className="px-2 text-sm text-gray-600 hover:font-semibold"
-              // onClick={handleOnClick}
-            >
-              Move to Wishlist
+              Remove from cart
             </button>
           </div>
         </div>
