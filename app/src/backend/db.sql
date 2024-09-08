@@ -27,21 +27,6 @@ CREATE TABLE IF NOT EXISTS users (
     UNIQUE KEY email (email)
 );
 
-CREATE TABLE IF NOT EXISTS games (
-    game_id INT AUTO_INCREMENT PRIMARY KEY,
-    title VARCHAR(255) NOT NULL,
-    img_src VARCHAR(255),
-    `desc` TEXT,
-    rating VARCHAR(50),
-    rating_num INT,
-    release_date DATE,
-    developer VARCHAR(255),
-    publisher VARCHAR(255),
-    price DECIMAL(10, 2)
-);
-
-
-
 CREATE TABLE IF NOT EXISTS purchases (
     purchase_id INT AUTO_INCREMENT PRIMARY KEY,
     user_id INT,
@@ -57,6 +42,19 @@ CREATE TABLE IF NOT EXISTS purchase_items (
     game_id INT,
     FOREIGN KEY (purchase_id) REFERENCES Purchases(purchase_id),
     FOREIGN KEY (game_id) REFERENCES Games(game_id)
+);
+
+CREATE TABLE IF NOT EXISTS games (
+    game_id INT AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(255) NOT NULL,
+    img_src VARCHAR(255),
+    `desc` TEXT,
+    rating VARCHAR(50),
+    rating_num INT,
+    release_date DATE,
+    developer VARCHAR(255),
+    publisher VARCHAR(255),
+    price DECIMAL(10, 2)
 );
 
 INSERT INTO `games` (`game_id`, `title`, `img_src`, `desc`, `rating`, `rating_num`, `release_date`, `developer`, `publisher`, `price`) VALUES 
