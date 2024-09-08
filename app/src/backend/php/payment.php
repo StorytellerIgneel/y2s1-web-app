@@ -28,7 +28,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
     $total_amount = $_POST["total_amount"];
     $payment_method = $_POST["payment_method"];
     $purchase_date = date('Y-m-d');
-    
+
+    echo $user_id;
+    echo $game_list;
+    echo $total_amount;
+    echo $payment_method;
+    echo $purchase_date;
+
         
     $dbHost = 'localhost';
     $dbUsername = 'root';

@@ -48,7 +48,7 @@ function SearchBar() {
       <div className="flex">
         <input
           type="search"
-          className="h-8 w-60 rounded-md bg-white pl-3 pr-10 text-sm font-semibold placeholder-gray-400 focus:outline-none"
+          className="h-8 w-60 rounded-md bg-white pl-3 pr-3 text-sm font-semibold placeholder-gray-400 focus:outline-none"
           placeholder="Search for a game..."
           onChange={(e) => setSearchGame(e.target.value)}
           value={searchGame}

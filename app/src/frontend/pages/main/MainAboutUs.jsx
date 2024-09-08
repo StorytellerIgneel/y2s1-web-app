@@ -1,7 +1,7 @@
 import video from '../../../assets/videos/gamevid.mp4'; // Import the image
 
 const MainAboutUsSection = () => (
-  <section className="section3" id="About Us">
+  <section className="section3">
     <div className="game-video">
       <video autoPlay loop src={video} alt="Game Video"/>
     </div>

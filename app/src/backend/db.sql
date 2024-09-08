@@ -92,5 +92,17 @@ INSERT INTO `games` (`game_id`, `title`, `img_src`, `desc`, `rating`, `rating_nu
 INSERT INTO `games` (`game_id`, `title`, `img_src`, `desc`, `rating`, `rating_num`, `release_date`, `developer`, `publisher`, `price`) VALUES 
 ('1091500', 'Cyberpunk 2077', 'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1091500/header.jpg?t=1721647847', 'Cyberpunk 2077 is an open-world, action-adventure story set in Night City, a megalopolis obsessed with power, glamour, and body modification. You play as V, a mercenary outlaw going after a one-of-a-kind implant that is the key to immortality.', 'Very Positive', '555496', '2020-12-09', 'CD PROJEKT RED', 'CD PROJEKT RED', '159.00');
 
+INSERT INTO `games` (`game_id`, `title`, `img_src`, `desc`, `rating`, `rating_num`, `release_date`, `developer`, `publisher`, `price`) VALUES 
+('477160', 'Human Fall Flat', 'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/477160/header.jpg?t=1725024378', 'Human Fall Flat is a hilarious, light-hearted platformer set in floating dreamscapes that can be played solo or with up to 8 players online. Free new levels keep its vibrant community rewarded.', 'Very Positive', '156164', '2016-07-23', 'No Brakes Games', 'Curve Games', '38.00');
+
+INSERT INTO `games` (`game_id`, `title`, `img_src`, `desc`, `rating`, `rating_num`, `release_date`, `developer`, `publisher`, `price`) VALUES 
+('1509960', 'PICO PARK', 'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1509960/header.jpg?t=1723719485', 'PICO PARK is a cooperative local/online multiplay action puzzle game for 2-8 players.', 'Very Positive', '20817', '2021-05-07', 'TECOPARK', 'TECOPARK', '12.50');
+
+
+
+
+
+
+
 
 

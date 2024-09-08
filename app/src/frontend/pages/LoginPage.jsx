@@ -24,6 +24,17 @@ function LoginPage() {
   const [register, setRegister] = useState(false);
   const [triggerLogin, setTriggerLogin] = useState(false);
 
+  useEffect(() => {
+    console.log(username)
+  }, [username]);
+  useEffect(() => {
+    console.log(email)
+  }, [email]);
+  useEffect(() => {
+    console.log(password)
+  }, [password]);
+
+  
   const handleLoginClick = () => {
     console.log(username, password);
     setLogin(true);
@@ -79,70 +90,93 @@ function LoginPage() {
     document.querySelector(".col-1").style.borderRadius = "0 30% 10% 0";
   };
 
-  const googleLogin = () => {
-    // call OAuth login function
-      axios.get(`https://www.googleapis.com/oauth2/v1/userinfo?access_token=${user.access_token}`, {
-            headers: {
-                Authorization: `Bearer ${user.access_token}`,
-                Accept: 'application/json'
-            }
-        })
-        .then((response) => {
-          if (response.data.success) { 
-            loginUser({username, password});
-            //console
-            navigate('/store');  // Navigate to '/store' if successful
-          } else {
-            Swal.fire({
-              icon: 'error',
-              title: 'Login Error',
-              text: response.data.error
-            }); // Handle the failure case if needed
-          }
-        })
-        .catch((err) => console.log(err));
-    }
+  // const googleLogin = () => {
+  //   // call OAuth login function
+  //     axios.get(`https://www.googleapis.com/oauth2/v1/userinfo?access_token=${user.access_token}`, {
+  //           headers: {
+  //               Authorization: `Bearer ${user.access_token}`,
+  //               Accept: 'application/json'
+  //           }
+  //       })
+  //       .then((response) => {
+  //         if (response.data.success) { 
+  //           loginUser({username, password});
+  //           //console
+  //           navigate('/store');  // Navigate to '/store' if successful
+  //         } else {
+  //           Swal.fire({
+  //             icon: 'error',
+  //             title: 'Login Error',
+  //             text: response.data.error
+  //           }); // Handle the failure case if needed
+  //         }
+  //       })
+  //       .catch((err) => console.log(err));
+  //   }
   
 
   const Login = (e) => {
     e.preventDefault();
 
-    if (username === "" && email === "" && password === "") {
+    console.log("detected login");
+    if (username === "" && password === "") {
       Swal.fire({
         icon: "error",
         title: "Oops...",
         text: "Please fill in all fields!",
       });
     }
+    else if (username === "") {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Please fill in the username!",
+      });
+    }
+    else if (password === "") {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Please fill in the password!",
+      });
+    }
+    else{
+      const url = "http://localhost/y2s1-web-app/app/src/backend/php/login.php";
 
-    const url = "http://localhost/y2s1-web-app/app/src/backend/php/login.php";
+      let formData = new FormData();
+      formData.append("username", username);
+      formData.append("password", password);
 
-    let formData = new FormData();
-    formData.append("username", username);
-    formData.append("password", password);
-
-    axios.post(url, formData)
-    .then((response) =>  {
-      console.log(response.data);
-      if (response.data.success) { 
-        let id = response.data.user.id;
-        let username = response.data.user.username;
-        let email = response.data.user.email;
-        loginUser({id, username, email});
-        navigate('/store');  // Navigate to '/store' if successful
-      } else {
-        Swal.fire({
-          icon: 'error',
-          title: 'Login Error',
-          text: response.data.error
-        }); // Handle the failure case if needed
-      }
-    }).catch(error => {console.log(error.message)})
+      axios.post(url, formData)
+      .then((response) =>  {
+        console.log(response.data);
+        if (response.data.success) { 
+          let id = response.data.user.id;
+          let username = response.data.user.username;
+          let email = response.data.user.email;
+          loginUser({id, username, email});
+          navigate('/store');  // Navigate to '/store' if successful
+        } else {
+          Swal.fire({
+            icon: 'error',
+            title: 'Login Error',
+            text: response.data.error
+          }); // Handle the failure case if needed
+        }
+      }).catch(error => {console.log(error.message)})
+      setName("");
+      setPassword("");
+    }
+    
   };
 
   const Register = (e) => {
     e.preventDefault();
 
+    console.log("detected register");
+    console.log(username)
+    console.log(email)
+    console.log(password)
     if (username === "" && email === "" && password === "") {
       Swal.fire({
         icon: "error",
@@ -150,32 +184,65 @@ function LoginPage() {
         text: "Please fill in all fields!",
       });
     }
+    else if (username === "") {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Please fill in the username!",
+      });
+    }
+    else if (password === "") {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Please fill in the password!",
+      });
+    }
+    else if (email === "") {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Please fill in the email!",
+      });
+    }
+    else{
+      console.log("register query")
+      console.log(username)
+      console.log(email)
+      console.log(password)
+      const url = "http://localhost/y2s1-web-app/app/src/backend/php/register.php";
 
-    const url = "http://localhost/y2s1-web-app/app/src/backend/php/register.php";
+      let formData = new FormData();
+      formData.append("username", username);
+      formData.append("password", password);
+      formData.append("email", email);
 
-    let formData = new FormData();
-    formData.append("username", username);
-    formData.append("password", password);
-    formData.append("email", email);
-
-    axios.post(url, formData)
-    .then((response) =>  {
-      console.log(response.data);
-      if (response.data.success) {
-        
-        let id = response.data.user.id;
-        let username = response.data.user.username;
-        let email = response.data.user.email;
-        loginUser({id, username, email});
-        navigate('/store');  // Navigate to '/store' if successful
-      } else {
-        Swal.fire({
-          icon: 'error',
-          title: 'Login Error',
-          text: response.data.error
-        }); // Handle the failure case if needed
-      }
-    }).catch(error => {console.log(error.message)})
+      axios.post(url, formData)
+      .then((response) =>  {
+        console.log(response.data);
+        if (response.data.success) {
+          let id = response.data.user.id;
+          let username = response.data.user.username;
+          let email = response.data.user.email;
+          Swal.fire({
+            icon: 'success',
+            title: 'Success!',
+            text: response.data.message
+          }); // Handle the failure case if needed
+          loginUser({id, username, email});
+          navigate('/store');  // Navigate to '/store' if successful
+        } else {
+          Swal.fire({
+            icon: 'error',
+            title: 'Login Error',
+            text: response.data.error
+          }); // Handle the failure case if needed
+        }
+      }).catch(error => {console.log(error.message)})
+      setName("");
+      setEmail("");
+      setPassword("");
+    }
   };
 
   return (
@@ -213,7 +280,7 @@ function LoginPage() {
             </div>
             <p className="featured-words">
               You Are Few Minutes A Way To Get Your Favourite Games on{" "}
-              <img src="../../../public/images/logo/light/GNS_TextOnly_Black.svg" alt="" />
+              <img src="../../../images/logo/light/GNS_TextOnly_Black.svg" alt="" />
             </p>
           </div>
           <div className="col-2">
@@ -263,7 +330,7 @@ function LoginPage() {
                     className={
                       login ? "loginBtn-clicked" : "loginBtn-notClicked"
                     }
-                    onClick={handleLoginClick}
+                    //onClick={Login}
                   >
                     <span>Sign In </span>
                     <i className="fa-solid fa-right-to-bracket"></i>
@@ -309,7 +376,9 @@ function LoginPage() {
                   <i className="fa-solid fa-unlock icon"></i>
                 </div>
                 <div className="input-submit">
-                  <button onClick={handleRegisterClick}>
+                  <button 
+                    //onClick={Register}
+                  >
                     <span>Sign Up </span>
                     <i className="fa-solid fa-right-to-bracket"></i>
                   </button>

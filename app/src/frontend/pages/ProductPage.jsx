@@ -73,6 +73,7 @@ function ProductPage() {
       <img src={game.img_src} alt={game.title} className="rounded-md" />
       <div className="my-3 rounded-xl bg-red-100 p-5">
         <p>{game.desc}</p>
+        <br />
         <p>
           Rating: {game.rating} ({game.rating_num})
         </p>

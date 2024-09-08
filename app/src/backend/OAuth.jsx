@@ -3,10 +3,13 @@ import { googleLogout, useGoogleLogin } from '@react-oauth/google';
 import UserContext from '../frontend/pages/LoginContext';
 import "../frontend/css/login-style.css"
 import axios from 'axios';
+import Swal from 'sweetalert2';
+import { useNavigate } from "react-router-dom";
 
 function OAuth({ triggerLogin }) {
     const [ user, setUser ] = useState(null);
     const [ profile, setProfile ] = useState(null);
+    const navigate = useNavigate();
 
     const { loginUser } = useContext(UserContext);
 
@@ -32,12 +35,42 @@ function OAuth({ triggerLogin }) {
                         }
                     })
                     .then((res) => {
-                        setProfile(res.data);
-                        loginUser(res.data);
+                        let original_response = res.data;
                         console.log(user.access_token);
                         console.log(res.data);
+                        let email = res.data.email;
+                        let username = res.data.name;
+
+                        const url = "http://localhost/y2s1-web-app/app/src/backend/php/googleLogin.php";
+
+                        let formData = new FormData();
+                        formData.append("username", username);
+                        formData.append("email", email);
+
+                        axios.post(url, formData)
+                        .then((response) =>  {
+                            if (response.data.success) {
+                                let id = response.data.user.id;
+                                let username = response.data.user.username;
+                                let email = response.data.user.email;
+                                Swal.fire({
+                                  icon: 'success',
+                                  title: 'Success!',
+                                  text: response.data.message
+                                }); // Handle the failure case if needed
+                                setProfile(original_response)
+                                loginUser({id, username, email});
+                                navigate('/store');  // Navigate to '/store' if successful
+                              } else {
+                                Swal.fire({
+                                  icon: 'error',
+                                  title: 'Login Error',
+                                  text: response.data.error
+                                }); // Handle the failure case if needed
+                              }
+                        }).catch(error => {console.log(error.message)})
                     })
-                    .catch((err) => console.log(err));
+                .catch((err) => console.log(err));
             }
         },
         [loginUser, user]
