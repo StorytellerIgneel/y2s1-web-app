@@ -33,7 +33,7 @@ function Store() {
     <div>
       <h1>Store</h1>
       <div className="flex flex-col items-center">
-        <Carousel />
+        
         <div className="mx-auto my-0">
           <ul className="product-list grid grid-cols-1 gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
             {games.map((game) => (
