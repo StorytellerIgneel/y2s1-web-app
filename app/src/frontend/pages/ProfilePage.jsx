@@ -8,47 +8,54 @@ import axios from "axios";
 const ProfilePage = () => {
   const { user } = useContext(UserContext);
   const [purchases, setPurchases] = useState([]);
-  const [games, setGames] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  useEffect(() => {
-    const fetchGame = async () => {
-      try {
-        const response = await axios.get(
-          `http://localhost/y2s1-web-app/app/src/backend/php/get_purchase_history.php`,
-        );
-        setGames(response.data);
-      } catch (error) {
-        setError(error);
-      } finally {
-        setLoading(false);
-      }
-    };
+  // useEffect(() => {
+  //   const fetchPurchases = async () => {
+  //     try {
+  //       const response = await axios.get(
+  //         `http://localhost/y2s1-web-app/app/src/backend/php/get_purchase_history.php?user_id=${user.id}`,
+  //       );
+  //       setPurchases(response.data);
+  //     } catch (error) {
+  //       setError(error);
+  //     } finally {
+  //       setLoading(false);
+  //     }
+  //   };
 
-    fetchGame();
-  }, []);
+  //   fetchPurchases();
+  // }, [user.id]);
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>{error}</p>;
+  // if (loading) return <p>Loading...</p>;
+  // if (error) return <p>{error}</p>;
 
   return (
     <div>
       <div className="profile-page">
         <header className="profile-header">
-            {user? (<img src={user.picture} alt={user.name}/>) : (<FaUserCircle className="profile-placeholder"/>)}
+          {user ? (
+            user.picture ? (
+              <img src={user.picture} alt={user.name? user.name : user.username} />
+            ) : (
+              <FaUserCircle className="profile-placeholder" />
+            )
+          ) : (
+            <FaUserCircle className="profile-placeholder" />
+          )}
           <div className="profile-info">
-            <h1>{user? user.name : "Guest"}</h1>
-            <p>{user? user.email : "No email"}</p>
+            <h1>{user ? (user.name? user.name : user.username) : "Guest"}</h1>
+            <p>{user ? user.email : "No email"}</p>
           </div>
         </header>
         <section className="profile-games">
           <h2>Purchased Games</h2>
-          {games.length === 0 ? (
+          {purchases.length === 0 ? (
             <p>No games purchased</p>
           ) : (
             <ul className="games-list">
-              {games.map((game) => (
+              {purchases.map((game) => (
                 <li key={game.game_id} className="game-item">
                   <img
                     src={game.img_src}
