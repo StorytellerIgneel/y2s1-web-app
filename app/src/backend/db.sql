@@ -13,6 +13,15 @@ CREATE TABLE IF NOT EXISTS emails(
     CONSTRAINT FK_WAD_EMAILS FOREIGN KEY (username) REFERENCES users(username)
 );
 
+INSERT INTO `emails` (`username`, `email`, `salutation`, `purpose`, `subject`, `message`) VALUES 
+('chan', 'jinz1083@1utar.my', 'Mr', 'complaint', 'testing', 'abababc, assignment endanger both our mental and physical health. ');
+
+INSERT INTO `emails` (`username`, `email`, `salutation`, `purpose`, `subject`, `message`) VALUES 
+('teoh', 'teohwh@gmail.com', 'Mr', 'complaint', 'WAD Assignment', 'Miss can extend deadline ah?');
+
+INSERT INTO `emails` (`username`, `email`, `salutation`, `purpose`, `subject`, `message`) VALUES 
+('Nicholas', 'Nic@gmail.com', 'Mr', 'complaint', 'mock data 101', 'https://youtu.be/hVxXhdfT4m0?feature=shared');
+
 CREATE TABLE IF NOT EXISTS users (
     user_id INT(11) NOT NULL AUTO_INCREMENT,
     username VARCHAR(50) NOT NULL,  
@@ -22,18 +31,9 @@ CREATE TABLE IF NOT EXISTS users (
     UNIQUE KEY email (email)
 );
 
-CREATE TABLE IF NOT EXISTS games (
-    game_id INT AUTO_INCREMENT PRIMARY KEY,
-    title VARCHAR(255) NOT NULL,
-    img_src VARCHAR(255),
-    `desc` TEXT,
-    rating VARCHAR(50),
-    rating_num INT,
-    release_date VARCHAR(50),
-    developer VARCHAR(255),
-    publisher VARCHAR(255),
-    price DECIMAL(10, 2)
-);
+INSERT INTO `users` (`username`, `user_password`) VALUES ('chan', 'chan');
+INSERT INTO `users` (`username`, `user_password`) VALUES ('teoh', 'teoh');
+INSERT INTO `users` (`username`, `user_password`) VALUES ('wenkee', 'wenkee');
 
 CREATE TABLE IF NOT EXISTS purchases (
     purchase_id INT AUTO_INCREMENT PRIMARY KEY,
@@ -44,12 +44,38 @@ CREATE TABLE IF NOT EXISTS purchases (
     FOREIGN KEY (user_id) REFERENCES users(user_id)
 );
 
+INSERT INTO `purchases` (`purchase_id`, `user_id`, `purchase_date`, `total_amount`, `payment_method`) VALUES 
+('1', '1', '2024-09-05 22:50:57', '26.75', 'credit card');
+
+INSERT INTO `purchases` (`purchase_id`, `user_id`, `purchase_date`, `total_amount`, `payment_method`) VALUES 
+('2', '2', '2024-09-03 22:52:24', '285.00', 'Touch n go');
+
+INSERT INTO `purchases` (`purchase_id`, `user_id`, `purchase_date`, `total_amount`, `payment_method`) VALUES 
+('3', '3', '2024-09-02 22:54:40', '12.00', 'Touch n go');
+
 CREATE TABLE IF NOT EXISTS purchase_items (
     purchase_item_id INT AUTO_INCREMENT PRIMARY KEY,
     purchase_id INT,
     game_id INT,
     FOREIGN KEY (purchase_id) REFERENCES Purchases(purchase_id),
     FOREIGN KEY (game_id) REFERENCES Games(game_id)
+);
+
+INSERT INTO `purchase_items` (`purchase_item_id`, `purchase_id`, `game_id`) VALUES ('1', '1', '105600');
+INSERT INTO `purchase_items` (`purchase_item_id`, `purchase_id`, `game_id`) VALUES ('2', '2', '814380');
+INSERT INTO `purchase_items` (`purchase_item_id`, `purchase_id`, `game_id`) VALUES ('3', '3', '3590');
+
+CREATE TABLE IF NOT EXISTS games (
+    game_id INT AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(255) NOT NULL,
+    img_src VARCHAR(255),
+    `desc` TEXT,
+    rating VARCHAR(50),
+    rating_num INT,
+    release_date DATE,
+    developer VARCHAR(255),
+    publisher VARCHAR(255),
+    price DECIMAL(10, 2)
 );
 
 INSERT INTO `games` (`game_id`, `title`, `img_src`, `desc`, `rating`, `rating_num`, `release_date`, `developer`, `publisher`, `price`) VALUES 
@@ -159,6 +185,3 @@ INSERT INTO `games` (`game_id`, `title`, `img_src`, `desc`, `rating`, `rating_nu
 
 INSERT INTO `games` (`game_id`, `title`, `img_src`, `desc`, `rating`, `rating_num`, `release_date`, `developer`, `publisher`, `price`) VALUES 
 ('2835570', 'Buckshot Roulette', 'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2835570/header.jpg?t=1725303238', 'Play Russian roulette with a 12-gauge shotgun. Two enter. One leaves. Roll the dice with your life. Good luck!', 'Very Positive', '28501', '2024-04-05', 'Mike Klubnika', 'CRITICAL REFLEX', '8.50');
-
-
-
