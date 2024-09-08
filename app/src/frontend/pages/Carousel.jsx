@@ -8,10 +8,9 @@ const FLIP_RANGE = 3;
 
 const CarouselFlow = () => {
   const [imageData, setImageData] = useState([]); // To store the fetched images
+  const [currentIndex, setCurrentIndex] = useState(0); // Carousel's current index
+  const [currentAngle, setCurrentAngle] = useState(0); // Carousel's current angle
   const el = useRef(null);
-  let angleUnit = 0;
-  let currentIndex = 0; 
-  let currentAngle = 0; 
   const navigate = useNavigate(); // For redirecting to the product page
 
   // Helper function to set element style transform property
@@ -26,9 +25,10 @@ const CarouselFlow = () => {
       .then((response) => {
         setImageData(response.data); // Store the image data in state
         if (response.data.length > 0) {
-          angleUnit = 360 / response.data.length; // Calculate angle between items
-          currentIndex = currentAngle = 0; // Reset the index and angle
-          target(0, true); // Target the first item (centered)
+          const angleUnit = 360 / response.data.length; // Calculate angle between items
+          setCurrentIndex(0); // Reset the index and angle
+          setCurrentAngle(0); // Reset the angle
+          target(0, angleUnit, true); // Target the first item (centered)
         }
       })
       .catch((error) => {
@@ -37,7 +37,7 @@ const CarouselFlow = () => {
   }, []);
 
   // Target an item and make it center
-  function target(index, initial = false) {
+  function target(index, angleUnit, initial = false) {
     if (!initial && index === currentIndex) {
       // Redirect to the product page if the center image is clicked
       navigate(`/store/${imageData[index].game_id}`);
@@ -49,12 +49,12 @@ const CarouselFlow = () => {
     if (deltaAngle < -180) deltaAngle += 360;
     else if (deltaAngle > 180) deltaAngle -= 360;
 
-    currentAngle += deltaAngle; // Update the current angle
-    currentIndex = index; // Update the current index
+    setCurrentAngle((prevAngle) => prevAngle + deltaAngle); // Update the current angle
+    setCurrentIndex(index); // Update the current index
 
     // Rotate the carousel container
     const cf = el.current;
-    cf.style.transform = `translateZ(-1250px) rotateY(${currentAngle}deg)`;
+    cf.style.transform = `translateZ(-1250px) rotateY(${currentAngle + deltaAngle}deg)`;
 
     // Flip items angle
     let flipAngle = 90;
@@ -91,7 +91,7 @@ const CarouselFlow = () => {
                   navigate(`/store/${game.game_id}`);
                 } else {
                   // Rotate the carousel if it's not the center image
-                  target(index);
+                  target(index, 360 / imageData.length);
                 }
               }}
               style={{ backgroundImage: `url(${game.img_src})` }}

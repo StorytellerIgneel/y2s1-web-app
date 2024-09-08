@@ -32,20 +32,22 @@ function Store() {
   return (
     <div>
       <h1>Store</h1>
-      <Carousel />
-      <div className="my-0 mx-auto">
-        <ul className="product-list grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {games.map((game) => (
-            <li key={game.game_id}>
-              <ProductCard
-                slug={game.game_id}
-                title={game.title}
-                imgSrc={game.img_src}
-                price={game.price}
-              />
-            </li>
-          ))}
-        </ul>
+      <div className="flex flex-col items-center">
+        <Carousel />
+        <div className="mx-auto my-0">
+          <ul className="product-list grid grid-cols-1 gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+            {games.map((game) => (
+              <li key={game.game_id}>
+                <ProductCard
+                  slug={game.game_id}
+                  title={game.title}
+                  imgSrc={game.img_src}
+                  price={game.price}
+                />
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
     </div>
   );
