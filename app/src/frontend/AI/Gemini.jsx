@@ -49,8 +49,7 @@ function Gemini() {
   }
 
   return (
-    <div className='App'>
-      <div style={{position: "relative", height:"800ox", width:"700px"}}>
+    <div className='h-full'>
         <MainContainer>
           <ChatContainer>
             <MessageList
@@ -63,7 +62,6 @@ function Gemini() {
             <MessageInput placeholder='Type message here: ' onSend={handleSend}/>
           </ChatContainer>
         </MainContainer>
-      </div>
     </div>
   )
 }
