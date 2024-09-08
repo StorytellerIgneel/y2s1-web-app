@@ -7,7 +7,6 @@ import Modal from "../include/Modal/Modal";
 import axios from "axios";
 import Swal from "sweetalert2";
 import "../../index.css";
-import Swal from 'sweetalert2';
 import { useNavigate } from "react-router-dom";
 
 function PaymentModal({ selcetedPaymentMethod }) {
