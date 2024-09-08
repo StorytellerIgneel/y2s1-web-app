@@ -50,13 +50,6 @@ export const UserProvider = ({ children }) => {
     }
   }, [localuser, user]);
 
-  // useEffect(() => {
-  //   // Initialize user state with the value from localStorage if it's not set
-  //   if (user === null && localStorageUser) {
-  //     setUser(localStorageUser);
-  //   }
-  // }, [localStorageUser, user]);
-
   // Function to handle user login
   const loginUser = (userInfo) => {
     setUser(userInfo);

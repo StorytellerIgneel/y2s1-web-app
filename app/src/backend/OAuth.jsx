@@ -40,12 +40,15 @@ function OAuth({ triggerLogin }) {
                         //console.log(res.data);
                         let email = res.data.email;
                         let username = res.data.name;
+                        let picture = res.data.picture;
+                        
 
                         const url = "http://localhost/y2s1-web-app/app/src/backend/php/googleLogin.php";
 
                         let formData = new FormData();
                         formData.append("username", username);
                         formData.append("email", email);
+                        formData.append("picture", picture);
 
                         axios.post(url, formData)
                         .then((response) =>  {
@@ -54,13 +57,14 @@ function OAuth({ triggerLogin }) {
                                 let id = response.data.user.id;
                                 let username = response.data.user.username;
                                 let email = response.data.user.email;
+                                let picture = response.data.user.picture;
                                 Swal.fire({
                                   icon: 'success',
                                   title: 'Success!',
                                   text: response.data.message
                                 }); // Handle the failure case if needed
                                 setProfile(original_response)
-                                loginUser({id, username, email});
+                                loginUser({id, username, email, picture});
                                 navigate('/store');  // Navigate to '/store' if successful
                               } else {
                                 Swal.fire({
@@ -74,7 +78,7 @@ function OAuth({ triggerLogin }) {
                 .catch((err) => console.log(err));
             }
         },
-        [loginUser, user]
+        [loginUser, navigate, user]
     );
 
     // log out function to log the user out of google and set the profile array to null

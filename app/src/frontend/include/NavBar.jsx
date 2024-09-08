@@ -59,10 +59,6 @@ function NavBarBottom() {
           </div>
           <p className="text-sm font-bold text-gray-600">Cart</p>
         </Link>
-        <Link to="/wishlist" className="flex items-center space-x-1">
-          <IoStar className="size-6" fill="gray" />
-          <p className="text-sm font-bold text-gray-600">Wishlist</p>
-        </Link>
       </div>
     </div>
   );

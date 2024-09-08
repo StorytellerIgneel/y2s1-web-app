@@ -3,7 +3,7 @@ import footer_logo from '../../assets/images/GNS_Horizontal_White.svg'; // Impor
 function Footer (){
     return(
     <footer className="footer">
-    <div className="container">
+    <div className="footer-container">
         <div className="footer-logo">
             <a href="./index.php"><img src={footer_logo} alt=""/></a>
         </div>

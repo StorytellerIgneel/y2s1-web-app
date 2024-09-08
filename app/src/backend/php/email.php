@@ -37,7 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
         $dbHost = 'localhost';
         $dbUsername = 'root';
         // $dbPassword = 'teoH0628$$$$';
-        $dbPassword='';
+        $dbPassword = '';
         $dbName = 'wad_assignment';
         
         // Create connection

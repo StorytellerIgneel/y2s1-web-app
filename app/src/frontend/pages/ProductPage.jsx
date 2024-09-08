@@ -79,7 +79,7 @@ function ProductPage() {
         <p>Release Date: {game.release_date}</p>
         <p>Developer: {game.developer}</p>
         <p>Publisher: {game.publisher}</p>
-        <p>Price: RM {game.price}</p>
+        <p>Price: RM {game.price==0.00? "FREE" : game.price}</p>
         <button
           className="button m-5 inline-block w-[30%] self-end bg-red-600 hover:bg-red-700"
           onClick={handleClick}
