@@ -33,6 +33,9 @@ function NavBarTop() {
         <Link to="/support" className="text-xs font-bold text-gray-600">
           Support
         </Link>
+        <Link to="/faq" className="text-xs font-bold text-gray-600">
+          FAQ
+        </Link>
         <Link to="/#about-us" className="text-xs font-bold text-gray-600">
           About Us
         </Link>
