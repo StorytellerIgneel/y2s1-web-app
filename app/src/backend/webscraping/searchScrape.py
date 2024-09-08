@@ -37,6 +37,16 @@ class Game:
                 f"{self.price}\n"
                 )
 
+
+def convert_rating_num(rating_num):
+    try:
+        # Remove non-numeric characters and convert to int
+        # Remove parentheses and any other non-digit characters
+        cleaned_num = re.sub(r'[^\d]', '', str(rating_num))
+        return int(cleaned_num)
+    except ValueError:
+        return None
+
 def convert_release_date(release_date):
     try:
         # Convert date format from '13 Jul, 2023' to '2023-07-13'
@@ -59,12 +69,11 @@ driver.get("https://store.steampowered.com")
 
 time.sleep(2)
 search = driver.find_element(By.ID, "store_nav_search_term")
-search.send_keys("Naruto")
+search.send_keys("Apex Legends")
 search.send_keys(Keys.RETURN)
 
 time.sleep(2)
 search_result = driver.find_elements(By.CLASS_NAME, "search_result_row") #search result list
-print(len(search_result))
 
 for i in range(1):
     time.sleep(2)
@@ -83,12 +92,17 @@ for i in range(1):
         publisher = devs[1].find_element(By.CSS_SELECTOR, "div.summary.column").text
         price = driver.find_element(By.CSS_SELECTOR, "div.game_purchase_price.price").text
 
-        release_date = convert_release_date(releaseDate)
-        price = convert_price(price)
+        
 
-        game = (Game(title, img_src, desc, rating, ratingNum, releaseDate, developer, publisher, price))
+        rating_num = convert_rating_num(ratingNum)
+        release_date = convert_release_date(releaseDate)
+        if(price != "Free To Play"):
+            price = convert_price(price)
+        else:
+            price = 0
+
+        game = (Game(title, img_src, desc, rating, rating_num, release_date, developer, publisher, price))
         game_list.append(game)
-        print(game)
 
     except:pass
     driver.back()
