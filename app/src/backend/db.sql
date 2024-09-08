@@ -98,11 +98,74 @@ INSERT INTO `games` (`game_id`, `title`, `img_src`, `desc`, `rating`, `rating_nu
 INSERT INTO `games` (`game_id`, `title`, `img_src`, `desc`, `rating`, `rating_num`, `release_date`, `developer`, `publisher`, `price`) VALUES 
 ('1509960', 'PICO PARK', 'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1509960/header.jpg?t=1723719485', 'PICO PARK is a cooperative local/online multiplay action puzzle game for 2-8 players.', 'Very Positive', '20817', '2021-05-07', 'TECOPARK', 'TECOPARK', '12.50');
 
+INSERT INTO `games` (`game_id`, `title`, `img_src`, `desc`, `rating`, `rating_num`, `release_date`, `developer`, `publisher`, `price`) VALUES 
+('3590', 'Plants vs. Zombies GOTY Edition', 'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3590/header.jpg?t=1615390608', "Zombies are invading your home, and the only defense is your arsenal of plants! Armed with an alien nursery-worth of zombie-zapping plants like peashooters and cherry bombs, you\'ll need to think fast and plant faster to stop dozens of types of zombies dead in their tracks.", 'Overwhelmingly Positive', '119838', '2009-05-06', 'PopCap Games, Inc.', 'PopCap Games, Inc., Electronic Arts', '12.00');
 
+INSERT INTO `games` (`game_id`, `title`, `img_src`, `desc`, `rating`, `rating_num`, `release_date`, `developer`, `publisher`, `price`) VALUES 
+('1426210', 'It Takes Two', 'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1426210/header.jpg?t=1725585631', 'Embark on the craziest journey of your life in It Takes Two. Invite a friend to join for free with Friend’s Pass and work together across a huge variety of gleefully disruptive gameplay challenges. Winner of GAME OF THE YEAR at the Game Awards 2021.', 'Very Positive', '149401', '2021-03-26', 'Hazelight Studios', 'Electronic Arts', '139.00');
 
+INSERT INTO `games` (`game_id`, `title`, `img_src`, `desc`, `rating`, `rating_num`, `release_date`, `developer`, `publisher`, `price`) VALUES 
+('2881650', 'Content Warning', 'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2881650/header.jpg?t=1723198595', 'Film your friends doing scary things to become SpöökTube famous! (strongly advised to not go alone)', 'Very Positive', '33770', '2024-04-01', 'thePetHen, Skog, Zorro, Wilnyl, Philip', 'Landfall', '21.75');
 
+INSERT INTO `games` (`game_id`, `title`, `img_src`, `desc`, `rating`, `rating_num`, `release_date`, `developer`, `publisher`, `price`) VALUES 
+('601150', 'Devil May Cry 5', 'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/601150/header.jpg?t=1701395090', 'The ultimate Devil Hunter is back in style, in the game action fans have been waiting for.', 'Overwhelmingly Positive', '86176', '2019-03-08', 'CAPCOM Co., Ltd.', 'CAPCOM Co., Ltd.', '124.00');
 
+INSERT INTO `games` (`game_id`, `title`, `img_src`, `desc`, `rating`, `rating_num`, `release_date`, `developer`, `publisher`, `price`) VALUES 
+('329050', 'Devil May Cry 4 Special Edition', 'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/329050/header.jpg?t=1644282580', 'The smash-hit stylish action game DMC4 is back and better than ever, boasting new playable characters and game modes!', 'Very Positive', '12222', '2015-06-23', 'CAPCOM Co., Ltd.', 'CAPCOM Co., Ltd.', '89.00');
 
+INSERT INTO `games` (`game_id`, `title`, `img_src`, `desc`, `rating`, `rating_num`, `release_date`, `developer`, `publisher`, `price`) VALUES 
+('582010', 'Monster Hunter: World', 'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/582010/header.jpg?t=1711328912', 'Welcome to a new world! In Monster Hunter: World, the latest installment in the series, you can enjoy the ultimate hunting experience, using everything at your disposal to hunt monsters in a new world teeming with surprises and excitement.', 'Very Positive', '274750', '2018-08-09', 'CAPCOM Co., Ltd.', 'CAPCOM Co., Ltd.', '98.00');
+
+INSERT INTO `games` (`game_id`, `title`, `img_src`, `desc`, `rating`, `rating_num`, `release_date`, `developer`, `publisher`, `price`) VALUES 
+('1196590', 'Resident Evil Village', 'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1196590/header.jpg?t=1719197703', 'Experience survival horror like never before in the 8th major installment in the Resident Evil franchise - Resident Evil Village. With detailed graphics, intense first-person action and masterful storytelling, the terror has never felt more realistic.', 'Overwhelmingly Positive', '74839', '2021-05-07', 'CAPCOM Co., Ltd.', 'CAPCOM Co., Ltd.', '163.00');
+
+INSERT INTO `games` (`game_id`, `title`, `img_src`, `desc`, `rating`, `rating_num`, `release_date`, `developer`, `publisher`, `price`) VALUES 
+('203160', 'Tomb Raider', 'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/203160/header.jpg?t=1710446431', 'Tomb Raider explores the intense origin story of Lara Croft and her ascent from a young woman to a hardened survivor.', 'Overwhelmingly Positive', '145776', '2013-03-05', 'Crystal Dynamics, Eidos-Montréal, Feral Interactive (Mac), Nixxes', 'Crystal Dynamics, Feral Interactive (Mac)', '49.00');
+
+INSERT INTO `games` (`game_id`, `title`, `img_src`, `desc`, `rating`, `rating_num`, `release_date`, `developer`, `publisher`, `price`) VALUES 
+('391220', 'Rise of the Tomb Raider™', 'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/391220/header.jpg?t=1709834259', 'Rise of the Tomb Raider: 20 Year Celebration includes the base game and Season Pass featuring all-new content. Explore Croft Manor in the new “Blood Ties” story, then defend it against a zombie invasion in “Lara’s Nightmare”.', 'Very Positive', '103154', '2016-02-10', 'Crystal Dynamics, Eidos-Montréal, Feral Interactive (Mac), Feral Interactive (Linux), Nixxes', 'Crystal Dynamics, Feral Interactive (Mac), Feral Interactive (Linux)', '99.00');
+
+INSERT INTO `games` (`game_id`, `title`, `img_src`, `desc`, `rating`, `rating_num`, `release_date`, `developer`, `publisher`, `price`) VALUES 
+('550', 'Left 4 Dead 2', 'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/550/header.jpg?t=1724971542', 'Set in the zombie apocalypse, Left 4 Dead 2 (L4D2) is the highly anticipated sequel to the award-winning Left 4 Dead, the #1 co-op game of 2008. This co-operative action horror FPS takes you and your friends through the cities, swamps and cemeteries of the Deep South, from Savannah to New Orleans across five expansive campaigns.', 'Overwhelmingly Positive', '667924', '2009-11-17', 'Valve', 'Valve', '26.75');
+
+INSERT INTO `games` (`game_id`, `title`, `img_src`, `desc`, `rating`, `rating_num`, `release_date`, `developer`, `publisher`, `price`) VALUES 
+('374320', 'DARK SOULS™ III', 'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/374320/header.jpg?t=1700587390', 'Dark Souls continues to push the boundaries with the latest, ambitious chapter in the critically-acclaimed and genre-defining series. Prepare yourself and Embrace The Darkness!', 'Very Positive', '248763', '2016-04-12', 'FromSoftware, Inc.', 'FromSoftware, Inc., Bandai Namco Entertainment', '170.00');
+
+INSERT INTO `games` (`game_id`, `title`, `img_src`, `desc`, `rating`, `rating_num`, `release_date`, `developer`, `publisher`, `price`) VALUES 
+('524220', 'NieR:Automata™', 'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/524220/header.jpg?t=1724998626', 'NieR: Automata tells the story of androids 2B, 9S and A2 and their battle to reclaim the machine-driven dystopia overrun by powerful machines.', 'Very Positive', '96863', '2017-03-17', 'Square Enix, PlatinumGames Inc.', 'Square Enix', '169.00');
+
+INSERT INTO `games` (`game_id`, `title`, `img_src`, `desc`, `rating`, `rating_num`, `release_date`, `developer`, `publisher`, `price`) VALUES 
+('1238810', 'Battlefield™ V', 'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1238810/header.jpg?t=1701356409', 'This is the ultimate Battlefield V experience. Enter mankind’s greatest conflict with the complete arsenal of weapons, vehicles, and gadgets plus the best customization content of Year 1 and 2.', 'Mostly Positive', '195628', '2018-11-09', 'DICE', 'Electronic Arts', '159.00');
+
+INSERT INTO `games` (`game_id`, `title`, `img_src`, `desc`, `rating`, `rating_num`, `release_date`, `developer`, `publisher`, `price`) VALUES 
+('1144200', 'Ready or Not', 'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1144200/header.jpg?t=1720713454', 'Ready or Not is an intense, tactical, first-person shooter that depicts a modern-day world in which SWAT police units are called to defuse hostile and confronting situations.', 'Very Positive', '150180', '2023-12-14', 'VOID Interactive', 'VOID Interactive', '100.00');
+
+INSERT INTO `games` (`game_id`, `title`, `img_src`, `desc`, `rating`, `rating_num`, `release_date`, `developer`, `publisher`, `price`) VALUES 
+('1659420', 'UNCHARTED™: Legacy of Thieves Collection', 'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1659420/header.jpg?t=1717621447', 'Play as Nathan Drake and Chloe Frazer in their own standalone adventures as they confront their pasts and forge their own legacies. This game includes the critically acclaimed single-player stories from both UNCHARTED 4: A Thief’s End and UNCHARTED: The Lost Legacy.', 'Very Positive', '14452', '2022-10-19', 'Naughty Dog LLC, Iron Galaxy Studios', 'PlayStation Publishing LLC', '209.00');
+
+INSERT INTO `games` (`game_id`, `title`, `img_src`, `desc`, `rating`, `rating_num`, `release_date`, `developer`, `publisher`, `price`) VALUES 
+('238320', 'Outlast', 'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/238320/header.jpg?t=1666817106', "Hell is an experiment you can\'t survive in Outlast, a first-person survival horror game developed by veterans of some of the biggest game franchises in history. As investigative journalist Miles Upshur, explore Mount Massive Asylum and try to survive long enough to discover its terrible secret... if you dare.	", 'Overwhelmingly Positive', '86472', '2013-09-04', 'Red Barrels', 'Red Barrels', '49.00');
+
+INSERT INTO `games` (`game_id`, `title`, `img_src`, `desc`, `rating`, `rating_num`, `release_date`, `developer`, `publisher`, `price`) VALUES 
+('414700', 'Outlast 2', 'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/414700/header.jpg?t=1618944453', 'Outlast 2 introduces you to Sullivan Knoth and his followers, who left our wicked world behind to give birth to Temple Gate, a town, deep in the wilderness and hidden from civilization. Knoth and his flock are preparing for the tribulations of the end of times and you’re right in the thick of it.', 'Very Positive', '43443', '2017-04-25', 'Red Barrels', 'Red Barrels', '72.00');
+
+INSERT INTO `games` (`game_id`, `title`, `img_src`, `desc`, `rating`, `rating_num`, `release_date`, `developer`, `publisher`, `price`) VALUES 
+('448510', 'Overcooked', 'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/448510/header.jpg?t=1718290586', 'Overcooked is a chaotic couch co-op cooking game for one to four players. Working as a team, you and your fellow chefs must prepare, cook and serve up a variety of tasty orders before the baying customers storm out in a huff.', 'Very Positive', '11706', '2016-08-04', 'Ghost Town Games Ltd.', 'Team17 Digital Ltd', '39.00');
+
+INSERT INTO `games` (`game_id`, `title`, `img_src`, `desc`, `rating`, `rating_num`, `release_date`, `developer`, `publisher`, `price`) VALUES 
+('728880', 'Overcooked! 2', 'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/728880/header.jpg?t=1723622537', 'Overcooked returns with a brand-new helping of chaotic cooking action! Journey back to the Onion Kingdom and assemble your team of chefs in classic couch co-op or online play for up to four players. Hold onto your aprons… it’s time to save the world again!', 'Very Positive', '47131', '2018-08-08', 'Ghost Town Games Ltd., Team17', 'Team17', '59.00');
+
+INSERT INTO `games` (`game_id`, `title`, `img_src`, `desc`, `rating`, `rating_num`, `release_date`, `developer`, `publisher`, `price`) VALUES 
+('1432860', 'Sun Haven', 'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1432860/header.jpg?t=1722663018', 'Build your farm and relationships with townsfolk, or forge ahead on a quest of magic, monsters, and dragons. Level up through a skill tree in 8 person multiplayer, or adventure solo!', 'Very Positive', '16720', '2023-03-11', 'Pixel Sprout Studios', 'Pixel Sprout Studios', '61.00');
+
+INSERT INTO `games` (`game_id`, `title`, `img_src`, `desc`, `rating`, `rating_num`, `release_date`, `developer`, `publisher`, `price`) VALUES 
+('1672500', 'GUNDAM BREAKER 4', 'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1672500/header.jpg?t=1725418290', 'Create your own ultimate Gundam in the newest Gundam Breaker! With more customizable parts than ever before, you finally have the freedom to build your perfect Gunpla. Test it in battle using the brand new dual-weapon system and break parts off of your enemies and add them to your collection.', 'Very Positive', '1800', '2024-08-29', 'CRAFTS ＆ MEISTER Co., Ltd', 'Bandai Namco Entertainment Inc.', '199.00');
+
+INSERT INTO `games` (`game_id`, `title`, `img_src`, `desc`, `rating`, `rating_num`, `release_date`, `developer`, `publisher`, `price`) VALUES 
+('413150', 'Stardew Valley', "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/413150/header.jpg?t=1711128146', 'You\'ve inherited your grandfather\'s old farm plot in Stardew Valley. Armed with hand-me-down tools and a few coins, you set out to begin your new life. Can you learn to live off the land and turn these overgrown fields into a thriving home?", 'Overwhelmingly Positive', '640500', '2016-02-27', 'ConcernedApe', 'ConcernedApe', '31.00');
+
+INSERT INTO `games` (`game_id`, `title`, `img_src`, `desc`, `rating`, `rating_num`, `release_date`, `developer`, `publisher`, `price`) VALUES 
+('2835570', 'Buckshot Roulette', 'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2835570/header.jpg?t=1725303238', 'Play Russian roulette with a 12-gauge shotgun. Two enter. One leaves. Roll the dice with your life. Good luck!', 'Very Positive', '28501', '2024-04-05', 'Mike Klubnika', 'CRITICAL REFLEX', '8.50');
 
 
 
