@@ -1,28 +1,30 @@
 import { useContext, useState, useEffect } from "react";
 import PaymentMethodModal from "../pages/PaymentMethodModal";
 import { CartContext } from "./CartContext";
+import UserContext from "../pages/LoginContext";
 import Modal from "../include/Modal/Modal";
+import { Link } from "react-router-dom";
 
 function OrderSummary() {
-  const { getTotalPrice } = useContext(CartContext);
+  const { getTotalPrice, cart } = useContext(CartContext);
+  const { user } = useContext(UserContext);
   const [checkoutOpen, setCheckoutOpen] = useState(false);
 
   useEffect(() => {
     if (checkoutOpen) {
-      document.body.style.overflow = "hidden"; 
+      document.body.style.overflow = "hidden";
     } else {
-      document.body.style.overflow = "auto"; 
+      document.body.style.overflow = "auto";
     }
     return () => {
-      document.body.style.overflow = "auto"; 
+      document.body.style.overflow = "auto";
     };
   }, [checkoutOpen]);
-  
 
   const handleCheckoutClick = () => {
-    setCheckoutOpen(true); 
+    setCheckoutOpen(true);
   };
-  
+
   return (
     <div className="h-auto w-auto flex-col space-y-7 rounded-md bg-gray-200 px-7 pb-10 pt-5">
       <p className="text-lg font-bold">Order Summary</p>
@@ -45,14 +47,26 @@ function OrderSummary() {
           </span>
         </div>
       </div>
-      <button
-        className="button w-full bg-red-600 hover:bg-red-800"
-        onClick={handleCheckoutClick}
-      >
-        Checkout
+      {user? (cart.length > 0 ? (
+        <button
+          className="button w-full bg-red-600 hover:bg-red-800"
+          onClick={handleCheckoutClick}
+        >
+          Checkout
+        </button>
+      ) : (
+        <Link to="/store">
+          <button className="button w-full bg-red-600 hover:bg-red-800 mt-5">
+            You have no items. Go to Store!
+          </button>
+        </Link>
+      )) : <Link to="/login">
+      <button className="button w-full bg-red-600 hover:bg-red-800 mt-5">
+        Login to Checkout with us.
       </button>
-      <Modal open={checkoutOpen} onClose={() => setCheckoutOpen(false) }>
-          <PaymentMethodModal />
+    </Link>}
+      <Modal open={checkoutOpen} onClose={() => setCheckoutOpen(false)}>
+        <PaymentMethodModal />
       </Modal>
     </div>
   );

@@ -24,28 +24,35 @@ class Game:
         self.price = price
 
     def __str__(self):
+        print(type(self.price))
+        print(type(self.release_date))
         return (f"Title: {self.title}\n"
                 f"Image Source: {self.img_src}\n"
                 f"Description: {self.desc}\n"
                 f"Rating: {self.rating}\n"
-                f"Rating Number: {self.rating_num}\n"
+                f"{self.rating_num}\n"
                 f"Release Date: {self.release_date}\n"
                 f"Developer: {self.developer}\n"
                 f"Publisher: {self.publisher}\n"
-                f"Price: {self.price}\n")
+                f"{self.price}\n"
+                )
+
 
 def convert_rating_num(rating_num):
     try:
         # Remove non-numeric characters and convert to int
-        return int(re.sub(r'[^\d]', '', rating_num))
+        # Remove parentheses and any other non-digit characters
+        cleaned_num = re.sub(r'[^\d]', '', str(rating_num))
+        return int(cleaned_num)
     except ValueError:
         return None
 
 def convert_release_date(release_date):
     try:
-        # Convert date format to YYYY-MM-DD
-        return datetime.strptime(release_date, '%b %d, %Y').strftime('%Y-%m-%d')
+        # Convert date format from '13 Jul, 2023' to '2023-07-13'
+        return datetime.strptime(release_date, '%d %b, %Y').strftime('%Y-%m-%d')
     except ValueError:
+        # If the format does not match, return None
         return None
 
 def convert_price(price):
@@ -62,12 +69,11 @@ driver.get("https://store.steampowered.com")
 
 time.sleep(2)
 search = driver.find_element(By.ID, "store_nav_search_term")
-search.send_keys(search_game)
+search.send_keys("Apex Legends")
 search.send_keys(Keys.RETURN)
 
 time.sleep(2)
 search_result = driver.find_elements(By.CLASS_NAME, "search_result_row") #search result list
-print(len(search_result))
 
 for i in range(1):
     time.sleep(2)
@@ -86,13 +92,17 @@ for i in range(1):
         publisher = devs[1].find_element(By.CSS_SELECTOR, "div.summary.column").text
         price = driver.find_element(By.CSS_SELECTOR, "div.game_purchase_price.price").text
 
+        
+
         rating_num = convert_rating_num(ratingNum)
         release_date = convert_release_date(releaseDate)
-        price = convert_price(price)
+        if(price != "Free To Play"):
+            price = convert_price(price)
+        else:
+            price = 0
 
-        game = (Game(title, img_src, desc, rating, ratingNum, releaseDate, developer, publisher, price))
+        game = (Game(title, img_src, desc, rating, rating_num, release_date, developer, publisher, price))
         game_list.append(game)
-        print(game)
 
     except:pass
     driver.back()

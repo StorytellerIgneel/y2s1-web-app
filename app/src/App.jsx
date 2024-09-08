@@ -26,11 +26,8 @@ function App() {
                   <Route path="/support" element={<Email />} />
                   <Route path="/cart" element={<CartPage />} />
                   <Route path="/profile" element={<ProfilePage />} />
-                  {/* for testing */}
-                  {/* <Route path="/wishlist" element={<WishlistPage />} /> */}
                 </Route>
                 <Route path="/login" element={<LoginPage/>} />
-                <Route path="/OAuth" element={<OAuth />} />
             </Routes>
             </BrowserRouter>
           </CartProvider>

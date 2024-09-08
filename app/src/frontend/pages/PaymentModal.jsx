@@ -2,12 +2,15 @@ import { useContext, useState } from "react";
 import { CartContext } from "../Cart/CartContext";
 import { PaymentItem } from "../Cart/CartItem";
 import { UserProfileLeft } from "../include/UserProfile";
+import { useNavigate } from "react-router-dom";
 import PaymentStatusModal from "./PaymentStatusModal";
 import Modal from "../include/Modal/Modal";
 import axios from "axios";
+import Swal from "sweetalert2";
 import "../../index.css";
 
 function PaymentModal({ selcetedPaymentMethod }) {
+  
   return (
     <div>
       <h1>Checkout</h1>
@@ -54,13 +57,18 @@ function TermsAndAgreement({ selcetedPaymentMethod }) {
   const [agree, setAgree] = useState(false);
   const [paymentStatusOpen, setPaymentStatusOpen] = useState(false);
   const { cart, getTotalPrice } = useContext(CartContext);
+  const navigate = useNavigate();
 
   const handleContinueClick = () => {
+    console.log(cart)
     const url = "http://localhost/y2s1-web-app/app/src/backend/php/payment.php";
 
+
     let formData = new FormData();
-    formData.append("user_id", localStorage.getItem("user")["id"]);
-    formData.append("game_list", cart);
+    const userObject = JSON.parse(localStorage.getItem("user"));  // Convert back to an object
+
+    formData.append("user_id", userObject.id);
+    formData.append("game_list", JSON.stringify(cart));
     formData.append("payment_method", selcetedPaymentMethod);
     formData.append("total_amount", parseFloat(getTotalPrice()).toFixed(2));
 

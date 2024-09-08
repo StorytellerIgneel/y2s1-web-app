@@ -2,7 +2,6 @@ import React, { useRef, useState } from 'react';
 import emailjs from '@emailjs/browser';
 import axios from 'axios';
 import Swal from 'sweetalert2';
-// import 'bootstrap/dist/css/bootstrap.min.css';
 import "./Email.css"
 
 const Email = () => {
@@ -32,7 +31,6 @@ const Email = () => {
         cancelButtonText: "No"
       }).then((result) => {
       if (result.isConfirmed){
-        /*
         emailjs
           .sendForm(
             'service_kkdhmlb', 
@@ -48,7 +46,6 @@ const Email = () => {
               console.log('FAILED...', error.text);
             },
           );
-          */
         Swal.fire("Submitted!", "Your message has been sent to the customer service team.", "success")
       }
     })
@@ -56,7 +53,7 @@ const Email = () => {
       
     e.preventDefault();
 
-    const url = "http://localhost:8000/email.php";
+    const url = "http://localhost/y2s1-web-app/app/src/backend/php/email.php";
 
     let formData = new FormData();
     formData.append('user_name', name);
@@ -65,33 +62,13 @@ const Email = () => {
     formData.append('salutation', salutation);
 
     axios.post(url, formData)
-    .then((response) => alert(response.data))
-    .catch(error => alert(error.message))
-
-    /*
-    fetch("http://localhost:8000/email.php", {
-      method: "POST",
-      body: formData,
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    })
-    .then(response => response.json())
-    .then(data => {
-      if (data.success)
-        console.log("Success!");
-      else 
-        console.log("Error!"), data.eror;
-    })
-    .catch(error => {
-      console.log('Failed', error);
-    });
-  };
-  */
+    .then((response) =>{})
+    .catch(error => {})
   };
 
   return (
     <div>
+      <h1>Contact Us</h1>
       <div className="container-lg">
         <form ref={form} onSubmit={sendEmail}>
           <div className="form-group d-flex align-items-center">
@@ -152,7 +129,6 @@ const Email = () => {
                 <option value="@yahoo.com">@yahoo.com</option>
                 <option value="@hotmail.com">@hotmail.com</option>
               </select>
-              <span className="input-group-text" id="basic-addon2">@gmail.com</span>
             </div>
           </label>
 
@@ -200,7 +176,7 @@ const Email = () => {
         </form>
       </div>
 
-      <div className="container mx-auto my-5">
+      <div className="mx-auto my-5">
         <h1 className="text-center mb-5 text-3xl font-bold">Contact Us</h1>
 
         <div className="flex flex-col items-center space-y-4">

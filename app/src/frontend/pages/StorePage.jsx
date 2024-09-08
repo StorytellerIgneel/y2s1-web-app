@@ -1,11 +1,9 @@
 import axios from "axios";
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import UserContext from "./LoginContext";
 import Carousel from "./Carousel";
 
 function Store() {
-  const { user, loginUser } = useContext(UserContext);
   const [games, setGames] = useState([]); // Initialize as an empty array
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -33,6 +31,7 @@ function Store() {
     <div>
       <h1>Store</h1>
       <div className="flex flex-col items-center">
+        <h2 className="text-2xl font-bold text-center">Browse Your Favourite Games.</h2>
         <Carousel />
         <div className="mx-auto my-0">
           <ul className="product-list grid grid-cols-1 gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">

@@ -24,26 +24,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
     
 if ($_SERVER["REQUEST_METHOD"] == "POST"){
     $user_id = $_POST["user_id"];
-    $game_list = $_POST["game_list"]; //array of game id
+    $game_list = json_decode($_POST["game_list"], true); //array of game id
     $total_amount = $_POST["total_amount"];
-    $payment_method = $_POST["payment_method"];
+    $payment_method =  $_POST["payment_method"];
     $purchase_date = date('Y-m-d');
 
-    echo $user_id;
-    echo $game_list;
-    echo $total_amount;
-    echo $payment_method;
-    echo $purchase_date;
-
-        
     $dbHost = 'localhost';
     $dbUsername = 'root';
-    $dbPassword = 'teoH0628$$$$';
+    // $dbPassword = 'teoH0628$$$$';
+    $dbPassword='';
     $dbName = 'wad_assignment';
         
         // Create connection
     $conn = mysqli_connect($dbHost, $dbUsername, $dbPassword, $dbName);
 
+    $payment_method = mysqli_real_escape_string($conn, $payment_method);
     // Insert data into Purchases table
     $sql = "INSERT INTO purchases (user_id, purchase_date, total_amount, payment_method)
     VALUES ('$user_id', '$purchase_date', '$total_amount', '$payment_method')";
@@ -54,11 +49,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
         $purchase_id = $conn->insert_id;
 
     // Insert each game into PurchaseItems table
-        foreach ($game_list as $game_id) {
-        $sql_item = "INSERT INTO purchase_items (purchase_id, game_id)
+        foreach ($game_list as $game) {
+        $game_id = $game["game_id"];
+        $sql = "INSERT INTO purchase_items (purchase_id, game_id)
                      VALUES ('$purchase_id', '$game_id')";
-        echo json_encode(["success" => true, "message" => "Purchase made successfully"]);
+        $res = mysqli_query($conn, $sql);
         }
+        echo json_encode(["success" => true, "message" => "Purchase made successfully"]);
     }
     else
         echo json_encode(['success' => false, 'error' => 'Failed to make purchases.']);
