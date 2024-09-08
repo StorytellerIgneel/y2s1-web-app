@@ -33,26 +33,40 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
         
         // Create connection
         $conn = mysqli_connect($dbHost, $dbUsername, $dbPassword, $dbName);
-        if (!$conn) {
-            die('Could not connect to the database: ' . mysqli_connect_error());
-        } else {
-            echo 'Connection successful!';
-        }
-        $sql = "INSERT INTO users (username, email, password) VALUES ('$username', '$email', '$password')";
+        // if (!$conn) {
+        //     die('Could not connect to the database: ' . mysqli_connect_error());
+        // } else {
+        //     echo 'Connection successful!';
+        // }
+        //check if username already exists
+        $sql = "SELECT * from users where username = '$username'";
         $res = mysqli_query($conn, $sql);
-        if ($res){
-            $sql = "SELECT * from users where username = '$name'";
+        if (mysqli_num_rows($res) > 0) //check num of rows returned 
+            echo json_encode(['success' => false, 'error' => 'Username already exists.']);
+        else { //check if email exists
+            $sql = "SELECT * from users where email = '$email'";
             $res = mysqli_query($conn, $sql);
-            $user = mysqli_fetch_assoc($res);
-            echo json_encode(["success" => true, "message" => "User registered successfully", 'user' => [
-                    'id' => $user['id'],
-                    'username' => $user['username'],
-                    'email' => $user['email'],
-                ]]);
-        }
-        else
-            echo json_encode(['success' => false, 'error' => mysqli_error($conn)]);
+            if(mysqli_num_rows($res) > 0) //check num of rows returned 
+                echo json_encode(['success' => false, 'error' => 'Email already exists.']);
+            else {
+                $sql = "INSERT INTO users (username, email, password) VALUES ('$username', '$email', '$password')";
+                $res = mysqli_query($conn, $sql);
+                if ($res){
+                    $sql = "SELECT * from users where username = '$username'";
+                    $res = mysqli_query($conn, $sql);
+                    $user = mysqli_fetch_assoc($res);
+
+                    echo json_encode(["success" => true, "message" => "User registered successfully", 'user' => [
+                            'id' => $user['id'],
+                            'username' => $user['username'],
+                            'email' => $user['email'],
+                        ]]);
+                }
+                else
+                    echo json_encode(["success" => false, "message" => "User registration failed."]);
+            }
         mysqli_close($conn);
+        }
     }
     else
         echo json_encode(['success' => false, 'error' => 'All fields are required.']);
