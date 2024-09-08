@@ -1,17 +1,3 @@
-*{
-	/* margin: 0;
-	padding: 0;
-	box-sizing: border-box; */
-	/* font-family: "Archivo Black", sans-serif; */
-
-	/* Variables for storing colors */
-	/* --card-clr: #fff;
-	--body-clr: #191d28;
-	--primary-clr: #1c1c1c;
-	--heading-clr: #949494;
-	--text-clr: #767a86; */
-}
-
 .autoShow{
     animation: autoShowAnimation both;
     animation-timeline: view(70% 5%);
@@ -28,11 +14,21 @@
 }
 
 .rating-carousel-body{
-	width: 100vw;
+	width: 100%;
 	height: auto;
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+
+	/* Variables for storing colors */
+	--card-clr: #fff;
+	--body-clr: #191d28;
+	--primary-clr: #1c1c1c;
+	--heading-clr: #949494;
+	--text-clr: #767a86;
 }
 
 .testimonials-section{

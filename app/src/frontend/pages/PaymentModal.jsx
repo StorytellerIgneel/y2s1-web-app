@@ -1,10 +1,10 @@
 import { useContext, useState } from "react";
 import { CartContext } from "../Cart/CartContext";
 import { PaymentItem } from "../Cart/CartItem";
-import { PaymentSummary } from "../Cart/OrderSummary";
 import { UserProfileLeft } from "../include/UserProfile";
 import PaymentStatusModal from "./PaymentStatusModal";
 import Modal from "../include/Modal/Modal";
+import axios from "axios";
 import "../../index.css";
 
 function PaymentModal({ selcetedPaymentMethod }) {
@@ -53,8 +53,36 @@ function CartItemsList() {
 function TermsAndAgreement({ selcetedPaymentMethod }) {
   const [agree, setAgree] = useState(false);
   const [paymentStatusOpen, setPaymentStatusOpen] = useState(false);
+  const { cart, getTotalPrice } = useContext(CartContext);
 
   const handleContinueClick = () => {
+    const url = "http://localhost/y2s1-web-app/app/src/backend/php/payment.php";
+
+    let formData = new FormData();
+    formData.append("user_id", localStorage.getItem("user")["id"]);
+    formData.append("game_list", cart);
+    formData.append("payment_method", selcetedPaymentMethod);
+    formData.append("total_amount", parseFloat(getTotalPrice()).toFixed(2));
+
+    axios.post(url, formData)
+    .then((response) =>  {
+      console.log(response.data);
+      if (response.data.success) {
+        Swal.fire({
+          icon: 'success',
+          title: 'Purchase Complete!',
+          text: "You can now view your purchase history"
+        }); // Handle the failure case if needed
+        navigate('/store');  // Navigate to '/store' if successful
+      } else {
+        Swal.fire({
+          icon: 'error',
+          title: 'Payment Error',
+          text: response.data.error
+        }); // Handle the failure case if needed
+      }
+    }).catch(error => {console.log(error.message)})
+
     setPaymentStatusOpen(true); 
   };
 
@@ -100,4 +128,31 @@ function TermsAndAgreement({ selcetedPaymentMethod }) {
     </div>
   );
 }
+
+function PaymentSummary() {
+  const { getTotalPrice } = useContext(CartContext);
+  return (
+    <div>
+      <div className="flex-col space-y-5">
+        <div className="flex justify-between">
+          <span className="text-sm">Subtotal</span>
+          <span className="text-sm">
+            RM {parseFloat(getTotalPrice()).toFixed(2)}
+          </span>
+        </div>
+        <div className="flex justify-between items-center">
+          <span className="text-md font-bold">Total</span>
+          <span className="text-3xl font-bold">
+            RM {parseFloat(getTotalPrice()).toFixed(2)}
+          </span>
+        </div>
+        <div className="flex justify-between">
+          <span className="text-sm">Included 8% VAT</span>
+          <span className="text-sm">RM {(parseFloat(getTotalPrice()) * 0.08).toFixed(2)}</span>
+        </div>
+      </div>
+    </div>
+  )
+}
+
 export default PaymentModal;

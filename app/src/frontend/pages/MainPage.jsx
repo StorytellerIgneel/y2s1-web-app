@@ -7,6 +7,7 @@ import MainPlayableGamesSection from "./main/MainPlayableGamesSection";
 import MainAboutUsSection from "./main/MainAboutUs";
 import Footer from "../include/Footer";
 import "../css/style.css";
+import MainRatingSection from "./main/MainRatingSection";
 
 function MainPage() {
   const location = useLocation();
@@ -31,6 +32,7 @@ function MainPage() {
       </section>
       <section id="about-us" >
         <MainAboutUsSection />
+        <MainRatingSection/>
       </section>
       <Footer />
     </div>
