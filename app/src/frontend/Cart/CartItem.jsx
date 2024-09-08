@@ -56,7 +56,7 @@ export function PaymentItem({ imgSrc, title, price }) {
           <div className="flex items-center justify-between">
             <div className="text-sm font-bold line-clamp-3 flex-grow">{title}</div>
               <p className="px-2 py-1 text-sm font-semibold whitespace-nowrap">
-                RM {price}
+                RM {price==0.00? "FREE" : price}
               </p>
           </div>
         </div>

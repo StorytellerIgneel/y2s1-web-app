@@ -2,14 +2,15 @@ import { useContext, useState } from "react";
 import { CartContext } from "../Cart/CartContext";
 import { PaymentItem } from "../Cart/CartItem";
 import { UserProfileLeft } from "../include/UserProfile";
+import { useNavigate } from "react-router-dom";
 import PaymentStatusModal from "./PaymentStatusModal";
 import Modal from "../include/Modal/Modal";
 import axios from "axios";
 import Swal from "sweetalert2";
 import "../../index.css";
-import { useNavigate } from "react-router-dom";
 
 function PaymentModal({ selcetedPaymentMethod }) {
+  
   return (
     <div>
       <h1>Checkout</h1>

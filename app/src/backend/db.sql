@@ -29,7 +29,7 @@ CREATE TABLE IF NOT EXISTS games (
     `desc` TEXT,
     rating VARCHAR(50),
     rating_num INT,
-    release_date DATE,
+    release_date VARCHAR(50),
     developer VARCHAR(255),
     publisher VARCHAR(255),
     price DECIMAL(10, 2)
