@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import UserContext from "./LoginContext";
+import Carousel from "./Carousel";
 
 function Store() {
   const { user, loginUser } = useContext(UserContext);
@@ -31,6 +32,7 @@ function Store() {
   return (
     <div>
       <h1>Store</h1>
+      <Carousel />
       <div className="my-0 mx-auto">
         <ul className="product-list grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {games.map((game) => (
