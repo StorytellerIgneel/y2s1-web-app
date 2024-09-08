@@ -1,11 +1,6 @@
 CREATE DATABASE IF NOT EXISTS  WAD_ASSIGNMENT;
 
 USE WAD_ASSIGNMENT;
-CREATE TABLE IF NOT EXISTS users(
-    username varchar(30),
-    user_password varchar(30),
-    CONSTRAINT PK_WAD_USERS PRIMARY KEY (username)
-);
 
 CREATE TABLE IF NOT EXISTS emails(
     username varchar(30),
@@ -20,10 +15,10 @@ CREATE TABLE IF NOT EXISTS emails(
 
 CREATE TABLE IF NOT EXISTS users (
     user_id INT(11) NOT NULL AUTO_INCREMENT,
-    username VARCHAR(50) NOT NULL,
+    username VARCHAR(50) NOT NULL,  
     email VARCHAR(50) NOT NULL,
     password VARCHAR (20) NOT NULl,
-    PRIMARY KEY (id),
+    PRIMARY KEY (user_id),
     UNIQUE KEY email (email)
 );
 

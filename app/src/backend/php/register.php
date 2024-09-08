@@ -28,7 +28,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
     if (!empty($username) && !empty($password) && !empty($email)){
         $dbHost = 'localhost';
         $dbUsername = 'root';
-        $dbPassword = 'teoH0628$$$$';
+        // $dbPassword = 'teoH0628$$$$';
+        $dbPassword='';
         $dbName = 'wad_assignment';
         
         // Create connection
@@ -57,7 +58,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
                     $user = mysqli_fetch_assoc($res);
 
                     echo json_encode(["success" => true, "message" => "User registered successfully", 'user' => [
-                            'id' => $user['id'],
+                            'id' => $user['user_id'],
                             'username' => $user['username'],
                             'email' => $user['email'],
                         ]]);

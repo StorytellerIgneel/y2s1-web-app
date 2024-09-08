@@ -32,7 +32,6 @@ const Email = () => {
         cancelButtonText: "No"
       }).then((result) => {
       if (result.isConfirmed){
-        /*
         emailjs
           .sendForm(
             'service_kkdhmlb', 
@@ -48,7 +47,6 @@ const Email = () => {
               console.log('FAILED...', error.text);
             },
           );
-          */
         Swal.fire("Submitted!", "Your message has been sent to the customer service team.", "success")
       }
     })
@@ -56,7 +54,7 @@ const Email = () => {
       
     e.preventDefault();
 
-    const url = "http://localhost:8000/email.php";
+    const url = "http://localhost/y2s1-web-app/app/src/backend/php/email.php";
 
     let formData = new FormData();
     formData.append('user_name', name);
@@ -65,29 +63,8 @@ const Email = () => {
     formData.append('salutation', salutation);
 
     axios.post(url, formData)
-    .then((response) => alert(response.data))
-    .catch(error => alert(error.message))
-
-    /*
-    fetch("http://localhost:8000/email.php", {
-      method: "POST",
-      body: formData,
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    })
-    .then(response => response.json())
-    .then(data => {
-      if (data.success)
-        console.log("Success!");
-      else 
-        console.log("Error!"), data.eror;
-    })
-    .catch(error => {
-      console.log('Failed', error);
-    });
-  };
-  */
+    .then((response) =>{})
+    .catch(error => {})
   };
 
   return (

@@ -37,7 +37,7 @@ function OAuth({ triggerLogin }) {
                     .then((res) => {
                         let original_response = res.data;
                         console.log(user.access_token);
-                        console.log(res.data);
+                        //console.log(res.data);
                         let email = res.data.email;
                         let username = res.data.name;
 
@@ -49,6 +49,7 @@ function OAuth({ triggerLogin }) {
 
                         axios.post(url, formData)
                         .then((response) =>  {
+                            console.log(response.data);
                             if (response.data.success) {
                                 let id = response.data.user.id;
                                 let username = response.data.user.username;
