@@ -182,7 +182,7 @@ const Email = () => {
         <div className="flex flex-col items-center space-y-4">
           {/* Email */}
           <a
-            href="mailto:official@example.com"
+            href="mailto:GameNonStop@example.com"
             className="flex items-center space-x-3 text-lg text-blue-500 hover:underline"
           >
             <i className="bi bi-envelope-fill text-2xl"></i>
@@ -200,7 +200,7 @@ const Email = () => {
 
           {/* Facebook */}
           <a
-            href="https://www.facebook.com/yourpage"
+            href="https://www.facebook.com/gamenonstop"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center space-x-3 text-lg text-blue-500 hover:underline"
@@ -211,7 +211,7 @@ const Email = () => {
 
           {/* Instagram */}
           <a
-            href="https://www.instagram.com/yourpage"
+            href="https://www.instagram.com/gamenonstop"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center space-x-3 text-lg text-blue-500 hover:underline"
@@ -219,6 +219,30 @@ const Email = () => {
             <i className="bi bi-instagram text-2xl"></i>
             <span>GameNonStopIG</span>
           </a>
+
+          {/* X */}
+          <a
+            href="https://x.com/gamenonstop"
+            className="flex items-center space-x-3 text-lg text-blue-500 hover:underline"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {/* Custom X icon */}
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24" // Adjust size as needed
+              height="24"
+              fill="currentColor"
+              className="bi bi-twitter-x text-2xl"
+              viewBox="0 0 16 16"
+            >
+              <path d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865z" />
+            </svg>
+            <span>GameNonStopX</span> {/* X handle */}
+          </a>
+
+
+
         </div>
       </div>
 

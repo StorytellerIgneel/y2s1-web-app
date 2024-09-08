@@ -21,7 +21,7 @@ if ($conn->connect_error) {
 }
 
 // SQL query to fetch 5 games (fixed selection)
-$sql = "SELECT game_id, title, img_src FROM games ORDER BY game_id ASC LIMIT 20";
+$sql = "SELECT game_id, title, img_src FROM games ORDER BY game_id ASC LIMIT 15";
 $result = $conn->query($sql);
 
 $games = [];

@@ -1,6 +1,6 @@
 :root {
-  --carousel-width: 35vw;
-  --carousel-height: 35vh;
+  --carousel-width: 30vw;
+  --carousel-height: 30vh;
   --carousel-item-border: 6px;
   --carousel-transition-duration: 1s;
   --carousel-box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.7);
