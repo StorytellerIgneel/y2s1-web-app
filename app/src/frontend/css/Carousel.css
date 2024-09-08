@@ -4,11 +4,12 @@
   --carousel-item-border: 6px;
   --carousel-transition-duration: 1s;
   --carousel-box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.7);
-
+  
   font-family: 'Inter', 'Avenir', 'Helvetica', 'Arial', sans-serif;
   font-size: 16px;
   line-height: 24px;
   font-weight: 400;
+
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -16,6 +17,7 @@
   -webkit-text-size-adjust: 100%;
 }
 
+/* Container for the carousel */
 .carousel-container {
   position: relative;
   height: 70vh;
@@ -25,6 +27,7 @@
   margin: 0px auto;
 }
 
+/* The entire carousel flow */
 .carouselflow {
   left: 50%;
   top: 50%;
@@ -35,48 +38,26 @@
   cursor: pointer;
 }
 
+/* Individual carousel items */
 .carouselflow-item {
   width: var(--carousel-width);
   height: var(--carousel-height);
   position: absolute;
-  top: calc(var(--carousel-height) / -2);
-  left: calc(var(--carousel-width) / -2);
+  top: calc(var(--carousel-height) / -2); /* Centering the item */
+  left: calc(var(--carousel-width) / -2); /* Centering the item */
+  
   background-color: #111;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
+
   border: var(--carousel-item-border) solid #eee;
   border-radius: 8px;
   box-shadow: var(--carousel-box-shadow);
+
   transform-origin: center bottom;
   backface-visibility: visible;
+  
+  /* Smooth transition for rotating and scaling */
   transition: transform 1.25s cubic-bezier(0.17, 0.75, 0.58, 0.95);
-}
-
-/* Video modal styling */
-.video-modal {
-  position: fixed;
-  cursor: pointer;
-  width: 1000px;
-  height: 600px;
-  top: 50%;
-  left: 50%;
-  margin-top: -300px;
-  margin-left: -500px;
-  border: 2px solid white;
-  border-radius: 4px;
-  background-color: rgba(0, 0, 0, 0.8);
-  transition: 0.5s all ease-out;
-  transform: scale(0, 0);
-  z-index: 1000;
-}
-
-.video-modal .close {
-  position: absolute;
-  top: 20px;
-  right: 30px;
-  font-size: 40px;
-  font-weight: bold;
-  color: white;
-  cursor: pointer;
 }
