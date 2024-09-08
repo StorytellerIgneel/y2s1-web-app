@@ -53,8 +53,31 @@ function CartItemsList() {
 function TermsAndAgreement({ selcetedPaymentMethod }) {
   const [agree, setAgree] = useState(false);
   const [paymentStatusOpen, setPaymentStatusOpen] = useState(false);
+  const { cart } = useContext(CartContext);
 
   const handleContinueClick = () => {
+    // const url = "http://localhost/y2s1-web-app/app/src/backend/php/payment.php";
+
+    // let formData = new FormData();
+    // formData.append("user_id", localStorage.getItem("user")["id"]);
+    // formData.append("game_list", cart);
+    
+
+
+    // axios.post(url, formData)
+    // .then((response) =>  {
+    //   console.log(response.data);
+    //   if (response.data.success) { 
+    //     navigate('/store');  // Navigate to '/store' if successful
+    //   } else {
+    //     Swal.fire({
+    //       icon: 'error',
+    //       title: 'Payment Error',
+    //       text: response.data.error
+    //     }); // Handle the failure case if needed
+    //   }
+    // }).catch(error => {console.log(error.message)})
+
     setPaymentStatusOpen(true); 
   };
 
