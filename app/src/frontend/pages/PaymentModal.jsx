@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { CartContext } from "../Cart/CartContext";
 import { PaymentItem } from "../Cart/CartItem";
 import { UserProfileLeft } from "../include/UserProfile";
+import { useNavigate } from "react-router-dom";
 import PaymentStatusModal from "./PaymentStatusModal";
 import Modal from "../include/Modal/Modal";
 import axios from "axios";
@@ -9,6 +10,7 @@ import Swal from "sweetalert2";
 import "../../index.css";
 
 function PaymentModal({ selcetedPaymentMethod }) {
+  
   return (
     <div>
       <h1>Checkout</h1>
@@ -55,6 +57,7 @@ function TermsAndAgreement({ selcetedPaymentMethod }) {
   const [agree, setAgree] = useState(false);
   const [paymentStatusOpen, setPaymentStatusOpen] = useState(false);
   const { cart, getTotalPrice } = useContext(CartContext);
+  const navigate = useNavigate();
 
   const handleContinueClick = () => {
     console.log(cart)
