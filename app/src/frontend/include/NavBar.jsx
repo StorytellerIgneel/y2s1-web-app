@@ -19,7 +19,7 @@ function NavBarTop() {
   return (
     <div className="h-15 flex items-center justify-between bg-white px-0.5 sm:px-16">
       <div className="flex items-center space-x-2.5 p-3 sm:space-x-5">
-        <Link to="/">
+        <Link to="/#home">
           <img
             src="../../../images/logo/light/GNS_Horizontal_Black.svg"
             alt="GameNonStop Logo"
@@ -33,7 +33,7 @@ function NavBarTop() {
         <Link to="/support" className="text-xs font-bold text-gray-600">
           Support
         </Link>
-        <Link to="/about-us" className="text-xs font-bold text-gray-600">
+        <Link to="/#about-us" className="text-xs font-bold text-gray-600">
           About Us
         </Link>
       </div>

@@ -7,34 +7,40 @@
     
 } */
 
-.autoShow{
+.autoShow {
     animation: autoShowAnimation both;
     animation-timeline: view(70% 5%);
 }
-@keyframes autoShowAnimation{
-    from{
+
+@keyframes autoShowAnimation {
+    from {
         opacity: 0;
         transform: translateY(200px) scale(0.3);
     }
-    to{
+
+    to {
         opacity: 1;
         transform: translateY(0) scale(1);
     }
 }
 
-.main-page-body{
+.main-page-body {
     display: flex;
     flex-wrap: wrap;
     min-height: 100vh;
-    background: #282828;
     position: absolute;
     left: 0;
     width: 100%;
+    background: url("../../assets/images/blue-contour-949e2eab.svg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
 
 
 
-.home{
+.home {
     position: relative;
     width: 100%;
     height: 100vh;
@@ -43,7 +49,6 @@
     grid-template-columns: repeat(2, 1fr);
     align-items: center;
     gap: 2rem;
-    background-image: url(./images/red-background.jpg);
     background-repeat: no-repeat;
     background-position: center;
     background-attachment: fixed;
@@ -55,12 +60,13 @@
     gap: 1rem;
 }
 
-.home-text h1{
+.home-text h1 {
     font-size: 6vh;
     color: white;
     margin-bottom: 2vh;
 }
-.home-text p{
+
+.home-text p {
     color: white;
     font-size: 2vh;
     line-height: 1.7;
@@ -69,12 +75,12 @@
 }
 
 
-.home-img img{
+.home-img img {
     width: 45vw;
     height: auto;
     transform: translateX();
     transition: 0.7s;
-    
+
 }
 
 
@@ -90,15 +96,15 @@
     text-transform: uppercase;
     font-size: 2vh;
     transition: all 0.5s ease;
-  }
-  
+}
+
 .discover-button:hover {
     letter-spacing: 3px;
     background-color: #E81C24;
     color: hsl(0, 0%, 100%);
     box-shadow: #E81C24 0px 7px 29px 0px;
-  }
-  
+}
+
 .discover-button:active {
     letter-spacing: 3px;
     background-color: #E81C24;
@@ -106,8 +112,8 @@
     box-shadow: #E81C24 0px 0px 0px 0px;
     transform: translateY(10px);
     transition: 100ms;
-  }
-  
+}
+
 
 .play-button {
     padding: 15px 25px;
@@ -120,12 +126,12 @@
     position: relative;
     font-weight: 1000;
     font-size: 2vh;
-    -webkit-box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
-    box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+    -webkit-box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
+    box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
     transition: all 250ms;
     overflow: hidden;
-   }
-   
+}
+
 .play-button::before {
     content: "";
     position: absolute;
@@ -136,21 +142,22 @@
     border-radius: 15px;
     background-color: #212121;
     z-index: -1;
-    -webkit-box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
-    box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+    -webkit-box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
+    box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
     transition: all 250ms
-   }
-   
+}
+
 .play-button:hover {
     color: #e8e8e8;
-   }
-   
+}
+
 .play-button:hover::before {
     width: 100%;
-   }
+}
+
 /******************************************/
 
-.section2{
+.section2 {
     position: relative;
     display: flex;
     flex-wrap: wrap;
@@ -161,24 +168,26 @@
     padding-bottom: 15vh;
 }
 
-.cards-container{
+.cards-container {
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
 }
-.section2 h1{
+
+.section2 h1 {
     font-size: 6vh;
     color: white;
     margin-bottom: 4vh;
 
 }
-.cards{
+
+.cards {
     position: relative;
     width: 20vw;
     height: 50vh;
 }
 
-.cards .face{
+.cards .face {
     position: absolute;
     width: 100%;
     height: 100%;
@@ -188,19 +197,19 @@
     transition: .5s;
 }
 
-.cards .front{
+.cards .front {
     transform: perspective(600px) rotateY(0deg);
     box-shadow: 0 5px 10px #000;
 }
 
-.cards .front img{
+.cards .front img {
     position: absolute;
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
 
-.cards .front h3{
+.cards .front h3 {
     position: absolute;
     bottom: 2vh;
     width: 100%;
@@ -210,7 +219,7 @@
     font-size: 4vh;
 }
 
-.cards .back{
+.cards .back {
     transform: perspective(600px) rotateY(180deg);
     background: white;
     padding: 2vw;
@@ -220,11 +229,11 @@
     justify-content: space-between;
 }
 
-.cards .back h3{
+.cards .back h3 {
     font-size: 4vh;
 }
 
-.cards .back p{
+.cards .back p {
     font-size: 1.75vh;
 }
 
@@ -248,8 +257,8 @@
     color: var(--color);
     background: transparent;
 }
-  
-.card-button i{
+
+.card-button i {
     padding-right: 0.3vw;
 }
 
@@ -262,32 +271,33 @@
     width: 20vw;
     border-radius: 50%;
 }
-  
-.card-button:hover{
+
+.card-button:hover {
     color: #fff;
 }
-  
+
 .card-button:before {
     top: 100%;
     left: 100%;
     transition: all 0.7s;
 }
-  
+
 .card-button:hover:before {
     top: -2.5vw;
     left: -2.5vw;
 }
-  
+
 .card-button:active:before {
     background: #E84A1C;
     transition: background 0s;
 }
-  
-  
-.cards:hover .front{
+
+
+.cards:hover .front {
     transform: perspective(600px) rotateY(180deg);
 }
-.cards:hover .back{
+
+.cards:hover .back {
     transform: perspective(600px) rotateY(360deg);
 }
 
@@ -295,23 +305,24 @@
 /******************************************/
 .section3 {
     position: relative;
-    width: 100vw;
+    width: 100%;
     padding: 9vh;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     align-items: center;
     gap: 2rem;
-    
+    min-height: 100vh;
 }
+
 .game-video {
     flex: 1;
     position: relative;
 }
 
-.game-video video{
+.game-video video {
     border-radius: 3vh;
     width: 45vw;
-    
+
 }
 
 .distribution-content {
@@ -320,18 +331,21 @@
     color: white;
 }
 
-.distribution-content i{
+.distribution-content i {
     padding-right: 2vw;
 }
+
 .distribution-title {
     font-size: 4vh;
     margin-bottom: 2vh;
 }
+
 .distribution-list {
     list-style-type: none;
     padding: 0;
     margin-bottom: 6vh;
 }
+
 .distribution-item {
     display: flex;
     align-items: center;
@@ -343,12 +357,8 @@
     font-weight: bold;
     margin-bottom: 0.5vh;
 }
+
 .distribution-item-description {
     font-size: 1.8vh;
     opacity: 0.8;
 }
-
-
-
-
-

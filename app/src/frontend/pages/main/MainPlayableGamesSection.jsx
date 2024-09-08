@@ -4,7 +4,7 @@ import flappy_bird from '../../../assets/images/flappy-birds.jpg'; // Import the
 import wordle from '../../../assets/images/wordle.jpg'; // Import the image
 
 const MainPlayableGamesSection = () => (
-  <section className="section2 main-playable-section-body" id="play">
+  <section className="section2 main-playable-section-body">
     <h1 className="autoShow">Playable Games</h1>
     <div className="cards-container">
       {/* Add individual game cards */}
