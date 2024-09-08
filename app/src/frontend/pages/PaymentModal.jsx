@@ -1,7 +1,6 @@
 import { useContext, useState } from "react";
 import { CartContext } from "../Cart/CartContext";
 import { PaymentItem } from "../Cart/CartItem";
-import { PaymentSummary } from "../Cart/OrderSummary";
 import { UserProfileLeft } from "../include/UserProfile";
 import PaymentStatusModal from "./PaymentStatusModal";
 import Modal from "../include/Modal/Modal";
@@ -123,4 +122,31 @@ function TermsAndAgreement({ selcetedPaymentMethod }) {
     </div>
   );
 }
+
+function PaymentSummary() {
+  const { getTotalPrice } = useContext(CartContext);
+  return (
+    <div>
+      <div className="flex-col space-y-5">
+        <div className="flex justify-between">
+          <span className="text-sm">Subtotal</span>
+          <span className="text-sm">
+            RM {parseFloat(getTotalPrice()).toFixed(2)}
+          </span>
+        </div>
+        <div className="flex justify-between items-center">
+          <span className="text-md font-bold">Total</span>
+          <span className="text-3xl font-bold">
+            RM {parseFloat(getTotalPrice()).toFixed(2)}
+          </span>
+        </div>
+        <div className="flex justify-between">
+          <span className="text-sm">Included 8% VAT</span>
+          <span className="text-sm">RM {(parseFloat(getTotalPrice()) * 0.08).toFixed(2)}</span>
+        </div>
+      </div>
+    </div>
+  )
+}
+
 export default PaymentModal;
