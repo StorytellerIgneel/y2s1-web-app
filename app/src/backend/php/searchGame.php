@@ -26,8 +26,8 @@
             
         $dbHost = 'localhost';
         $dbUsername = 'root';
-        // $dbPassword = 'teoH0628$$$$';
-        $dbPassword='';
+         $dbPassword = 'teoH0628$$$$';
+        //$dbPassword='';
         $dbName = 'wad_assignment';
         
         // Create connection
