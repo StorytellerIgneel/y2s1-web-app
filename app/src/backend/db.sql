@@ -31,9 +31,9 @@ CREATE TABLE IF NOT EXISTS users (
     UNIQUE KEY email (email)
 );
 
-INSERT INTO `users` (`username`, `user_password`) VALUES ('chan', 'chan');
-INSERT INTO `users` (`username`, `user_password`) VALUES ('teoh', 'teoh');
-INSERT INTO `users` (`username`, `user_password`) VALUES ('wenkee', 'wenkee');
+INSERT INTO `users` (`username`, `password`) VALUES ('chan', 'chan');
+INSERT INTO `users` (`username`, `password`) VALUES ('teoh', 'teoh');
+INSERT INTO `users` (`username`, `password`) VALUES ('wenkee', 'wenkee');
 
 CREATE TABLE IF NOT EXISTS purchases (
     purchase_id INT AUTO_INCREMENT PRIMARY KEY,
@@ -181,7 +181,7 @@ INSERT INTO `games` (`game_id`, `title`, `img_src`, `desc`, `rating`, `rating_nu
 ('1672500', 'GUNDAM BREAKER 4', 'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1672500/header.jpg?t=1725418290', 'Create your own ultimate Gundam in the newest Gundam Breaker! With more customizable parts than ever before, you finally have the freedom to build your perfect Gunpla. Test it in battle using the brand new dual-weapon system and break parts off of your enemies and add them to your collection.', 'Very Positive', '1800', '2024-08-29', 'CRAFTS ＆ MEISTER Co., Ltd', 'Bandai Namco Entertainment Inc.', '199.00');
 
 INSERT INTO `games` (`game_id`, `title`, `img_src`, `desc`, `rating`, `rating_num`, `release_date`, `developer`, `publisher`, `price`) VALUES 
-('413150', 'Stardew Valley', "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/413150/header.jpg?t=1711128146', 'You\'ve inherited your grandfather\'s old farm plot in Stardew Valley. Armed with hand-me-down tools and a few coins, you set out to begin your new life. Can you learn to live off the land and turn these overgrown fields into a thriving home?", 'Overwhelmingly Positive', '640500', '2016-02-27', 'ConcernedApe', 'ConcernedApe', '31.00');
+('413150', 'Stardew Valley', "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/413150/header.jpg?t=1711128146", "You\'ve inherited your grandfather\'s old farm plot in Stardew Valley. Armed with hand-me-down tools and a few coins, you set out to begin your new life. Can you learn to live off the land and turn these overgrown fields into a thriving home?", 'Overwhelmingly Positive', '640500', '2016-02-27', 'ConcernedApe', 'ConcernedApe', '31.00');
 
 INSERT INTO `games` (`game_id`, `title`, `img_src`, `desc`, `rating`, `rating_num`, `release_date`, `developer`, `publisher`, `price`) VALUES 
 ('2835570', 'Buckshot Roulette', 'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2835570/header.jpg?t=1725303238', 'Play Russian roulette with a 12-gauge shotgun. Two enter. One leaves. Roll the dice with your life. Good luck!', 'Very Positive', '28501', '2024-04-05', 'Mike Klubnika', 'CRITICAL REFLEX', '8.50');
