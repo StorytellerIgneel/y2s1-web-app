@@ -1,4 +1,5 @@
 import guy_playing_pc from "../../../assets/images/guy-playing-pc.png"; // Import the image
+import { Link } from "react-router-dom";
 
 const MainHomeSection = () => (
   <section className="section1 home">
@@ -14,7 +15,7 @@ const MainHomeSection = () => (
         experience with <span style={{ color: "red" }}>GNS</span>!&#34;
       </p>
       <div className="home-buttons">
-        <button className="discover-button">Discover</button>
+        <Link to="/store" className="discover-button autoShow">Discover</Link>
         <button
           className="play-button"
           onClick={() => document.getElementById("play").scrollIntoView()}

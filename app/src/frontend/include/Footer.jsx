@@ -1,18 +1,19 @@
 import '../css/footer.css'; // Import the footer-specific CSS
+import { Link } from "react-router-dom"
 import footer_logo from '../../assets/images/GNS_Horizontal_White.svg'; // Import the image
 function Footer (){
     return(
     <footer className="footer">
     <div className="footer-container">
         <div className="footer-logo">
-            <a href="./index.php"><img src={footer_logo} alt=""/></a>
+            <Link to="/#home"><img src={footer_logo} alt=""/></Link>
         </div>
         <nav className="footer-nav">
-            <a href="#">Home</a>
-            <a href="#">Shop</a>
-            <a href="#">FAQ</a>
-            <a href="#">About</a>
-            <a href="#">Contact</a>
+        <Link to="/#home">Home</Link>
+        <Link to="/store">Store</Link>
+        <Link to="/faq">FAQ</Link>
+        <Link to="/#about-us">About</Link>
+        <Link to="/support">Support</Link>
         </nav>
         <div className="footer-social">
             {/* <a href="https://www.twitter.com/gamenonstop"><i className="fa-brands fa-x-twitter"></i></a>

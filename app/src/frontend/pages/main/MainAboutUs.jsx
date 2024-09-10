@@ -1,4 +1,5 @@
 import video from '../../../assets/videos/gamevid.mp4'; // Import the image
+import { Link } from 'react-router-dom';
 
 const MainAboutUsSection = () => (
   <section className="section3">
@@ -18,7 +19,7 @@ const MainAboutUsSection = () => (
         </li>
         {/* Add more list items similarly */}
       </ul>
-      <button className="play-button autoShow">Discover</button>
+      <Link to="/store" className="play-button autoShow">Discover</Link>
     </div>
   </section>
 );
