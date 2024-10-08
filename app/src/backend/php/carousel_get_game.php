@@ -9,7 +9,7 @@ header("Access-Control-Allow-Headers: Content-Type");
 
 $servername = "localhost";
 $username = "root";
-$password = "";
+$password = "teoH0628$$$$";
 $dbname = "WAD_ASSIGNMENT";
 
 // Create a connection

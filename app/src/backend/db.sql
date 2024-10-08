@@ -31,9 +31,9 @@ CREATE TABLE IF NOT EXISTS users (
     UNIQUE KEY email (email)
 );
 
-INSERT INTO `users` (`username`, `password`) VALUES ('chan', 'chan');
-INSERT INTO `users` (`username`, `password`) VALUES ('teoh', 'teoh');
-INSERT INTO `users` (`username`, `password`) VALUES ('wenkee', 'wenkee');
+-- INSERT INTO `users` (`username`, `password`) VALUES ('chan', 'chan');
+-- INSERT INTO `users` (`username`, `password`) VALUES ('teoh', 'teoh');
+-- INSERT INTO `users` (`username`, `password`) VALUES ('wenkee', 'wenkee');
 
 CREATE TABLE IF NOT EXISTS purchases (
     purchase_id INT AUTO_INCREMENT PRIMARY KEY,
