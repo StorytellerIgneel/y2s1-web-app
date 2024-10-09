@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HashRouter, Routes, Route } from "react-router-dom";
 import StorePage from "./frontend/pages/StorePage";
 import CartPage from "./frontend/pages/CartPage";
 import OAuth from "./backend/OAuth";
@@ -18,7 +18,7 @@ function App() {
     <div>
       <UserProvider>
         <CartProvider>
-          <BrowserRouter>
+          <HashRouter>
               <Routes>
                 <Route path="/" element={<Layout />}>
                   <Route index element={<MainPage />} />
@@ -31,7 +31,7 @@ function App() {
                 </Route>
                 <Route path="/login" element={<LoginPage/>} />
             </Routes>
-            </BrowserRouter>
+            </HashRouter>
           </CartProvider>
         </UserProvider>
     </div>
