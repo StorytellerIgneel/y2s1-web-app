@@ -1,15 +1,15 @@
 import { HashRouter, Routes, Route } from "react-router-dom";
-import StorePage from "./frontend/pages/StorePage";
-import CartPage from "./frontend/pages/CartPage";
-import OAuth from "./backend/OAuth";
-import ProductPage from "./frontend/pages/ProductPage";
-import Layout from "./frontend/include/Layout";
-import { CartProvider } from "./frontend/Cart/CartContext";
-import MainPage from "./frontend/pages/MainPage";
-import LoginPage from "./frontend/pages/LoginPage";
+import StorePage from "./frontend/pages/StorePage.jsx";
+import CartPage from "./frontend/pages/CartPage.jsx";
+import OAuth from "./backend/OAuth.jsx";
+import ProductPage from "./frontend/pages/ProductPage.jsx";
+import Layout from "./frontend/include/Layout.jsx";
+import { CartProvider } from "./frontend/Cart/CartContext.jsx";
+import MainPage from "./frontend/pages/MainPage.jsx";
+import LoginPage from "./frontend/pages/LoginPage.jsx";
 import "./index.css";
-import { UserProvider } from "./frontend/pages/LoginContext";
-import Email from "./frontend/Email/email";
+import { UserProvider } from "./frontend/pages/LoginContext.jsx";
+import Email from "./frontend/Email/email.jsx";
 import ProfilePage from "./frontend/pages/ProfilePage.jsx";
 import FAQ from "./frontend/pages/FAQ.jsx";
 
