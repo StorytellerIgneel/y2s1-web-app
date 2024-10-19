@@ -7,18 +7,23 @@ function UserProfileRight() {
   const { user, logoutUser } = useContext(UserContext);
 
   return (
-      <div className="flex items-center space-x-5">
-        {user!=null ? (
-        <Link to="/login">
-        <button onClick={logoutUser} className="button text-sm px-3 py-1 rounded-full h-auto bg-blue-500 hover:bg-blue-600">Logout</button>
-      </Link>
+    <div className="flex items-center space-x-5">
+      {user ? (
+        <button
+          onClick={logoutUser}
+          className="button text-sm px-3 py-1 rounded-full h-auto bg-blue-500 hover:bg-blue-600"
+        >
+          Logout
+        </button>
       ) : (
-        <Link to="/login" >
-          <button className="button text-sm px-3 py-1 h-auto rounded-full bg-red-600 hover:bg-red-700">Login</button>
+        <Link to="/login">
+          <button className="button text-sm px-3 py-1 h-auto rounded-full bg-red-600 hover:bg-red-700">
+            Login
+          </button>
         </Link>
       )}
-        <p className="hidden text-xs font-bold text-gray-600 md:block" href="">
-        {user ? (user.name? user.name : user.username) : "Guest"}
+      <p className="hidden text-xs font-bold text-gray-600 md:block">
+        {user ? (user.name ? user.name : user.username) : "Guest"}
       </p>
       <div className="flex space-x-2">
         {user ? (
@@ -38,6 +43,7 @@ function UserProfileRight() {
     </div>
   );
 }
+
 
 export function UserProfileLeft() {
   const { user } = useContext(UserContext);

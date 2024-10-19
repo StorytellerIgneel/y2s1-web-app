@@ -1,15 +1,26 @@
 <?php
 session_start();
 
-header('Access-Control-Allow-Origin: *');
-header('Access-Control-Allow-Methods: GET, POST, OPTIONS');
-header('Access-Control-Allow-Headers: Content-Type');
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+// Allow certain HTTP methods
+header("Access-Control-Allow-Methods: POST, OPTIONS");
+
+// Allow requests from any origin
+header("Access-Control-Allow-Origin: *");
+
+// Allow certain headers
+header("Access-Control-Allow-Headers: Content-Type");
+
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 // Database connection parameters
-$servername = "localhost";
-$username = "root";
-   $password = "teoH0628$$$$";
-//$password = "";
-$dbname = "WAD_ASSIGNMENT";
+$servername = "gns-deploy.c1mymwgeazez.us-east-2.rds.amazonaws.com";
+$username = "admin";
+$password = "teoh0628";
+$dbname = "GNS-deploy";
 // Create a new connection
 $conn = new mysqli($servername, $username, $password, $dbname);
 // Check connection

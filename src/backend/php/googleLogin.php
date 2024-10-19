@@ -27,11 +27,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
    // echo($name);
     
     if (!empty($username) && !empty($email)){
-        $dbHost = 'localhost';
-        $dbUsername = 'root';
-          $dbPassword = 'teoH0628$$$$';
-        //$dbPassword = '';
-        $dbName = 'wad_assignment';
+        $servername = "gns-deploy.c1mymwgeazez.us-east-2.rds.amazonaws.com";
+        $username = "admin";
+        $password = "teoh0628";
+        $dbname = "GNS-deploy";
         
         // Create connection
         $conn = mysqli_connect($dbHost, $dbUsername, $dbPassword, $dbName);

@@ -1,5 +1,11 @@
 import "../../css/rating-carousel-style.css";
 import Helmet from "react-helmet";
+import profileEmilyJohnson from "../../../assets/images/Profile_EmilyJohnson.jpg";
+import profileSarahMitchell from "../../../assets/images/Profile_SarahMitchell.jpg";
+import profileKevinZhang from "../../../assets/images/Profile_KevinZhang.jpg";
+import profileLucasHernandez from "../../../assets/images/Profile_LucasHernandez.jpg";
+import profilePriyaKapoor from "../../../assets/images/Profile_PriyaKapoor.jpg";
+import profileJakeLing from "../../../assets/images/Profile_JakeLing.jpg"
 import { useEffect } from "react";
 
 function MainRatingSection() {
@@ -98,7 +104,7 @@ function MainRatingSection() {
               </main>
               <div className="profile">
                 <div className="profile-image">
-                  <img src="../../../images/rating-images/Profile_SarahMitchell.jpg" />
+                  <img src={profileSarahMitchell}/>
                 </div>
                 <div className="profile-desc">
                   <span>Sarah Mitchell</span>
@@ -135,7 +141,7 @@ function MainRatingSection() {
               </main>
               <div className="profile">
                 <div className="profile-image">
-                  <img src="../../../images/rating-images/Profile_KevinZhang.jpg" />
+                  <img src={profileKevinZhang}/>
                 </div>
                 <div className="profile-desc">
                   <span>Kevin Zhang</span>
@@ -151,7 +157,7 @@ function MainRatingSection() {
                   <h2>Top Tier Platform!</h2>
                 </div>
                 <p>
-                  &#34;In my years as a video game journalist, I’ve seen
+                  &#34;In my years as a video game journalist, I've seen
                   countless platforms come and go, but this one is here to stay.
                   The variety of games available is impressive, and the site
                   makes it easy to find exactly what you&#39;re looking for,
@@ -173,7 +179,7 @@ function MainRatingSection() {
               </main>
               <div className="profile">
                 <div className="profile-image">
-                  <img src="../../../images/rating-images/Profile_EmilyJohnson.jpg" />
+                  <img src={profileEmilyJohnson} />
                 </div>
                 <div className="profile-desc">
                   <span>Emily Johnson</span>
@@ -210,7 +216,7 @@ function MainRatingSection() {
               </main>
               <div className="profile">
                 <div className="profile-image">
-                  <img src="../../../images/rating-images/Profile_LucasHernandez.jpg" />
+                  <img src={profileLucasHernandez} />
                 </div>
                 <div className="profile-desc">
                   <span>Lucas Hernandez</span>
@@ -247,7 +253,7 @@ function MainRatingSection() {
               </main>
               <div className="profile">
                 <div className="profile-image">
-                  <img src="../../../images/rating-images/Profile_PriyaKapoor.jpg" />
+                  <img src={profilePriyaKapoor} />
                 </div>
                 <div className="profile-desc">
                   <span>Priya Kapoor</span>
@@ -284,7 +290,7 @@ function MainRatingSection() {
               </main>
               <div className="profile">
                 <div className="profile-image">
-                  <img src="../../../images/rating-images/Profile_JakeLing.jpg" />
+                  <img src={profileJakeLing}/>
                 </div>
                 <div className="profile-desc">
                   <span>Jake Ling</span>
