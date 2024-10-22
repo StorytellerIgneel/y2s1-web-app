@@ -141,7 +141,7 @@ function LoginPage() {
       });
     }
     else{
-      const url = "http://localhost/y2s1-web-app/app/src/backend/php/login.php";
+      const url = "http://localhost/y2s1-web-app/src/backend/php/login.php";
 
       let formData = new FormData();
       formData.append("username", username);
@@ -210,7 +210,7 @@ function LoginPage() {
       console.log(username)
       console.log(email)
       console.log(password)
-      const url = "http://localhost/y2s1-web-app/app/src/backend/php/register.php";
+      const url = "http://localhost/y2s1-web-app/src/backend/php/register.php";
 
       let formData = new FormData();
       formData.append("username", username);

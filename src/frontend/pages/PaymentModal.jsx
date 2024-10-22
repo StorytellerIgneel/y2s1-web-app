@@ -61,7 +61,7 @@ function TermsAndAgreement({ selcetedPaymentMethod }) {
 
   const handleContinueClick = () => {
     console.log(cart)
-    const url = "http://localhost/y2s1-web-app/app/src/backend/php/payment.php";
+    const url = "http://localhost/y2s1-web-app/src/backend/php/payment.php";
 
 
     let formData = new FormData();
