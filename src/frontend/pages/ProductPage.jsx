@@ -39,7 +39,7 @@ function ProductPage() {
     const fetchGame = async () => {
       try {
         const response = await axios.get(
-          `http://localhost/y2s1-web-app/src/backend/php/get_game.php?game_id=${game_id}`,
+          `http://gns.000.pe/get_game.php?game_id=${game_id}`,
         );
         setGame(response.data);
       } catch (error) {

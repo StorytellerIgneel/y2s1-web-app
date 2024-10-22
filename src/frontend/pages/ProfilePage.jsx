@@ -57,7 +57,7 @@ const ProfilePage = () => {
     //   },
     // ];
 
-    const url = "http://localhost/y2s1-web-app/src/backend/php/get_game.php";
+    const url = "http://gns.000.pe/get_game.php";
 
     let mockGames = [];
     let formData = new FormData();

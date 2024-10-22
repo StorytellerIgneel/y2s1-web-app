@@ -5,10 +5,10 @@ header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Methods: GET, POST, OPTIONS');
 header('Access-Control-Allow-Headers: Content-Type');
 // Database connection parameters
-$servername = "localhost";
-$username = "root";
-$password = "teoH0628$$$$";
-$dbname = "WAD_ASSIGNMENT";
+$servername = "gns.c1mymwgeazez.us-east-2.rds.amazonaws.com";
+$username = "admin";
+$password = "teoh0628";
+$dbname = "GNS";
 // Create a new connection
 $conn = new mysqli($servername, $username, $password, $dbname);
 // Check connection
