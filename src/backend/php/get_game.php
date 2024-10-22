@@ -17,10 +17,10 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
 // Database connection parameters
-$servername = "gns-deploy.c1mymwgeazez.us-east-2.rds.amazonaws.com";
+$servername = "gns.c1mymwgeazez.us-east-2.rds.amazonaws.com";
 $username = "admin";
 $password = "teoh0628";
-$dbname = "GNS-deploy";
+$dbname = "GNS";
 // Create a new connection
 $conn = new mysqli($servername, $username, $password, $dbname);
 // Check connection

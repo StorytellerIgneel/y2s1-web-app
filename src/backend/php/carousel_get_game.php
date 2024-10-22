@@ -7,10 +7,10 @@ header("Access-Control-Allow-Methods: POST, OPTIONS");
 // Allow certain headers
 header("Access-Control-Allow-Headers: Content-Type");
 
-$servername = "gns-deploy.c1mymwgeazez.us-east-2.rds.amazonaws.com";
+$servername = "gns.c1mymwgeazez.us-east-2.rds.amazonaws.com";
 $username = "admin";
 $password = "teoh0628";
-$dbname = "GNS-deploy";
+$dbname = "GNS";
 
 // Create a connection
 $conn = new mysqli($servername, $username, $password, $dbname);

@@ -24,10 +24,10 @@
         $searchString = $_POST['searchGame'];
     // echo($name);
             
-        $servername = "gns-deploy.c1mymwgeazez.us-east-2.rds.amazonaws.com";
+        $servername = "gns.c1mymwgeazez.us-east-2.rds.amazonaws.com";
         $username = "admin";
         $password = "teoh0628";
-        $dbname = "GNS-deploy";
+        $dbname = "GNS";
         
         // Create connection
         $conn = mysqli_connect($dbHost, $dbUsername, $dbPassword, $dbName);
