@@ -43,7 +43,7 @@ function OAuth({ triggerLogin }) {
                         let picture = res.data.picture;
                         
 
-                        const url = "http://localhost/y2s1-web-app/app/src/backend/php/googleLogin.php";
+                        const url = "http://gns.000.pe/googleLogin.php";
 
                         let formData = new FormData();
                         formData.append("username", username);

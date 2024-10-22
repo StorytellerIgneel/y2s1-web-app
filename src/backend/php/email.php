@@ -34,10 +34,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
         $body = "Name: $name\nEmail: $email\n\n$message";
         $headers = "From: $email";
         
-        $servername = "localhost";
-$username = "root";
-$password = "teoH0628$$$$";
-$dbname = "wad_assignment";
+        $servername = "sql102.infinityfree.com"; // Updated with your server hostname
+$username = "if0_37568701"; // Your database username from the image
+$password = "teoh0628"; // The password provided in the image
+$dbname = "if0_37568701_gns"; // Use the actual database name provided in the image
         
         // Create connection
         $conn = mysqli_connect($dbHost, $dbUsername, $dbPassword, $dbName);
