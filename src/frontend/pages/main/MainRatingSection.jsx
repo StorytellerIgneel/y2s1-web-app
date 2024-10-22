@@ -5,39 +5,47 @@ import profileSarahMitchell from "../../../assets/images/Profile_SarahMitchell.j
 import profileKevinZhang from "../../../assets/images/Profile_KevinZhang.jpg";
 import profileLucasHernandez from "../../../assets/images/Profile_LucasHernandez.jpg";
 import profilePriyaKapoor from "../../../assets/images/Profile_PriyaKapoor.jpg";
-import profileJakeLing from "../../../assets/images/Profile_JakeLing.jpg"
+import profileJakeLing from "../../../assets/images/Profile_JakeLing.jpg";
 import { useEffect } from "react";
 
 function MainRatingSection() {
-    useEffect(() => {
-        // Ensure jQuery and OwlCarousel have loaded before initializing
-        if (window.$ && window.$(".testimonials-container").owlCarousel) {
-          window.$(".testimonials-container").owlCarousel({
-            loop: true,
-            autoplay: true,
-            autoplayTimeout: 6000,
-            margin: 10,
-            nav: true,
-            navText: [
-              "<i class='fa-solid fa-arrow-left'></i>",
-              "<i class='fa-solid fa-arrow-right'></i>",
-            ],
-            responsive: {
-              0: {
-                items: 1,
-                nav: false,
-              },
-              600: {
-                items: 1,
-                nav: true,
-              },
-              768: {
-                items: 2,
-              },
+  useEffect(() => {
+    // Check if jQuery and OwlCarousel are loaded
+    const initializeOwlCarousel = () => {
+      if (window.$ && window.$.fn.owlCarousel) {
+        window.$(".testimonials-container").owlCarousel({
+          loop: true,
+          autoplay: true,
+          autoplayTimeout: 6000,
+          margin: 10,
+          nav: true,
+          navText: [
+            "<i class='fa-solid fa-arrow-left'></i>",
+            "<i class='fa-solid fa-arrow-right'></i>",
+          ],
+          responsive: {
+            0: {
+              items: 1,
+              nav: false,
             },
-          });
-        }
-      }, []);
+            600: {
+              items: 1,
+              nav: true,
+            },
+            768: {
+              items: 2,
+            },
+          },
+        });
+      } else {
+        // Retry if jQuery or OwlCarousel isn't ready yet
+        setTimeout(initializeOwlCarousel, 500);
+      }
+    };
+
+    // Initialize OwlCarousel after ensuring DOM and scripts are loaded
+    initializeOwlCarousel();
+  }, []);
 
   return (
     <div>
@@ -46,27 +54,21 @@ function MainRatingSection() {
           href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap"
           rel="stylesheet"
         />
-
         <link
           rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
         />
-
         <link
           rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"
         />
-
         <link
           rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"
         />
-
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta charset="utf-8" />
-
+        <meta charSet="utf-8" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-
         <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
       </Helmet>
       <div className="rating-carousel-body">
@@ -83,16 +85,8 @@ function MainRatingSection() {
                   <h2>Best Discounts</h2>
                 </div>
                 <p>
-                  &#34;I&#39;ve been using this platform for all my gaming
-                  purchases, and I can confidently say it&#39;s the best out
-                  there. The selection is vast, covering everything from the
-                  latest AAA titles to hidden indie gems. What I love most is
-                  how user-friendly the interface is—finding and buying games is
-                  a breeze. The customer service is top-notch, always quick to
-                  respond and resolve any issues. Plus, the regular deals and
-                  discounts make it so much more affordable to keep up with the
-                  latest games. Whether you&#39;re a casual gamer or a pro like
-                  me, this site has something for everyone.&#34;
+                  "I've been using this platform for all my gaming purchases,
+                  and I can confidently say it's the best out there..."
                 </p>
                 <div className="ratings">
                   <i className="fa-solid fa-star"></i>
@@ -104,7 +98,7 @@ function MainRatingSection() {
               </main>
               <div className="profile">
                 <div className="profile-image">
-                  <img src={profileSarahMitchell}/>
+                  <img src={profileSarahMitchell} alt="Sarah Mitchell" />
                 </div>
                 <div className="profile-desc">
                   <span>Sarah Mitchell</span>
@@ -112,7 +106,6 @@ function MainRatingSection() {
                 </div>
               </div>
             </div>
-
             <div className="item testimonial-card">
               <main className="test-card-body">
                 <div className="quote">
@@ -297,7 +290,7 @@ function MainRatingSection() {
                   <span>College student</span>
                 </div>
               </div>
-            </div>
+              </div>
           </div>
         </div>
       </div>
