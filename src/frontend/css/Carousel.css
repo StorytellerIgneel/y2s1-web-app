@@ -1,0 +1,59 @@
+:root {
+  --carousel-width: 30vw;
+  --carousel-height: 30vh;
+  --carousel-item-border: 6px;
+  --carousel-transition-duration: 1s;
+  --carousel-box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.7);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+/* Container for the carousel */
+.carousel-container {
+  position: relative;
+  height: 55vh;
+  width: 99vw;
+  perspective: 1000px;
+  transform-style: preserve-3d;
+  margin: 0px auto;
+  overflow: hidden;
+}
+
+/* The entire carousel flow */
+.carouselflow {
+  left: 50%;
+  top: 50%;
+  position: absolute;
+  transform-style: preserve-3d;
+  transition: transform 1s cubic-bezier(0.25, 0.8, 0.25, 1); /* Smooth timing */
+  transform-origin: center;
+  cursor: pointer;
+}
+
+/* Individual carousel items */
+.carouselflow-item {
+  width: var(--carousel-width);
+  height: var(--carousel-height);
+  position: absolute;
+  top: calc(var(--carousel-height) / -2); /* Centering the item */
+  left: calc(var(--carousel-width) / -2); /* Centering the item */
+  
+  background-color: #111;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+
+  border: var(--carousel-item-border) solid #eee;
+  border-radius: 8px;
+  box-shadow: var(--carousel-box-shadow);
+
+  transform-origin: center bottom;
+  backface-visibility: visible;
+  
+  /* Smooth transition for rotating and scaling */
+  transition: transform 1.25s cubic-bezier(0.17, 0.75, 0.58, 0.95);
+}
